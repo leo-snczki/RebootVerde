@@ -4,12 +4,89 @@
 { pkgs, fetchurl, fetchgit, fetchhg }:
 
 self: super: {
-  "readkeys" = super.buildPythonPackage rec {
-    pname = "readkeys";
-    version = "1.0.2";
+  "asgiref" = super.buildPythonPackage rec {
+    pname = "asgiref";
+    version = "3.11.1";
     src = fetchurl {
-      url = "https://files.pythonhosted.org/packages/22/42/0be0768148dbc7d3f36d19e419edc3abd93ea05037b1debed50dfb880a4a/readkeys-1.0.2-py3-none-any.whl";
-      sha256 = "1652yva8fbfrnrxk8k01dxbprdqp9hbiy0rbrrd4kpr60x7kq49b";
+      url = "https://files.pythonhosted.org/packages/5c/0a/a72d10ed65068e115044937873362e6e32fab1b7dce0046aeb224682c989/asgiref-3.11.1-py3-none-any.whl";
+      sha256 = "0cy1dqa54zkm4ykxvz65jafbjygsd315vm4zjqqrclk93q4plrp8";
+    };
+    format = "wheel";
+    doCheck = false;
+    buildInputs = [];
+    checkInputs = [];
+    nativeBuildInputs = [];
+    propagatedBuildInputs = [
+      self."typing-extensions"
+    ];
+  };
+  "django" = super.buildPythonPackage rec {
+    pname = "django";
+    version = "4.2.28";
+    src = fetchurl {
+      url = "https://files.pythonhosted.org/packages/68/20/6d0808bc7500a6c654eae17b53f791a50af2c3f3ac4f328cbec324948c31/django-4.2.28-py3-none-any.whl";
+      sha256 = "0g7damb8a6c518l8dw5kxmh4dlwi1w27p9biimgm4cgghcdkr8j9";
+    };
+    format = "wheel";
+    doCheck = false;
+    buildInputs = [];
+    checkInputs = [];
+    nativeBuildInputs = [];
+    propagatedBuildInputs = [
+      self."asgiref"
+      self."sqlparse"
+    ];
+  };
+  "django-bootstrap5" = super.buildPythonPackage rec {
+    pname = "django-bootstrap5";
+    version = "25.2";
+    src = fetchurl {
+      url = "https://files.pythonhosted.org/packages/45/e4/becdbbb273a4176029df49999d78169600000747ed7b5118dab13fe49d99/django_bootstrap5-25.2-py3-none-any.whl";
+      sha256 = "0dw9xcl5gg1wmhck40qm5d92lcf92c7vgcfx3bf2j9wklngrc64l";
+    };
+    format = "wheel";
+    doCheck = false;
+    buildInputs = [];
+    checkInputs = [];
+    nativeBuildInputs = [];
+    propagatedBuildInputs = [
+      self."django"
+    ];
+  };
+  "django-environ" = super.buildPythonPackage rec {
+    pname = "django-environ";
+    version = "0.13.0";
+    src = fetchurl {
+      url = "https://files.pythonhosted.org/packages/c4/00/3767393ece946084e1c6830a33ffb8e39d68642e27ad5ac7d4c8bd5de866/django_environ-0.13.0-py3-none-any.whl";
+      sha256 = "17krgc72xrb3likav4b0b27gyrbrw6zli3i9v1pjq8kqrla9sy9p";
+    };
+    format = "wheel";
+    doCheck = false;
+    buildInputs = [];
+    checkInputs = [];
+    nativeBuildInputs = [];
+    propagatedBuildInputs = [];
+  };
+  "sqlparse" = super.buildPythonPackage rec {
+    pname = "sqlparse";
+    version = "0.5.5";
+    src = fetchurl {
+      url = "https://files.pythonhosted.org/packages/49/4b/359f28a903c13438ef59ebeee215fb25da53066db67b305c125f1c6d2a25/sqlparse-0.5.5-py3-none-any.whl";
+      sha256 = "1fmiqyn4hqg2x1vka2i4d1749qljs2p3762q372pgj7fycxqp80j";
+    };
+    format = "wheel";
+    doCheck = false;
+    buildInputs = [];
+    checkInputs = [];
+    nativeBuildInputs = [];
+    propagatedBuildInputs = [];
+  };
+  "typing-extensions" = super.buildPythonPackage rec {
+    pname = "typing-extensions";
+    version = "4.15.0";
+    src = fetchurl {
+      url = "https://files.pythonhosted.org/packages/18/67/36e9267722cc04a6b9f15c7f3441c2363321a3ea07da7ae0c0707beb2a9c/typing_extensions-4.15.0-py3-none-any.whl";
+      sha256 = "0j75qhcc0p627f464gd7kjcirdzcga5zl32a0w4ann2phk31kyph";
     };
     format = "wheel";
     doCheck = false;

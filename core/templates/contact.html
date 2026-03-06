@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}Contato{% endblock %}
+
+{% block content %}
+<section class="contact-form">
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h1>Contact</h1>
+    </div>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="nome">Name:</label><br>
+            <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="assunto">Subject:</label><br>
+            <input type="text" id="assunto" name="assunto" required>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="mensagem">message:</label><br>
+            <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Como posso ajudar?"></textarea>
+        </div>
+
+        <br>
+
+        <button type="submit">Send Email</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,184 @@
+# Auto-generated using compose2nix v0.3.2-pre.
+{ pkgs, lib, ... }:
+
+{
+  # Runtime
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+  };
+  virtualisation.oci-containers.backend = "docker";
+
+  # Containers
+  virtualisation.oci-containers.containers."rebootverde-db" = {
+    image = "mysql:8.0";
+    environmentFiles = [
+      "/home/rambo/documents/code/python/RebootVerde/.env"
+    ];
+    volumes = [
+      "rebootverde_mysql_data:/var/lib/mysql:rw"
+    ];
+    ports = [
+      "3306:3306/tcp"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--health-cmd=mysqladmin ping -h localhost -u $MYSQL_USER -p$MYSQL_PASSWORD"
+      "--health-interval=10s"
+      "--health-retries=5"
+      "--health-start-period=40s"
+      "--health-timeout=5s"
+      "--network-alias=db"
+      "--network=rebootverde_default"
+    ];
+  };
+  systemd.services."docker-rebootverde-db" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
+    };
+    after = [
+      "docker-network-rebootverde_default.service"
+      "docker-volume-rebootverde_mysql_data.service"
+    ];
+    requires = [
+      "docker-network-rebootverde_default.service"
+      "docker-volume-rebootverde_mysql_data.service"
+    ];
+    partOf = [
+      "docker-compose-rebootverde-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-rebootverde-root.target"
+    ];
+  };
+  virtualisation.oci-containers.containers."rebootverde-phpmyadmin" = {
+    image = "phpmyadmin/phpmyadmin";
+    environmentFiles = [
+      "/home/rambo/documents/code/python/RebootVerde/.env"
+    ];
+    ports = [
+      "8080:80/tcp"
+    ];
+    dependsOn = [
+      "rebootverde-db"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=phpmyadmin"
+      "--network=rebootverde_default"
+    ];
+  };
+  systemd.services."docker-rebootverde-phpmyadmin" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
+    };
+    after = [
+      "docker-network-rebootverde_default.service"
+    ];
+    requires = [
+      "docker-network-rebootverde_default.service"
+    ];
+    partOf = [
+      "docker-compose-rebootverde-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-rebootverde-root.target"
+    ];
+  };
+  virtualisation.oci-containers.containers."rebootverde_web" = {
+    image = "compose2nix/rebootverde_web";
+    environmentFiles = [
+      "/home/rambo/documents/code/python/RebootVerde/.env"
+    ];
+    volumes = [
+      "/home/rambo/documents/code/python/RebootVerde:/app:rw"
+    ];
+    ports = [
+      "8000:8000/tcp"
+    ];
+    cmd = [ "python" "manage.py" "runserver" "0.0.0.0:8000" ];
+    dependsOn = [
+      "rebootverde-db"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=web"
+      "--network=rebootverde_default"
+    ];
+  };
+  systemd.services."docker-rebootverde_web" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "no";
+    };
+    after = [
+      "docker-network-rebootverde_default.service"
+    ];
+    requires = [
+      "docker-network-rebootverde_default.service"
+    ];
+    partOf = [
+      "docker-compose-rebootverde-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-rebootverde-root.target"
+    ];
+  };
+
+  # Networks
+  systemd.services."docker-network-rebootverde_default" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "docker network rm -f rebootverde_default";
+    };
+    script = ''
+      docker network inspect rebootverde_default || docker network create rebootverde_default
+    '';
+    partOf = [ "docker-compose-rebootverde-root.target" ];
+    wantedBy = [ "docker-compose-rebootverde-root.target" ];
+  };
+
+  # Volumes
+  systemd.services."docker-volume-rebootverde_mysql_data" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      docker volume inspect rebootverde_mysql_data || docker volume create rebootverde_mysql_data
+    '';
+    partOf = [ "docker-compose-rebootverde-root.target" ];
+    wantedBy = [ "docker-compose-rebootverde-root.target" ];
+  };
+
+  # Builds
+  systemd.services."docker-build-rebootverde_web" = {
+    path = [ pkgs.docker pkgs.git ];
+    serviceConfig = {
+      Type = "oneshot";
+      TimeoutSec = 300;
+    };
+    script = ''
+      cd /home/rambo/documents/code/python/RebootVerde
+      docker build -t compose2nix/rebootverde_web .
+    '';
+  };
+
+  # Root service
+  # When started, this will automatically create all resources and start
+  # the containers. When stopped, this will teardown all resources.
+  systemd.targets."docker-compose-rebootverde-root" = {
+    unitConfig = {
+      Description = "Root target generated by compose2nix.";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+}

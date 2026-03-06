@@ -5,8 +5,15 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-RUN apt-get update \
-    && apt-get install -y default-libmysqlclient-dev build-essential pkg-config \
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    gcc \
+    binutils \
+    libproj-dev \
+    gdal-bin \
+    libgdal-dev \
+    build-essential \
+    python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .

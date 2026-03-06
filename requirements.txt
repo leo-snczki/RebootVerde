@@ -1,4 +1,5 @@
 django
 django-bootstrap5
 django-environ
-mysqlclient
+django-leaflet
+psycopg[binary]

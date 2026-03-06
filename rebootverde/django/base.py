@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users',
     'maps',
     'django.contrib.gis',
+    'leaflet'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,21 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# https://django-leaflet.readthedocs.io/en/latest/templates.html
+
+LEAFLET_CONFIG = {
+    "DEFAULT_CENTER": (38.74461078555003, -9.17707771421202),
+    "DEFAULT_ZOOM": 12,
+    "MIN_ZOOM": 11,
+    "MAX_ZOOM": 18,
+    "TILES": [
+        (
+            "OpenStreetMap",
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                "attribution": "&copy; OpenStreetMap" # sao os direitos de atribuição para o mapa
+            },
+        )
+    ],
+}

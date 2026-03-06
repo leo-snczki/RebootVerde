@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'core',
     'users',
+    'maps',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [

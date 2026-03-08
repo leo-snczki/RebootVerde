@@ -11,19 +11,19 @@
 
   # Containers
   virtualisation.oci-containers.containers."rebootverde-db" = {
-    image = "mysql:8.0";
+    image = "postgis/postgis:latest";
     environmentFiles = [
       "/home/rambo/documents/code/python/RebootVerde/.env"
     ];
     volumes = [
-      "rebootverde_mysql_data:/var/lib/mysql:rw"
+      "rebootverde_postgres_data:/var/lib/postgresql/data:rw"
     ];
     ports = [
-      "3306:3306/tcp"
+      "5432:5432/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
-      "--health-cmd=mysqladmin ping -h localhost -u $MYSQL_USER -p$MYSQL_PASSWORD"
+      "--health-cmd=pg_isready -U $POSTGRES_USER -d $POSTGRES_NAME"
       "--health-interval=10s"
       "--health-retries=5"
       "--health-start-period=40s"
@@ -41,48 +41,11 @@
     };
     after = [
       "docker-network-rebootverde_default.service"
-      "docker-volume-rebootverde_mysql_data.service"
+      "docker-volume-rebootverde_postgres_data.service"
     ];
     requires = [
       "docker-network-rebootverde_default.service"
-      "docker-volume-rebootverde_mysql_data.service"
-    ];
-    partOf = [
-      "docker-compose-rebootverde-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-rebootverde-root.target"
-    ];
-  };
-  virtualisation.oci-containers.containers."rebootverde-phpmyadmin" = {
-    image = "phpmyadmin/phpmyadmin";
-    environmentFiles = [
-      "/home/rambo/documents/code/python/RebootVerde/.env"
-    ];
-    ports = [
-      "8080:80/tcp"
-    ];
-    dependsOn = [
-      "rebootverde-db"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--network-alias=phpmyadmin"
-      "--network=rebootverde_default"
-    ];
-  };
-  systemd.services."docker-rebootverde-phpmyadmin" = {
-    serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
-      RestartMaxDelaySec = lib.mkOverride 90 "1m";
-      RestartSec = lib.mkOverride 90 "100ms";
-      RestartSteps = lib.mkOverride 90 9;
-    };
-    after = [
-      "docker-network-rebootverde_default.service"
-    ];
-    requires = [
-      "docker-network-rebootverde_default.service"
+      "docker-volume-rebootverde_postgres_data.service"
     ];
     partOf = [
       "docker-compose-rebootverde-root.target"
@@ -114,7 +77,10 @@
   };
   systemd.services."docker-rebootverde_web" = {
     serviceConfig = {
-      Restart = lib.mkOverride 90 "no";
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
     };
     after = [
       "docker-network-rebootverde_default.service"
@@ -146,14 +112,14 @@
   };
 
   # Volumes
-  systemd.services."docker-volume-rebootverde_mysql_data" = {
+  systemd.services."docker-volume-rebootverde_postgres_data" = {
     path = [ pkgs.docker ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
     };
     script = ''
-      docker volume inspect rebootverde_mysql_data || docker volume create rebootverde_mysql_data
+      docker volume inspect rebootverde_postgres_data || docker volume create rebootverde_postgres_data
     '';
     partOf = [ "docker-compose-rebootverde-root.target" ];
     wantedBy = [ "docker-compose-rebootverde-root.target" ];

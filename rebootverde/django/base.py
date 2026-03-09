@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'rebootverde.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis', # PostGIS adds support for geographic objects to the PostgreSQL
-        'NAME': env('POSTGRES_NAME'),
+        'NAME': env('POSTGRES_DB'),
         'USER': env('POSTGRES_USER'),
         'PASSWORD': env('POSTGRES_PASSWORD'),
         'HOST': env('POSTGRES_HOST'),

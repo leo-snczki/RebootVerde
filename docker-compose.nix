@@ -54,6 +54,37 @@
       "docker-compose-rebootverde-root.target"
     ];
   };
+  virtualisation.oci-containers.containers."rebootverde-pgadmin" = {
+    image = "dpage/pgadmin4:9.13";
+    environmentFiles = [
+      "/home/rambo/documents/code/python/RebootVerde/.env"
+    ];
+    ports = [
+      "5050:80/tcp"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=pgadmin"
+      "--network=rebootverde_default"
+    ];
+  };
+  systemd.services."docker-rebootverde-pgadmin" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "no";
+    };
+    after = [
+      "docker-network-rebootverde_default.service"
+    ];
+    requires = [
+      "docker-network-rebootverde_default.service"
+    ];
+    partOf = [
+      "docker-compose-rebootverde-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-rebootverde-root.target"
+    ];
+  };
   virtualisation.oci-containers.containers."rebootverde_web" = {
     image = "compose2nix/rebootverde_web";
     environmentFiles = [

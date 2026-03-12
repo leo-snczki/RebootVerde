@@ -12,31 +12,75 @@
         width: 100%;
         height: 600px;
     }
+
+    .controls {
+        margin-bottom: 15px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    #brand-filter {
+        width: auto; 
+        display: inline-block; 
+        margin-left: 10px;
+    }
 </style>
 
 <h2>REEE</h2>
+
+<div class="controls">
+    <label for="brand-filter"><b>Filter by establishment:</b></label>
+    <select id="brand-filter" class="form-select">
+        <option value="all">All ecopoints (Lisbon)</option>
+        {% for brand in brands %}
+        <option value="{{ brand }}">{{ brand }}</option>
+        {% endfor %}
+    </select>
+</div>
+
 {% leaflet_map "map" callback="window.initMap" %}
 
 <script>
+    var mapInstance;
+    var geojsonLayer;
+
+    function load_data(brand) {
+        let url = "{% url 'points-api' %}";
+        if (brand !== 'all') {
+            url += `?brand=${encodeURIComponent(brand)}`;
+        }
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (geojsonLayer) {
+                    mapInstance.removeLayer(geojsonLayer);
+                }
+
+                geojsonLayer = L.geoJSON(data, {
+                    onEachFeature: function (feature, layer) {
+                        var props = feature.properties;
+                        var popup = `
+                            <b>${props.descricao ?? "Ponto de Recolha"}</b><br>
+                            ${props.morada ?? "Morada não especificada"}<br>
+                            <small>${props.localidade ?? ""}</small>
+                        `;
+                        layer.bindPopup(popup);
+                    }
+                });
+
+                geojsonLayer.addTo(mapInstance);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
     function initMap(map, options) {
+        mapInstance = map;
+        load_data('all');
 
-        var pontos = {{ pontos_geojson|safe }};
-
-        var geojsonLayer = L.geoJSON(pontos, {
-            onEachFeature: function (feature, layer) {
-                var props = feature.properties;
-                // ?? Nullish coalescing operator para os desavizados, não é ternário
-                // Localidade: por mais que seja lisboa, para expansções que duvido q tenha, é melhor ter um fallback
-                var popup = `
-                    <b>${props.descricao ?? "Ponto de Recolha"}</b><br>
-                    ${props.morada ?? "Morada não especificada"}<br>
-                    ${props.localidade ?? "Localidade não especificada"}<br>
-                `;
-                layer.bindPopup(popup);
-            }
+        document.getElementById('brand-filter').addEventListener('change', function (e) {
+            load_data(e.target.value);
         });
-
-        geojsonLayer.addTo(map);
     }
 </script>
 {% endblock %}

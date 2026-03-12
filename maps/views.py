@@ -4,7 +4,7 @@ from .models import PontoRecolha
 import json
 from django.http import JsonResponse
 
-BRANDS_REEE = ["Minipreço", "ALDI", "Minisom", "Fnac"] # dps coloco mais
+BRANDS_REEE = ["Minipreço", "ALDI", "Minisom", "Fnac", "Primark", "Pingo Doce", "Canon", "Konica", "Nintendo", "Cepsa", "Worten", "Staples", "El Corte Inglês", "Decathlon", "Leroy Merlin", "Auchan", "Junta de Freguesia", "Hotel", "Lidl", "ALE-HOP" ] # dps coloco mais
 
 def recycle_map_view(request):
     return render(request, 'maps/recycle_map.html', {

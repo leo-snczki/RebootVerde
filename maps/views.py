@@ -14,6 +14,7 @@ def recycle_map_view(request):
 
 def api_pins_geojson(request):
     selected_brandscionadas = request.GET.getlist('brand')
+    search = request.GET.get('search')
     
     pins = PontoRecolha.objects.filter(localidade__iexact="lisboa")
 
@@ -27,6 +28,9 @@ def api_pins_geojson(request):
         
         pins = pins.filter(brand_filter)
     
+    if search:
+        pins = pins.filter(descricao__icontains=search)
+        
     geojson_data = serialize(
         'geojson', 
         pins[:500], # tem 475 em lisboa mas ok

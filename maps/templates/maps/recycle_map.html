@@ -24,7 +24,12 @@
 <h2>REEE</h2>
 
 <div class="controls">
-    <label class="form-label"><b>Filtrar por estabelecimento:</b></label>
+    <label class="form-label"><b>Search description:</b></label>
+    <div class="input-group mb-3">
+        <input type="text" id="search-desc" class="form-control" placeholder="Search description...">
+        <button id="search-btn" class="btn btn-primary">Search</button>
+    </div>
+    <label class="form-label"><b>Filter by establishment:</b></label>
     <div class="row" id="brand-checkboxes">
         {% for brand in brands %}
         <div class="col-md-3 col-sm-6">
@@ -37,7 +42,7 @@
         </div>
         {% endfor %}
     </div>
-    <button id="clear-filters" class="btn btn-sm btn-outline-secondary mt-2">Limpar Seleção</button>
+    <button id="clear-filters" class="btn btn-sm btn-outline-secondary mt-2">Clear Selection</button>
 </div>
 
 {% leaflet_map "map" callback="window.initMap" %}
@@ -48,11 +53,20 @@
 
     function load_data(brands) {
         let url = "{% url 'points-api' %}";
-        
+        let params = new URLSearchParams();
+
         if (brands && brands.length > 0) {
-            let params = new URLSearchParams();
             brands.forEach(b => params.append('brand', b));
-            url += '?' + params.toString(); 
+        }
+
+        const search = document.getElementById('search-desc').value;
+
+        if (search) {
+            params.append('search', search);
+        }
+
+        if (params.toString()) {
+            url += '?' + params.toString();
         }
 
         fetch(url)
@@ -101,6 +115,18 @@
             checkboxes.forEach(cb => cb.checked = false);
             load_data([]);
         });
-    }
+
+        document.getElementById("search-btn").addEventListener("click", function () {
+        const selected = getSelectedBrands();
+        load_data(selected);
+        });
+
+        document.getElementById("search-desc").addEventListener("keypress", function(e){
+        if(e.key === "Enter"){
+            const selected = getSelectedBrands();
+            load_data(selected);
+        }
+    });
+}
 </script>
 {% endblock %}

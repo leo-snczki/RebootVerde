@@ -19,23 +19,25 @@
         background: #f8f9fa;
         border-radius: 8px;
     }
-    #brand-filter {
-        width: auto; 
-        display: inline-block; 
-        margin-left: 10px;
-    }
 </style>
 
 <h2>REEE</h2>
 
 <div class="controls">
-    <label for="brand-filter"><b>Filter by establishment:</b></label>
-    <select id="brand-filter" class="form-select">
-        <option value="all">All ecopoints (Lisbon)</option>
+    <label class="form-label"><b>Filtrar por estabelecimento:</b></label>
+    <div class="row" id="brand-checkboxes">
         {% for brand in brands %}
-        <option value="{{ brand }}">{{ brand }}</option>
+        <div class="col-md-3 col-sm-6">
+            <div class="form-check">
+                <input class="form-check-input brand-checkbox" type="checkbox" value="{{ brand }}" id="check-{{ forloop.counter }}">
+                <label class="form-check-label" for="check-{{ forloop.counter }}">
+                    {{ brand }}
+                </label>
+            </div>
+        </div>
         {% endfor %}
-    </select>
+    </div>
+    <button id="clear-filters" class="btn btn-sm btn-outline-secondary mt-2">Limpar Seleção</button>
 </div>
 
 {% leaflet_map "map" callback="window.initMap" %}
@@ -44,10 +46,13 @@
     var mapInstance;
     var geojsonLayer;
 
-    function load_data(brand) {
+    function load_data(brands) {
         let url = "{% url 'points-api' %}";
-        if (brand !== 'all') {
-            url += `?brand=${encodeURIComponent(brand)}`;
+        
+        if (brands && brands.length > 0) {
+            let params = new URLSearchParams();
+            brands.forEach(b => params.append('brand', b));
+            url += '?' + params.toString(); 
         }
 
         fetch(url)
@@ -74,12 +79,27 @@
             .catch(error => console.error('Error:', error));
     }
 
+    function getSelectedBrands() {
+        const checked = document.querySelectorAll('.brand-checkbox:checked');
+        return Array.from(checked).map(cb => cb.value);
+    }
+
     function initMap(map, options) {
         mapInstance = map;
-        load_data('all');
+        
+        load_data([]);
 
-        document.getElementById('brand-filter').addEventListener('change', function (e) {
-            load_data(e.target.value);
+        const checkboxes = document.querySelectorAll('.brand-checkbox');
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', function() {
+                const selected = getSelectedBrands();
+                load_data(selected);
+            });
+        });
+
+        document.getElementById('clear-filters').addEventListener('click', function() {
+            checkboxes.forEach(cb => cb.checked = false);
+            load_data([]);
         });
     }
 </script>

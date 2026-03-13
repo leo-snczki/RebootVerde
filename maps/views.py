@@ -3,6 +3,7 @@ from django.core.serializers import serialize
 from .models import PontoRecolha
 import json
 from django.http import JsonResponse
+from django.db.models import Q
 
 BRANDS_REEE = ["Minipreço", "ALDI", "Minisom", "Fnac", "Primark", "Pingo Doce", "Canon", "Konica", "Nintendo", "Cepsa", "Worten", "Staples", "El Corte Inglês", "Decathlon", "Leroy Merlin", "Auchan", "Junta de Freguesia", "Hotel", "Lidl", "ALE-HOP" ] # dps coloco mais
 
@@ -11,19 +12,24 @@ def recycle_map_view(request):
         'brands': BRANDS_REEE
     })
 
-def api_pontos_geojson(request):
+def api_pins_geojson(request):
+    selected_brandscionadas = request.GET.getlist('brand')
     
-    brand_selecionada = request.GET.get('brand')
-    
-    pontos = PontoRecolha.objects.filter(localidade__iexact="lisboa")
+    pins = PontoRecolha.objects.filter(localidade__iexact="lisboa")
 
-    if brand_selecionada in BRANDS_REEE:
-        pontos = pontos.filter(descricao__icontains=brand_selecionada)
-    
+    # Se houver marcas selecionadas, construímos uma consulta dinâmica
+    # Usamos o objeto Q para acumular filtros com o 'OR'
+    if selected_brandscionadas:
+        brand_filter = Q()
+        
+        for brand in selected_brandscionadas:
+            brand_filter |= Q(descricao__icontains=brand)
+        
+        pins = pins.filter(brand_filter)
     
     geojson_data = serialize(
         'geojson', 
-        pontos[:500], # tem 475 em lisboa mas ok
+        pins[:500], # tem 475 em lisboa mas ok
         geometry_field='geom',
         fields=('descricao', 'morada', 'localidade')
     )

@@ -29,6 +29,10 @@
         <input type="text" id="search-desc" class="form-control" placeholder="Search description...">
         <button id="search-btn" class="btn btn-primary">Search</button>
     </div>
+    <div class="mb-3">
+        <button id="clear-search" class="btn btn-sm btn-outline-secondary mt-2">Clear Search</button>
+    </div>
+
     <label class="form-label"><b>Filter by establishment:</b></label>
     <div class="row" id="brand-checkboxes">
         {% for brand in brands %}
@@ -114,6 +118,11 @@
         document.getElementById('clear-filters').addEventListener('click', function() {
             checkboxes.forEach(cb => cb.checked = false);
             load_data([]);
+        });
+
+        document.getElementById('clear-search').addEventListener('click', function() {
+            document.getElementById('search-desc').value = '';
+            load_data(getSelectedBrands());
         });
 
         document.getElementById("search-btn").addEventListener("click", function () {

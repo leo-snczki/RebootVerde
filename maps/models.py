@@ -11,3 +11,12 @@ class PontoRecolha(models.Model):
 
     def __str__(self):
         return self.descricao or "Ponto de Recolha"
+
+class Freguesia(models.Model):
+    nome = models.CharField(max_length=100)
+    concelho = models.CharField(max_length=100)
+    distrito = models.CharField(max_length=100)
+    geom = models.MultiPolygonField(srid=4326)
+
+    def __str__(self):
+        return self.nome

@@ -138,3 +138,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # O e-mail não vai ser enviado de verdade, ele vai aparecer no seu TERMINAL (onde roda o server)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+AUTH_USER_MODEL = 'users.CustomUser'

@@ -46,7 +46,25 @@
         </div>
         {% endfor %}
     </div>
-    <button id="clear-filters" class="btn btn-sm btn-outline-secondary mt-2">Clear Selection</button>
+
+    <div class="mb-3">
+        <button id="clear-filters" class="btn btn-sm btn-outline-secondary mt-2">Clear Selection</button>
+    </div>
+
+    <label class="form-label"><b>Filter by civil parish:</b></label>
+    <div class="row" id="parish-checkboxes">
+        {% for parish in parishes %}
+        <div class="col-md-3 col-sm-6">
+            <div class="form-check">
+                <input class="form-check-input parish-checkbox" type="checkbox" value="{{ parish }}" id="parish-{{ forloop.counter }}">
+                <label class="form-check-label" for="parish-{{ forloop.counter }}">
+                    {{ parish }}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <button id="clear-parish" class="btn btn-sm btn-outline-secondary mt-2">Clear Selection</button>
 </div>
 
 {% leaflet_map "map" callback="window.initMap" %}
@@ -55,13 +73,15 @@
     var mapInstance;
     var geojsonLayer;
 
-    function load_data(brands) {
+    function load_data() {
         let url = "{% url 'points-api' %}";
         let params = new URLSearchParams();
 
-        if (brands && brands.length > 0) {
+        const brands = getSelectedBrands();
             brands.forEach(b => params.append('brand', b));
-        }
+
+        const parishes = getSelectedParishes();
+        parishes.forEach(p => params.append('parish', p));
 
         const search = document.getElementById('search-desc').value;
 
@@ -102,40 +122,43 @@
         return Array.from(checked).map(cb => cb.value);
     }
 
+    function getSelectedParishes() {
+        const checked = document.querySelectorAll('.parish-checkbox:checked');
+        return Array.from(checked).map(cb => cb.value);
+    }
+
     function initMap(map, options) {
         mapInstance = map;
         
-        load_data([]);
+        load_data();
 
-        const checkboxes = document.querySelectorAll('.brand-checkbox');
-        checkboxes.forEach(cb => {
-            cb.addEventListener('change', function() {
-                const selected = getSelectedBrands();
-                load_data(selected);
-            });
+        document.querySelectorAll('.brand-checkbox').forEach(cb => {
+            cb.addEventListener('change', load_data);
+        });
+
+        document.getElementById("search-btn").addEventListener("click", load_data);
+        document.getElementById("search-desc").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") { load_data(); }
         });
 
         document.getElementById('clear-filters').addEventListener('click', function() {
-            checkboxes.forEach(cb => cb.checked = false);
-            load_data([]);
+            document.querySelectorAll('.brand-checkbox').forEach(cb => cb.checked = false);
+            load_data();
         });
 
         document.getElementById('clear-search').addEventListener('click', function() {
             document.getElementById('search-desc').value = '';
-            load_data(getSelectedBrands());
+            load_data();
         });
 
-        document.getElementById("search-btn").addEventListener("click", function () {
-        const selected = getSelectedBrands();
-        load_data(selected);
+        document.getElementById('clear-parish').addEventListener('click', function() {
+            document.querySelectorAll('.parish-checkbox').forEach(cb => cb.checked = false);
+            load_data();
         });
 
-        document.getElementById("search-desc").addEventListener("keypress", function(e){
-        if(e.key === "Enter"){
-            const selected = getSelectedBrands();
-            load_data(selected);
-        }
-    });
-}
+        document.querySelectorAll('.parish-checkbox').forEach(cb => {
+            cb.addEventListener('change', load_data);
+        });
+    }
 </script>
 {% endblock %}

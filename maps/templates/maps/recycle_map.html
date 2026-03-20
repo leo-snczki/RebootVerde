@@ -103,9 +103,13 @@
                 geojsonLayer = L.geoJSON(data, {
                     onEachFeature: function (feature, layer) {
                         var props = feature.properties;
+                        var searchAddress = encodeURIComponent(`${props.morada}, ${props.localidade}`);
+                        var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchAddress}`;
                         var popup = `
                             <b>${props.descricao ?? "Ponto de Recolha"}</b><br>
-                            ${props.morada ?? "Morada não especificada"}<br>
+                            <a href="${googleMapsUrl}" target="_blank" title="Abrir no Google Maps">
+                                ${props.morada ?? "Morada não especificada"}
+                            </a><br>
                             <small>${props.localidade ?? ""}</small>
                         `;
                         layer.bindPopup(popup);

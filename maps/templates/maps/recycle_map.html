@@ -110,7 +110,8 @@
                             <a href="${googleMapsUrl}" target="_blank" title="Abrir no Google Maps">
                                 ${props.morada ?? "Morada não especificada"}
                             </a><br>
-                            <small>${props.localidade ?? ""}</small>
+                            <small>${props.localidade ?? ""}</small> <br>
+                            <small>${props.codigo_pos ?? "Codigo postal não especificado"}</small>
                         `;
                         layer.bindPopup(popup);
                     }

@@ -148,4 +148,14 @@ LEAFLET_CONFIG = {
             },
         )
     ],
+    "PLUGINS": {
+        "markercluster": {
+            "css": [
+                "https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css",
+                "https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css",
+            ],
+            "js": "https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js",
+            "auto-include": True,
+        }
+    }
 }

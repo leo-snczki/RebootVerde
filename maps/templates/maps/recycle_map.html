@@ -71,7 +71,7 @@
 
 <script>
     var mapInstance;
-    var geojsonLayer;
+    var markerCluster;
 
     function load_data() {
         let url = "{% url 'points-api' %}";
@@ -96,11 +96,9 @@
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                if (geojsonLayer) {
-                    mapInstance.removeLayer(geojsonLayer);
-                }
+                markerCluster.clearLayers();
 
-                geojsonLayer = L.geoJSON(data, {
+                let geojsonLayer = L.geoJSON(data, {
                     onEachFeature: function (feature, layer) {
                         var props = feature.properties;
                         var searchAddress = encodeURIComponent(`${props.morada}, ${props.localidade}`);
@@ -117,7 +115,7 @@
                     }
                 });
 
-                geojsonLayer.addTo(mapInstance);
+                markerCluster.addLayer(geojsonLayer);
             })
             .catch(error => console.error('Error:', error));
     }
@@ -135,6 +133,9 @@
     function initMap(map, options) {
         mapInstance = map;
         
+        markerCluster = L.markerClusterGroup();
+        mapInstance.addLayer(markerCluster);
+
         load_data();
 
         document.querySelectorAll('.brand-checkbox').forEach(cb => {

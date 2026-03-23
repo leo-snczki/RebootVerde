@@ -20,6 +20,7 @@ CIVIL_PARISHES = [
     "São Jorge De Arroios", "São José", "São Mamede", "São Miguel", "São Nicolau", 
     "São Paulo", "São Sebastião Da Pedreira", "São Vicente De Fora", "Sé", "Socorro"
 ]
+
 def recycle_map_view(request):
     return render(request, 'maps/recycle_map.html', {
         'brands': BRANDS_REEE,

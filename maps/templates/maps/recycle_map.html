@@ -99,6 +99,11 @@
                 markerCluster.clearLayers();
 
                 let geojsonLayer = L.geoJSON(data, {
+                    pointToLayer: function (feature, latlng) {
+                        const brandName = feature.properties.descricao;
+                        const customIcon = getIconForBrand(brandName);
+                        return L.marker(latlng, { icon: customIcon });
+                    },
                     onEachFeature: function (feature, layer) {
                         var props = feature.properties;
                         var searchAddress = encodeURIComponent(`${props.morada}, ${props.localidade}`);
@@ -165,6 +170,40 @@
         document.querySelectorAll('.parish-checkbox').forEach(cb => {
             cb.addEventListener('change', load_data);
         });
+    }
+    function getIconForBrand(brand) {
+        if (!brand) return getDefaultIcon(); 
+
+        let lowerBrand = brand.toLowerCase();
+
+        if (lowerBrand.includes('pingo doce')) {
+            return getLeafletIcon('green');
+        } else if (lowerBrand.includes('continente')) {
+            return getLeafletIcon('red');
+        } else if (lowerBrand.includes('lidl')) {
+            return getLeafletIcon('yellow');
+        } else if (lowerBrand.includes('minipreço')) {
+            return getLeafletIcon('orange');
+        } else if (lowerBrand.includes('auchan')) {
+            return getLeafletIcon('violet');
+        }
+
+        return getDefaultIcon();
+    }
+
+    function getLeafletIcon(color) {
+        return L.icon({
+            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+    }
+
+    function getDefaultIcon() {
+        return getLeafletIcon('blue');
     }
 </script>
 {% endblock %}

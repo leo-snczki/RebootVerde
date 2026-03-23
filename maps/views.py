@@ -61,7 +61,7 @@ def api_pins_geojson(request):
             
     geojson_data = serialize(
         'geojson', 
-        pins[:500], # tem 1200 na vdd, mas para evitar sobrecarregar o browser, 500 serve
+        pins[:1200],
         geometry_field='geom',
         fields=('descricao', 'morada', 'localidade', 'codigo_pos')
     )

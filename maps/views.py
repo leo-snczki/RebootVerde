@@ -5,7 +5,7 @@ import json
 from django.http import JsonResponse
 from django.db.models import Q
 
-BRANDS_REEE = ["Minipreço", "ALDI", "Minisom", "Fnac", "Primark", "Pingo Doce", "Canon", "Konica", "Nintendo", "Cepsa", "Worten", "Staples", "El Corte Inglês", "Decathlon", "Leroy Merlin", "Auchan", "Junta de Freguesia", "Hotel", "Lidl", "ALE-HOP" ] # dps coloco mais
+BRANDS_REEE = ["Minipreço", "Continente", "ALDI", "Minisom", "Fnac", "Primark", "Pingo Doce", "Canon", "Konica", "Nintendo", "Cepsa", "Worten", "Staples", "El Corte Inglês", "Decathlon", "Leroy Merlin", "Auchan", "Junta de Freguesia", "Hotel", "Lidl", "ALE-HOP" ] # dps coloco mais
 
 CIVIL_PARISHES = [
     "Ajuda", "Alcântara", "Alto Do Pina", "Alvalade", "Ameixoeira", "Anjos", 

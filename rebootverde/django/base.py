@@ -134,10 +134,11 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-# O e-mail não vai ser enviado de verdade, ele vai aparecer no seu TERMINAL (onde roda o server)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
 AUTH_USER_MODEL = 'users.CustomUser'
+
+# Se você usa WhiteNoise, adicione isso para permitir que o WebAssembly (WASM) rode
+WHITENOISE_CUSTOM_HEADERS = [
+    (r'.*\.wasm$', {'Cross-Origin-Embedder-Policy': 'require-corp', 'Cross-Origin-Opener-Policy': 'same-origin'}),
+    (r'.*\.js$', {'Cross-Origin-Embedder-Policy': 'require-corp', 'Cross-Origin-Opener-Policy': 'same-origin'}),
+]
+

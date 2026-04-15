@@ -142,3 +142,6 @@ WHITENOISE_CUSTOM_HEADERS = [
     (r'.*\.js$', {'Cross-Origin-Embedder-Policy': 'require-corp', 'Cross-Origin-Opener-Policy': 'same-origin'}),
 ]
 
+
+LOGIN_REDIRECT_URL = 'shop' 
+LOGIN_URL = 'login'

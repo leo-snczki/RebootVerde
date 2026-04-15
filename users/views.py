@@ -77,3 +77,6 @@ def verify_code(request):
     return render(request, "users/verify_code.html", {"email": email})
 
 
+@login_required
+def shop(request):
+    return render(request, "users/shop.html")

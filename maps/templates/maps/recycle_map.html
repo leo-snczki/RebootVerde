@@ -106,15 +106,17 @@
                     },
                     onEachFeature: function (feature, layer) {
                         var props = feature.properties;
-                        var searchAddress = encodeURIComponent(`${props.morada}, ${props.localidade}`);
-                        var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchAddress}`;
+                        var searchString = `${props.descricao || ''},${props.morada || ''}, ${props.codigo_pos || ''}, ${props.localidade || ''}`.trim();
+                        var searchAddress = encodeURIComponent(searchString);                   
+                        var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchAddress}`;                        
                         var popup = `
                             <b>${props.descricao ?? "Ponto de Recolha"}</b><br>
-                            <a href="${googleMapsUrl}" target="_blank" title="Abrir no Google Maps">
-                                ${props.morada ?? "Morada não especificada"}
-                            </a><br>
+                                ${props.morada ?? "Morada não especificada"}<br>
                             <small>${props.localidade ?? ""}</small> <br>
-                            <small>${props.codigo_pos ?? "Codigo postal não especificado"}</small>
+                            <small>${props.codigo_pos ?? "Código postal não especificado"}</small><br>
+                            <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">
+                                <button id="open-on-maps" class="btn btn-sm btn-outline-primary mt-2">Abrir no Google Maps</button>
+                            </a>
                         `;
                         layer.bindPopup(popup);
                     }

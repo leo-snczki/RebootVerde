@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from rebootverde.env import BASE_DIR, env
-from decouple import config
 
 env.read_env(os.path.join(BASE_DIR,'.env'))
 
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'core',
+    'shop', 
     'users',
 ]
 
@@ -143,5 +143,5 @@ WHITENOISE_CUSTOM_HEADERS = [
 ]
 
 
-LOGIN_REDIRECT_URL = 'shop' 
-LOGIN_URL = 'login'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'

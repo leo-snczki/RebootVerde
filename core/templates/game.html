@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Jogar - Meu Jogo Godot{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="mt-4 p-5 bg-success text-white rounded mb-4">
+        <h1>Hora de Jogar!</h1>
+    </div>
+
+    <div class="shadow-lg rounded bg-dark d-inline-block" style="padding: 10px;">
+        <iframe 
+            src="{% static 'jogos/build/index.html' %}" 
+            title="Godot Game"
+            width="480" 
+            height="720"
+            style="border: none; display: block;"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="mt-4 mb-5">
+        <a href="{% url 'index' %}" class="btn btn-secondary">Voltar ao Início</a>
+    </div>
+</div>
+{% endblock %}

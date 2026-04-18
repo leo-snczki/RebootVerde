@@ -11,9 +11,8 @@ from .base import *
 # EMAIL_USE_TLS = False
 
 # settings.py
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = env('EMAIL_PORT')

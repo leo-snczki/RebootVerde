@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Produtos da RebootVerde</h1>
+
+  <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Nome do Produto</th>
+        <th>Preço</th>
+        <th>Imagem (URL)</th>
+        <th>Description</th>
+        <th>updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+        <tr>
+          <td>{{ product.category }}</td>
+          <td>{{ product.name }}</td>
+          <td>R$ {{ product.price }}</td>
+          <td>{{ product.image }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.updated }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

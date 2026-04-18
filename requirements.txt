@@ -3,3 +3,5 @@ django-bootstrap5
 django-environ
 django-leaflet
 psycopg[binary]
+django-decouple
+Pillow==10.2.0

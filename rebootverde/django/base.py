@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'users',
     'maps',
     'django.contrib.gis',
-    'leaflet'
+    'leaflet',
+    'shop', 
 ]
 
 MIDDLEWARE = [
@@ -124,8 +125,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# rebootverde/django/base.py
+
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# Isso garante que o Django procure na pasta static da raiz
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Pasta onde o Django joga tudo quando você dá 'collectstatic'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -159,3 +169,14 @@ LEAFLET_CONFIG = {
         }
     }
 }
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# Se você usa WhiteNoise, adicione isso para permitir que o WebAssembly (WASM) rode
+WHITENOISE_CUSTOM_HEADERS = [
+    (r'.*\.wasm$', {'Cross-Origin-Embedder-Policy': 'require-corp', 'Cross-Origin-Opener-Policy': 'same-origin'}),
+    (r'.*\.js$', {'Cross-Origin-Embedder-Policy': 'require-corp', 'Cross-Origin-Opener-Policy': 'same-origin'}),
+]
+
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'

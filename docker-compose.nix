@@ -10,9 +10,52 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
+  virtualisation.oci-containers.containers."dbeaver_ct" = {
+    image = "dbeaver/cloudbeaver:latest";
+    environmentFiles = [
+      "/home/rambo/documents/code/python/RebootVerde/.env"
+    ];
+    volumes = [
+      "rebootverde_dbeaver_data:/opt/cloudbeaver/workspace:rw"
+    ];
+    ports = [
+      "8978:8978/tcp"
+    ];
+    dependsOn = [
+      "rebootverde-db"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=dbeaver"
+      "--network=rebootverde_default"
+    ];
+  };
+  systemd.services."docker-dbeaver_ct" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
+    };
+    after = [
+      "docker-network-rebootverde_default.service"
+      "docker-volume-rebootverde_dbeaver_data.service"
+    ];
+    requires = [
+      "docker-network-rebootverde_default.service"
+      "docker-volume-rebootverde_dbeaver_data.service"
+    ];
+    partOf = [
+      "docker-compose-rebootverde-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-rebootverde-root.target"
+    ];
+  };
   virtualisation.oci-containers.containers."rebootverde-db" = {
     image = "postgis/postgis:latest";
     environmentFiles = [
+      "/home/rambo/documents/RebootVerde/.env"
       "/home/rambo/documents/code/python/RebootVerde/.env"
     ];
     volumes = [
@@ -54,44 +97,14 @@
       "docker-compose-rebootverde-root.target"
     ];
   };
-  virtualisation.oci-containers.containers."rebootverde-pgadmin" = {
-    image = "dpage/pgadmin4:9.13";
-    environmentFiles = [
-      "/home/rambo/documents/code/python/RebootVerde/.env"
-    ];
-    ports = [
-      "5050:80/tcp"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--network-alias=pgadmin"
-      "--network=rebootverde_default"
-    ];
-  };
-  systemd.services."docker-rebootverde-pgadmin" = {
-    serviceConfig = {
-      Restart = lib.mkOverride 90 "no";
-    };
-    after = [
-      "docker-network-rebootverde_default.service"
-    ];
-    requires = [
-      "docker-network-rebootverde_default.service"
-    ];
-    partOf = [
-      "docker-compose-rebootverde-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-rebootverde-root.target"
-    ];
-  };
   virtualisation.oci-containers.containers."rebootverde_web" = {
     image = "compose2nix/rebootverde_web";
     environmentFiles = [
+      "/home/rambo/documents/RebootVerde/.env"
       "/home/rambo/documents/code/python/RebootVerde/.env"
     ];
     volumes = [
-      "/home/rambo/documents/code/python/RebootVerde:/app:rw"
+      "/home/rambo/documents/RebootVerde:/app:rw"
     ];
     ports = [
       "8000:8000/tcp"
@@ -143,6 +156,18 @@
   };
 
   # Volumes
+  systemd.services."docker-volume-rebootverde_dbeaver_data" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      docker volume inspect rebootverde_dbeaver_data || docker volume create rebootverde_dbeaver_data
+    '';
+    partOf = [ "docker-compose-rebootverde-root.target" ];
+    wantedBy = [ "docker-compose-rebootverde-root.target" ];
+  };
   systemd.services."docker-volume-rebootverde_postgres_data" = {
     path = [ pkgs.docker ];
     serviceConfig = {
@@ -164,7 +189,7 @@
       TimeoutSec = 300;
     };
     script = ''
-      cd /home/rambo/documents/code/python/RebootVerde
+      cd /home/rambo/documents/RebootVerde
       docker build -t compose2nix/rebootverde_web .
     '';
   };

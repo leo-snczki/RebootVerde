@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% load leaflet_tags %}
+
+{% block title %}Map{% endblock %}
+
+{% block content %}
+{% leaflet_js %}
+{% leaflet_css %}
+
+<style>
+    #map {
+        width: 100%;
+        height: 600px;
+    }
+
+    .controls {
+        margin-bottom: 15px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+</style>
+
+<h2>REEE</h2>
+
+<div class="controls">
+    <label class="form-label"><b>Search description:</b></label>
+    <div class="input-group mb-3">
+        <input type="text" id="search-desc" class="form-control" placeholder="Search description...">
+        <button id="search-btn" class="btn btn-primary">Search</button>
+    </div>
+    <div class="mb-3">
+        <button id="clear-search" class="btn btn-sm btn-outline-secondary mt-2">Clear Search</button>
+    </div>
+
+    <label class="form-label"><b>Filter by establishment:</b></label>
+    <div class="row" id="brand-checkboxes">
+        {% for brand in brands %}
+        <div class="col-md-3 col-sm-6">
+            <div class="form-check">
+                <input class="form-check-input brand-checkbox" type="checkbox" value="{{ brand }}" id="check-{{ forloop.counter }}">
+                <label class="form-check-label" for="check-{{ forloop.counter }}">
+                    {{ brand }}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <button id="clear-filters" class="btn btn-sm btn-outline-secondary mt-2">Clear Selection</button>
+    </div>
+
+    <label class="form-label"><b>Filter by civil parish:</b></label>
+    <div class="row" id="parish-checkboxes">
+        {% for parish in parishes %}
+        <div class="col-md-3 col-sm-6">
+            <div class="form-check">
+                <input class="form-check-input parish-checkbox" type="checkbox" value="{{ parish }}" id="parish-{{ forloop.counter }}">
+                <label class="form-check-label" for="parish-{{ forloop.counter }}">
+                    {{ parish }}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <button id="clear-parish" class="btn btn-sm btn-outline-secondary mt-2">Clear Selection</button>
+</div>
+
+{% leaflet_map "map" callback="window.initMap" %}
+
+<script>
+    var mapInstance;
+    var markerCluster;
+
+    function load_data() {
+        let url = "{% url 'points-api' %}";
+        let params = new URLSearchParams();
+
+        const brands = getSelectedBrands();
+            brands.forEach(b => params.append('brand', b));
+
+        const parishes = getSelectedParishes();
+        parishes.forEach(p => params.append('parish', p));
+
+        const search = document.getElementById('search-desc').value;
+
+        if (search) {
+            params.append('search', search);
+        }
+
+        if (params.toString()) {
+            url += '?' + params.toString();
+        }
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                markerCluster.clearLayers();
+
+                let geojsonLayer = L.geoJSON(data, {
+                    pointToLayer: function (feature, latlng) {
+                        const brandName = feature.properties.descricao;
+                        const customIcon = getIconForBrand(brandName);
+                        return L.marker(latlng, { icon: customIcon });
+                    },
+                    onEachFeature: function (feature, layer) {
+                        var props = feature.properties;
+                        var searchString = `${props.descricao || ''},${props.morada || ''}, ${props.codigo_pos || ''}, ${props.localidade || ''}`.trim();
+                        var searchAddress = encodeURIComponent(searchString);                   
+                        var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchAddress}`;                        
+                        var popup = `
+                            <b>${props.descricao ?? "Ponto de Recolha"}</b><br>
+                                ${props.morada ?? "Morada não especificada"}<br>
+                            <small>${props.localidade ?? ""}</small> <br>
+                            <small>${props.codigo_pos ?? "Código postal não especificado"}</small><br>
+                            <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">
+                                <button id="open-on-maps" class="btn btn-sm btn-outline-primary mt-2">Abrir no Google Maps</button>
+                            </a>
+                        `;
+                        layer.bindPopup(popup);
+                    }
+                });
+
+                markerCluster.addLayer(geojsonLayer);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function getSelectedBrands() {
+        const checked = document.querySelectorAll('.brand-checkbox:checked');
+        return Array.from(checked).map(cb => cb.value);
+    }
+
+    function getSelectedParishes() {
+        const checked = document.querySelectorAll('.parish-checkbox:checked');
+        return Array.from(checked).map(cb => cb.value);
+    }
+
+    function initMap(map, options) {
+        mapInstance = map;
+        
+        markerCluster = L.markerClusterGroup();
+        mapInstance.addLayer(markerCluster);
+
+        load_data();
+
+        document.querySelectorAll('.brand-checkbox').forEach(cb => {
+            cb.addEventListener('change', load_data);
+        });
+
+        document.getElementById("search-btn").addEventListener("click", load_data);
+        document.getElementById("search-desc").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") { load_data(); }
+        });
+
+        document.getElementById('clear-filters').addEventListener('click', function() {
+            document.querySelectorAll('.brand-checkbox').forEach(cb => cb.checked = false);
+            load_data();
+        });
+
+        document.getElementById('clear-search').addEventListener('click', function() {
+            document.getElementById('search-desc').value = '';
+            load_data();
+        });
+
+        document.getElementById('clear-parish').addEventListener('click', function() {
+            document.querySelectorAll('.parish-checkbox').forEach(cb => cb.checked = false);
+            load_data();
+        });
+
+        document.querySelectorAll('.parish-checkbox').forEach(cb => {
+            cb.addEventListener('change', load_data);
+        });
+    }
+    function getIconForBrand(brand) {
+        if (!brand) return getDefaultIcon(); 
+
+        let lowerBrand = brand.toLowerCase();
+
+        if (lowerBrand.includes('pingo doce')) {
+            return getLeafletIcon('green');
+        } else if (lowerBrand.includes('continente')) {
+            return getLeafletIcon('red');
+        } else if (lowerBrand.includes('lidl')) {
+            return getLeafletIcon('yellow');
+        } else if (lowerBrand.includes('minipreço')) {
+            return getLeafletIcon('orange');
+        } else if (lowerBrand.includes('auchan')) {
+            return getLeafletIcon('violet');
+        }
+
+        return getDefaultIcon();
+    }
+
+    function getLeafletIcon(color) {
+        return L.icon({
+            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+    }
+
+    function getDefaultIcon() {
+        return getLeafletIcon('blue');
+    }
+</script>
+{% endblock %}

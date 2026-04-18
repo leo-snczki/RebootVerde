@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'core',
     'users',
+    'maps',
+    'django.contrib.gis',
+    'leaflet'
 ]
 
 MIDDLEWARE = [
@@ -77,16 +80,12 @@ WSGI_APPLICATION = 'rebootverde.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT', default='3306'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'ENGINE': 'django.contrib.gis.db.backends.postgis', # PostGIS adds support for geographic objects to the PostgreSQL
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT', default='5432'),
     }
 }
 
@@ -132,3 +131,31 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# https://django-leaflet.readthedocs.io/en/latest/templates.html
+
+LEAFLET_CONFIG = {
+    "DEFAULT_CENTER": (38.74461078555003, -9.17707771421202),
+    "DEFAULT_ZOOM": 12,
+    "MIN_ZOOM": 11,
+    "MAX_ZOOM": 18,
+    "TILES": [
+        (
+            "OpenStreetMap",
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                "attribution": "&copy; OpenStreetMap" # sao os direitos de atribuição para o mapa
+            },
+        )
+    ],
+    "PLUGINS": {
+        "markercluster": {
+            "css": [
+                "https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css",
+                "https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css",
+            ],
+            "js": "https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js",
+            "auto-include": True,
+        }
+    }
+}

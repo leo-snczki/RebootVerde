@@ -3,3 +3,4 @@ django-bootstrap5
 django-environ
 mysqlclient
 django-decouple
+Pillow==10.2.0

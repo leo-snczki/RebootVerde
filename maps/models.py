@@ -1,4 +1,5 @@
 from django.contrib.gis.db import models
+from django.conf import settings
 
 class PontoRecolha(models.Model):
     codigo_apa = models.CharField(max_length=50, null=True, blank=True)
@@ -20,3 +21,24 @@ class Freguesia(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class FavoritePoint(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='favorite_points'
+    )
+    ponto_recolha = models.ForeignKey(
+        PontoRecolha,
+        on_delete=models.CASCADE,
+        related_name='favorited_by'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'ponto_recolha')
+        verbose_name = 'Favorite Point'
+        verbose_name_plural = 'Favorite Points'
+
+    def __str__(self):
+        return f"{self.user} - {self.ponto_recolha}"

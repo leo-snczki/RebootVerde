@@ -37,8 +37,15 @@ def api_pins_geojson(request):
     selected_brands = request.GET.getlist('brand')
     search = request.GET.get('search')
     selected_parishes = request.GET.getlist('parish')
+    favorites_only = request.GET.get('favorites') == 'true'
 
     pins = PontoRecolha.objects.filter(localidade__iexact="lisboa")
+
+    if favorites_only and request.user.is_authenticated:
+        fav_ids = FavoritePoint.objects.filter(user=request.user).values_list('ponto_recolha_id', flat=True)
+        pins = pins.filter(id__in=fav_ids)
+    elif favorites_only and not request.user.is_authenticated:
+        pins = pins.none()
 
     if search:
         pins = pins.filter(descricao__icontains=search)

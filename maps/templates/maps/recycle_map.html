@@ -33,6 +33,13 @@
         <button id="clear-search" class="btn btn-sm btn-outline-secondary mt-2">Clear Search</button>
     </div>
 
+        <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" id="filter-favorites">
+        <label class="form-check-label" for="filter-favorites">
+            <b>Show favorites only</b>
+        </label>
+    </div>
+
     <label class="form-label"><b>Filter by establishment:</b></label>
     <div class="row" id="brand-checkboxes">
         {% for brand in brands %}
@@ -82,6 +89,11 @@
 
         const parishes = getSelectedParishes();
         parishes.forEach(p => params.append('parish', p));
+
+        const favoritesOnly = document.getElementById('filter-favorites').checked;
+        if (favoritesOnly) {
+            params.append('favorites', 'true');
+        }
 
         const search = document.getElementById('search-desc').value;
 
@@ -152,6 +164,8 @@
         mapInstance.addLayer(markerCluster);
 
         load_data();
+
+        document.getElementById('filter-favorites').addEventListener('change', load_data);
 
         document.querySelectorAll('.brand-checkbox').forEach(cb => {
             cb.addEventListener('change', load_data);

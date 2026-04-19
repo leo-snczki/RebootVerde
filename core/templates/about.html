@@ -1,8 +1,74 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 
+{% block title %}Sobre Nós - RebootVerde{% endblock %}
+
 {% block content %}
-<div class="mt-4 p-5 bg-primary text-white rounded">
-    <h1>About Us</h1>
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="p-5 bg-primary text-white rounded-4 shadow-lg position-relative overflow-hidden">
+            <div class="position-relative" style="z-index: 2;">
+                <h1 class="display-4 fw-bold">Nossa Missão</h1>
+                <p class="lead">Transformando o descarte tecnológico em um futuro sustentável.</p>
+            </div>
+            <i class="bi bi-cpu position-absolute" style="font-size: 10rem; right: 20px; bottom: -20px; opacity: 0.1;"></i>
+        </div>
+    </div>
+</div>
+
+<div class="row align-items-center mb-5 py-4">
+    <div class="col-lg-6">
+        <h2 class="fw-bold text-success mb-3">RebootVerde: O Ciclo da Tecnologia</h2>
+        <p class="text-muted fs-5">
+            Somos uma iniciativa focada em resolver um dos maiores desafios da era digital: o <strong>lixo eletrônico</strong>. Acreditamos que o descarte correto não deve ser apenas um dever, mas uma oportunidade de gerar vantagens para o planeta e para quem faz a sua parte.
+        </p>
+        <p class="text-muted">
+            Nossa plataforma foi desenhada para conectar cidadãos conscientes a soluções práticas, transformando a reciclagem em uma experiência interativa e recompensadora.
+        </p>
+    </div>
+    <div class="col-lg-6 text-center">
+        <div class="p-4 border border-success border-dashed rounded-4">
+            <i class="bi bi-recycle text-success" style="font-size: 5rem;"></i>
+            <h4 class="mt-3">Logística Reversa Inteligente</h4>
+        </div>
+    </div>
+</div>
+
+<hr class="my-5 opacity-25">
+
+<div class="row g-4 mb-5">
+    <h3 class="text-center fw-bold mb-4">Como engajamos nossa comunidade?</h3>
+    
+    <div class="col-md-4 text-center">
+        <div class="card h-100 border-0 shadow-sm p-4">
+            <i class="bi bi-geo-alt-fill text-success mb-3 h1"></i>
+            <h5 class="fw-bold">EcoMap</h5>
+            <p class="small text-muted">Desenvolvemos um mapa interativo para que você localize os pontos de coleta mais próximos de forma rápida e eficiente.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 text-center">
+        <div class="card h-100 border-0 shadow-sm p-4 text-white bg-dark">
+            <i class="bi bi-controller text-success mb-3 h1"></i>
+            <h5 class="fw-bold text-white">Gamificação</h5>
+            <p class="small text-white-50">Através do nosso minijogo, educamos o público de forma divertida, atraindo a atenção para a importância do descarte correto.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 text-center">
+        <div class="card h-100 border-0 shadow-sm p-4">
+            <i class="bi bi-shop text-success mb-3 h1"></i>
+            <h5 class="fw-bold">Marketplace</h5>
+            <p class="small text-muted">Nossa loja integrada promove a economia circular, permitindo que usuários interajam com produtos e soluções sustentáveis.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12 text-center py-5 bg-light rounded-4">
+        <h2 class="fw-bold">Pronto para dar um Reboot no mundo?</h2>
+        <p class="text-muted mb-4">Junte-se à RebootVerde e faça parte da mudança.</p>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg rounded-pill px-5 shadow">Começar Agora</a>
+    </div>
 </div>
 {% endblock %}

@@ -129,12 +129,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Isso garante que o Django procure na pasta static da raiz
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# Pasta onde o Django joga tudo quando você dá 'collectstatic'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
@@ -171,12 +171,18 @@ LEAFLET_CONFIG = {
 }
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# Se você usa WhiteNoise, adicione isso para permitir que o WebAssembly (WASM) rode
+
 WHITENOISE_CUSTOM_HEADERS = [
     (r'.*\.wasm$', {'Cross-Origin-Embedder-Policy': 'require-corp', 'Cross-Origin-Opener-Policy': 'same-origin'}),
     (r'.*\.js$', {'Cross-Origin-Embedder-Policy': 'require-corp', 'Cross-Origin-Opener-Policy': 'same-origin'}),
 ]
 
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
+import os
+
+
+MEDIA_URL = '/media/'
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

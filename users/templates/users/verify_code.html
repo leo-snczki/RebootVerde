@@ -1,19 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Verifique seu E-mail</h2>
-<p>Enviamos um código de 6 dígitos para o seu e-mail.</p>
+<div class="row justify-content-center">
+    <div class="col-md-5 text-center">
+        <div class="card p-5">
+            <div class="mb-4">
+                <i class="bi bi-shield-lock text-success display-3"></i>
+            </div>
+            <h2 class="fw-bold">Verifique seu E-mail</h2>
+            <p class="text-muted mb-4">Enviamos um código de 6 dígitos para sua caixa de entrada.</p>
 
-<form method="POST">
-    {% csrf_token %}
-    <label>Digite o código de 6 dígitos enviado para seu e-mail:</label>
-    <input type="text" name="code" maxlength="6" required>
-    <button type="submit">Verificar</button>
-</form>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <input type="text" name="code" maxlength="6" 
+                           class="form-control form-control-lg text-center fw-bold" 
+                           placeholder="0 0 0 0 0 0" 
+                           style="letter-spacing: 10px; font-size: 2rem;" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill">Verificar Código</button>
+            </form>
 
-{% if messages %}
-    {% for message in messages %}
-        <p style="color: red; font-weight: bold; margin-top: 10px;">{{ message }}</p>
-    {% endfor %}
-{% endif %}
-
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger mt-3 mb-0 py-2 small">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            
+            <p class="mt-4 mb-0 small text-muted">
+                Não recebeu? <a href="#" class="text-success">Reenviar código</a>
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}

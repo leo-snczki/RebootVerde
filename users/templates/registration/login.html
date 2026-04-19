@@ -1,19 +1,26 @@
 {% extends "base.html" %}
-{% load static %}
+{% load django_bootstrap5 %}
+
 {% block content %}
-    <h1>Login</h1>
-
-    {% if form.errors %}
-        <p style="color: red;">Invalid username or password.</p>
-    {% endif %}
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">login</button>
-    </form>
-
-    <p><a href="{% url 'register' %}">Don't have an account? Sign up</a></p>
-    <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card shadow p-4">
+            <h3 class="text-center fw-bold mb-4">Entrar na Conta</h3>
+            <form method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                </div>
+            </form>
+            <hr class="my-4">
+            <p class="text-center mb-0">
+                Não tem conta? <a href="{% url 'register' %}" class="text-success fw-bold">Registre-se aqui</a>               
+            </p>
+            <p class="text-center mb-0">
+                Resetar senha <a href="{% url 'password_reset' %}" class="text-success fw-bold" >Forgot your password?</a>           
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}
-

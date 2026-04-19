@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.serializers import serialize
-from .models import PontoRecolha, Freguesia
+from .models import PontoRecolha, Freguesia, FavoritePoint
 import json
 from django.http import JsonResponse
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 BRANDS_REEE = [
     "Minipreço", "Continente", "ALDI", "Minisom", "Fnac", "Primark", "Pingo Doce", "Canon", "Konica", "Nintendo", "Cepsa", "Worten",
@@ -70,4 +72,27 @@ def api_pins_geojson(request):
         fields=('descricao', 'morada', 'localidade', 'codigo_pos')
     )
 
-    return JsonResponse(json.loads(geojson_data))
+    data = json.loads(geojson_data)
+
+    if request.user.is_authenticated:
+        fav_ids = set(FavoritePoint.objects.filter(user=request.user).values_list('ponto_recolha_id', flat=True))
+    else:
+        fav_ids = set()
+
+    for feature in data['features']:
+        feature['properties']['is_favorited'] = feature['id'] in fav_ids
+
+    return JsonResponse(data)
+
+@login_required
+@require_POST
+def toggle_favorite(request, point_id):
+    ponto = get_object_or_404(PontoRecolha, id=point_id)
+    
+    favorite, created = FavoritePoint.objects.get_or_create(user=request.user, ponto_recolha=ponto)
+
+    if not created:
+        favorite.delete()
+        return JsonResponse({'status': 'unfavorited'})
+
+    return JsonResponse({'status': 'favorited'})

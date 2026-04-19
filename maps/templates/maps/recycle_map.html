@@ -108,15 +108,23 @@
                         var props = feature.properties;
                         var searchString = `${props.descricao || ''},${props.morada || ''}, ${props.codigo_pos || ''}, ${props.localidade || ''}`.trim();
                         var searchAddress = encodeURIComponent(searchString);                   
-                        var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchAddress}`;                        
+                        var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchAddress}`;                            
+                        var isFav = props.is_favorited;
+                        var btnClass = isFav ? "btn-danger" : "btn-outline-success";
+                        var btnText = isFav ? "Remove from Favorites" : "Add to Favorites";
+                        var pointId = feature.id;
                         var popup = `
                             <b>${props.descricao ?? "Ponto de Recolha"}</b><br>
                                 ${props.morada ?? "Morada não especificada"}<br>
                             <small>${props.localidade ?? ""}</small> <br>
                             <small>${props.codigo_pos ?? "Código postal não especificado"}</small><br>
-                            <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">
-                                <button id="open-on-maps" class="btn btn-sm btn-outline-primary mt-2">Abrir no Google Maps</button>
-                            </a>
+                            <div class="mt-2 d-flex flex-column gap-2">
+                                <button onclick="toggleFavorite(${pointId}, this)" class="btn btn-sm ${btnClass}">${btnText}</button>
+                                
+                                <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">
+                                    <button id="open-on-google-maps-btn" class="btn btn-sm btn-outline-primary w-100">Open on Google Maps</button>
+                                </a>
+                            </div>
                         `;
                         layer.bindPopup(popup);
                     }
@@ -207,5 +215,35 @@
     function getDefaultIcon() {
         return getLeafletIcon('blue');
     }
+
+    function toggleFavorite(pointId, btnElement) {
+        let url = "{% url 'toggle-favorite' point_id=0 %}".replace('0', pointId);
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': "{{ csrf_token }}",
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.status === 403 || response.status === 401) {
+                alert("Inicia sessão para adicionares aos favoritos!");
+                throw new Error("Unauthorized");
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'favorited') {
+                btnElement.innerHTML = 'Remove from Favorites';
+                btnElement.classList.replace('btn-outline-success', 'btn-danger');
+            } else if (data.status === 'unfavorited') {
+                btnElement.innerHTML = 'Add to Favorites';
+                btnElement.classList.replace('btn-danger', 'btn-outline-success');
+            }
+        })
+        .catch(error => console.error('Erro:', error));
+    }
+
 </script>
 {% endblock %}

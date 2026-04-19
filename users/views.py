@@ -12,9 +12,6 @@ User = get_user_model()
 class CustomLoginView(LoginView):
     template_name = "registration/login.html"
 
-def index(request):
-    return render(request, "index.html")
-
 def register_user(request):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
@@ -76,7 +73,3 @@ def verify_code(request):
     
     return render(request, "users/verify_code.html", {"email": email})
 
-
-@login_required
-def shop(request):
-    return render(request, "users/shop.html")

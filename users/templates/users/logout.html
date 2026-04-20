@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
 
 <div class="container text-center mt-5">
@@ -7,19 +7,19 @@
     <div class="card shadow-sm p-5 mx-auto" style="max-width: 500px; border-radius: 20px;">
         
         <h2 class="mb-3" style="color:#2d6a4f;">
-            session ended successfully!
+            {% trans "Session ended successfully!" %}
         </h2>
 
         <p class="text-muted mb-4">
-            You have successfully logged out.
+            {% trans "You have successfully logged out." %}
         </p>
 
         <a href="{% url 'index' %}" class="btn btn-success rounded-pill px-4">
-            Back to Home
+            {% trans "Back to Home" %}
         </a>
 
         <a href="{% url 'login' %}" class="btn btn-outline-dark rounded-pill px-4 mt-2">
-            Login to your account
+            {% trans "Login to your account" %}
         </a>
 
     </div>

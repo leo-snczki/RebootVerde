@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
-
+{% load i18n %}
 {% block content %}
 <div class="row justify-content-center mt-5">
     <div class="col-md-4">
         <div class="card shadow p-4">
-            <h3 class="text-center fw-bold mb-4">Enter Your Credentials</h3>
+            <h3 class="text-center fw-bold mb-4">{% trans "Enter Your Credentials" %}</h3>
             <form method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 <div class="d-grid gap-2 mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                    <button type="submit" class="btn btn-primary btn-lg">{% trans "Login" %}</button>
                 </div>
             </form>
             <hr class="my-4">
             <p class="text-center mb-0">
-                Dont have an account? <a href="{% url 'register' %}" class="text-success fw-bold">Register here</a>               
+                {% trans "Dont have an account?" %} <a href="{% url 'register' %}" class="text-success fw-bold">{% trans "Register here" %}</a>               
             </p>
             <p class="text-center mb-0">
-                Forget your password? <a href="{% url 'password_reset' %}" class="text-success fw-bold" >Click here</a>           
+                {% trans "Forget your password?" %} <a href="{% url 'password_reset' %}" class="text-success fw-bold" >{% trans "Click here" %}</a>           
             </p>
         </div>
     </div>

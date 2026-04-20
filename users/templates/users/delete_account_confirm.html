@@ -1,17 +1,17 @@
 {% extends "base.html" %}
-
-{% block title %}Delete Account{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Delete Account" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading">Are you absolutely sure?</h4>
-        <p>You are about to permanently delete your account <strong>{{ user.username }}</strong>. This action cannot be undone and you will lose access to all your data.</p>
+        <h4 class="alert-heading">{% trans "Are you absolutely sure?" %}</h4>
+        <p>{% trans "You are about to permanently delete your account" %} <strong>{{ user.username }}</strong>. {% trans "This action cannot be undone and you will lose access to all your data." %}</p>
         <hr>
         <form method="post" class="mb-0">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Yes, delete my account</button>
-            <a href="{% url 'profile' %}" class="btn btn-secondary ms-2">Cancel</a>
+            <button type="submit" class="btn btn-danger">{% trans "Yes, delete my account" %}</button>
+            <a href="{% url 'profile' %}" class="btn btn-secondary ms-2">{% trans "Cancel" %}</a>
         </form>
     </div>
 </div>

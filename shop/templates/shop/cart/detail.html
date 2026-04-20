@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="fw-bold mb-4">Your Cart</h1>
+<h1 class="fw-bold mb-4">{% trans "Your Cart" %}</h1>
 <div class="card shadow-sm p-4">
     <table class="table align-middle">
         <thead>
             <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total</th>
-                <th>Actions</th>
+                <th>{% trans "Product" %}</th>
+                <th>{% trans "Quantity" %}</th>
+                <th>{% trans "Unit Price" %}</th>
+                <th>{% trans "Total" %}</th>
+                <th>{% trans "Actions" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -21,23 +21,23 @@
                     <td>€{{ item.price }}</td>
                     <td>€{{ item.total_price }}</td>
                     <td>
-                        <a href="{% url 'shop:cart_remove' product.id %}" class="btn btn-sm btn-outline-danger">Remove</a>
+                        <a href="{% url 'shop:cart_remove' product.id %}" class="btn btn-sm btn-outline-danger">{% trans "Remove" %}</a>
                     </td>
                 </tr>
                 {% endwith %}
             {% empty %}
-                <tr><td colspan="5" class="text-center">Cart is empty.</td></tr>
+                <tr><td colspan="5" class="text-center">{% trans "Cart is empty." %}</td></tr>
             {% endfor %}
             <tr class="fw-bold fs-5">
-                <td colspan="3">Total</td>
+                <td colspan="3">{% trans "Total" %}</td>
                 <td colspan="2">€{{ cart.get_total_price }}</td>
             </tr>
         </tbody>
     </table>
     <div class="d-flex justify-content-between mt-4">
-        <a href="{% url 'shop:product_list' %}" class="btn btn-outline-secondary rounded-pill">Continue Shopping</a>
+        <a href="{% url 'shop:product_list' %}" class="btn btn-outline-secondary rounded-pill">{% trans "Continue Shopping" %}</a>
         {% if cart|length > 0 %}
-            <a href="{% url 'shop:order_create' %}" class="btn btn-success">Checkout</a>
+            <a href="{% url 'shop:order_create' %}" class="btn btn-success">{% trans "Checkout" %}</a>
         {% endif %}
     </div>
 </div>

@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 <div class="container text-center py-5">
     <div class="mb-4 animate__animated animate__bounceIn">
         <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
     </div>
-    <h2 class="fw-bold">Tudo certo!</h2>
-    <p class="lead text-muted">your action was processed successfully in our system.</p>
+    <h2 class="fw-bold">{% trans "All Set!" %}</h2>
+    <p class="lead text-muted">{% trans "Your action was processed successfully in our system." %}</p>
     <div class="mt-5">
-        <a href="{% url 'index' %}" class="btn btn-primary rounded-pill px-5">Return to Home</a>
+        <a href="{% url 'index' %}" class="btn btn-primary rounded-pill px-5">{% trans "Return to Home" %}</a>
     </div>
 </div>
 {% endblock %}

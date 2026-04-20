@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     libgdal-dev \
     build-essential \
     python3-dev \
+    gettext \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
-
+{% load i18n %}
 {% block title %}About Us - Rebootverde{% endblock %}
 
 {% block content %}
@@ -8,8 +8,8 @@
     <div class="col-12">
         <div class="p-5 bg-primary text-white rounded-4 shadow-lg position-relative overflow-hidden">
             <div class="position-relative" style="z-index: 2;">
-                <h1 class="display-4 fw-bold">Our Mission</h1>
-                <p class="lead">Transforming technological waste into a sustainable future.</p>
+                <h1 class="display-4 fw-bold">{% trans "Our Mission" %}</h1>
+                <p class="lead">{% trans "Transforming technological waste into a sustainable future." %}</p>
             </div>
             <i class="bi bi-cpu position-absolute" style="font-size: 10rem; right: 20px; bottom: -20px; opacity: 0.1;"></i>
         </div>
@@ -18,18 +18,18 @@
 
 <div class="row align-items-center mb-5 py-4">
     <div class="col-lg-6">
-        <h2 class="fw-bold text-success mb-3">RebootVerde: The Cycle of Technology</h2>
+        <h2 class="fw-bold text-success mb-3">{% trans "RebootVerde: The Cycle of Technology" %}</h2>
         <p class="text-muted fs-5">
-            We are an initiative focused on solving one of the biggest challenges of the digital age: <strong>electronic waste</strong>. We believe that proper disposal should not only be a responsibility, but also an opportunity to generate benefits for the planet and for those who contribute their part.
+            {% trans "We are an initiative focused on solving one of the biggest challenges of the digital age: <strong>electronic waste</strong>. We believe that proper disposal should not only be a responsibility, but also an opportunity to generate benefits for the planet and for those who contribute their part." %}
         </p>
         <p class="text-muted">
-            Our platform was designed to connect conscious citizens with practical solutions, transforming recycling into an interactive and rewarding experience.
+            {% trans "Our platform was designed to connect conscious citizens with practical solutions, transforming recycling into an interactive and rewarding experience." %}
         </p>
     </div>
     <div class="col-lg-6 text-center">
         <div class="p-4 border border-success border-dashed rounded-4">
             <i class="bi bi-recycle text-success" style="font-size: 5rem;"></i>
-            <h4 class="mt-3">Intelligent Reverse Logistics</h4>
+            <h4 class="mt-3">{% trans "Intelligent Reverse Logistics" %}</h4>
         </div>
     </div>
 </div>
@@ -37,38 +37,38 @@
 <hr class="my-5 opacity-25">
 
 <div class="row g-4 mb-5">
-    <h3 class="text-center fw-bold mb-4">How do we engage our community?</h3>
+    <h3 class="text-center fw-bold mb-4">{% trans "How do we engage our community?" %}</h3>
     
     <div class="col-md-4 text-center">
         <div class="card h-100 border-0 shadow-sm p-4">
             <i class="bi bi-geo-alt-fill text-success mb-3 h1"></i>
-            <h5 class="fw-bold">EcoMap</h5>
-            <p class="small text-muted">We developed an interactive map so you can locate the nearest collection points quickly and efficiently.</p>
+            <h5 class="fw-bold">{% trans "EcoMap" %}</h5>
+            <p class="small text-muted">{% trans "We developed an interactive map so you can locate the nearest collection points quickly and efficiently." %}</p>
         </div>
     </div>
 
     <div class="col-md-4 text-center">
         <div class="card h-100 border-0 shadow-sm p-4 text-white bg-dark">
             <i class="bi bi-controller text-success mb-3 h1"></i>
-            <h5 class="fw-bold text-white">Gamification</h5>
-            <p class="small text-white-50">Through our mini-game, we educate the public in a fun way, drawing attention to the importance of proper disposal.</p>
+            <h5 class="fw-bold text-white">{% trans "Gamification" %}</h5>
+            <p class="small text-white-50">{% trans "Through our mini-game, we educate the public in a fun way, drawing attention to the importance of proper disposal." %}</p>
         </div>
     </div>
 
     <div class="col-md-4 text-center">
         <div class="card h-100 border-0 shadow-sm p-4">
             <i class="bi bi-shop text-success mb-3 h1"></i>
-            <h5 class="fw-bold">Marketplace</h5>
-            <p class="small text-muted">Our integrated marketplace promotes the circular economy, allowing users to interact with sustainable products and solutions.</p>
+            <h5 class="fw-bold">{% trans "Marketplace" %}</h5>
+            <p class="small text-muted">{% trans "Our integrated marketplace promotes the circular economy, allowing users to interact with sustainable products and solutions." %}</p>
         </div>
     </div>
 </div>
 
 <div class="row mt-5">
     <div class="col-12 text-center py-5 bg-light rounded-4">
-        <h2 class="fw-bold">Ready to reboot the world?</h2>
-        <p class="text-muted mb-4">Join RebootVerde and be part of the change.</p>
-        <a href="{% url 'register' %}" class="btn btn-primary btn-lg rounded-pill px-5 shadow">Get Started Now</a>
+        <h2 class="fw-bold">{% trans "Ready to reboot the world?" %}</h2>
+        <p class="text-muted mb-4">{% trans "Join RebootVerde and be part of the change." %}</p>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg rounded-pill px-5 shadow">{% trans "Get Started Now" %}</a>
     </div>
 </div>
 {% endblock %}

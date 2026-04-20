@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-
-{% block title %}Change email{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Change email" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h2>Change Email Address</h2>
+    <h2>{% trans "Change Email Address" %}</h2>
     <form method="post" class="mt-3">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Save New Email</button>
-        <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">{% trans "Save New Email" %}</button>
+        <a href="{% url 'profile' %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
     </form>
 </div>
 {% endblock %}

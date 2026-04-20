@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load leaflet_tags %}
-
-{% block title %}Map{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Map" %}{% endblock %}
 
 {% block content %}
 {% leaflet_js %}
@@ -24,23 +24,23 @@
 <h2>REEE</h2>
 
 <div class="controls">
-    <label class="form-label"><b>Search description:</b></label>
+    <label class="form-label"><b>{% trans "Search description:" %}</b></label>
     <div class="input-group mb-3">
-        <input type="text" id="search-desc" class="form-control" placeholder="Search description...">
-        <button id="search-btn" class="btn btn-primary">Search</button>
+        <input type="text" id="search-desc" class="form-control" placeholder="{% trans "Search description..." %}">
+        <button id="search-btn" class="btn btn-primary">{% trans "Search" %}</button>
     </div>
     <div class="mb-3">
-        <button id="clear-search" class="btn btn-sm btn-outline-secondary mt-2">Clear Search</button>
+        <button id="clear-search" class="btn btn-sm btn-outline-secondary mt-2">{% trans "Clear Search" %}</button>
     </div>
 
         <div class="form-check form-switch mb-3">
         <input class="form-check-input" type="checkbox" id="filter-favorites">
         <label class="form-check-label" for="filter-favorites">
-            <b>Show favorites only</b>
+            <b>{% trans "Show favorites only" %}</b>
         </label>
     </div>
 
-    <label class="form-label"><b>Filter by establishment:</b></label>
+    <label class="form-label"><b>{% trans "Filter by establishment:" %}</b></label>
     <div class="row" id="brand-checkboxes">
         {% for brand in brands %}
         <div class="col-md-3 col-sm-6">
@@ -55,10 +55,10 @@
     </div>
 
     <div class="mb-3">
-        <button id="clear-filters" class="btn btn-sm btn-outline-secondary mt-2">Clear Selection</button>
+        <button id="clear-filters" class="btn btn-sm btn-outline-secondary mt-2">{% trans "Clear Selection" %}</button>
     </div>
 
-    <label class="form-label"><b>Filter by civil parish:</b></label>
+    <label class="form-label"><b>{% trans "Filter by civil parish:" %}</b></label>
     <div class="row" id="parish-checkboxes">
         {% for parish in parishes %}
         <div class="col-md-3 col-sm-6">
@@ -71,7 +71,7 @@
         </div>
         {% endfor %}
     </div>
-    <button id="clear-parish" class="btn btn-sm btn-outline-secondary mt-2">Clear Selection</button>
+    <button id="clear-parish" class="btn btn-sm btn-outline-secondary mt-2">{% trans "Clear Selection" %}</button>
 </div>
 
 {% leaflet_map "map" callback="window.initMap" %}

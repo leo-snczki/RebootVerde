@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
-{% block title %}Welcome Back!{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Welcome Back!" %}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center py-5">
@@ -14,42 +14,42 @@
                 </div>
             </div>
             
-            <h2 class="fw-bold text-dark">Access Authorized!</h2>
+            <h2 class="fw-bold text-dark">{% trans "Access Authorized!" %}</h2>
             <p class="lead text-muted mb-4">
-                Hi, <strong>{{ user.username }}</strong>! It's great to have you back on our mission for a more green planet.
+                {% trans "Hi," %} <strong>{{ user.username }}</strong>! {% trans "It's great to have you back on our mission for a more green planet." %}
             </p>
 
             <div class="row g-3 mb-5">
                 <div class="col-4">
                     <div class="p-2 border rounded-3 bg-white shadow-sm">
                         <i class="bi bi-controller text-success"></i>
-                        <div class="small fw-bold">Play</div>
+                        <div class="small fw-bold">{% trans "Play" %}</div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="p-2 border rounded-3 bg-white shadow-sm">
                         <i class="bi bi-shop text-success"></i>
-                        <div class="small fw-bold">Market</div>
+                        <div class="small fw-bold">{% trans "Market" %}</div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="p-2 border rounded-3 bg-white shadow-sm">
                         <i class="bi bi-map text-success"></i>
-                        <div class="small fw-bold">EcoMap</div>
+                        <div class="small fw-bold">{% trans "EcoMap" %}</div>
                     </div>
                 </div>
             </div>
 
             <div class="d-grid gap-2">
                 <a href="{% url 'index' %}" class="btn btn-primary btn-lg rounded-pill fw-bold shadow">
-                    Go to Dashboard
+                    {% trans "Go to Dashboard" %}
                 </a>
             </div>
 
         </div>
 
         <p class="mt-4 text-muted small">
-            Redirecting you in a few seconds... 
+            {% trans "Redirecting you in a few seconds..." %} 
             <i class="bi bi-hourglass-split ms-1"></i>
         </p>
     </div>

@@ -1,0 +1,508 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RebootVerde\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-20 22:08+0000\n"
+"PO-Revision-Date: 2026-04-20 22:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: pt-PT\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Our Mission"
+msgstr "A Nossa Missão"
+
+msgid "Transforming technological waste into a sustainable future."
+msgstr "Transformar resíduos tecnológicos num futuro sustentável."
+
+msgid "RebootVerde: The Cycle of Technology"
+msgstr "RebootVerde: O Ciclo da Tecnologia"
+
+msgid "We are an initiative focused on solving one of the biggest challenges of the digital age: <strong>electronic waste</strong>. We believe that proper disposal should not only be a responsibility, but also an opportunity to generate benefits for the planet and for those who contribute their part."
+msgstr "Somos uma iniciativa focada em resolver um dos maiores desafios da era digital: o <strong>lixo eletrónico</strong>. Acreditamos que o descarte adequado deve ser não só uma responsabilidade, mas também uma oportunidade para gerar benefícios para o planeta e para quem contribui."
+
+msgid "Our platform was designed to connect conscious citizens with practical solutions, transforming recycling into an interactive and rewarding experience."
+msgstr "A nossa plataforma foi concebida para ligar cidadãos conscientes a soluções práticas, transformando a reciclagem numa experiência interativa e recompensadora."
+
+msgid "Intelligent Reverse Logistics"
+msgstr "Logística Reversa Inteligente"
+
+msgid "How do we engage our community?"
+msgstr "Como envolvemos a nossa comunidade?"
+
+msgid "EcoMap"
+msgstr "EcoMapa"
+
+msgid "We developed an interactive map so you can locate the nearest collection points quickly and efficiently."
+msgstr "Desenvolvemos um mapa interativo para que possas localizar rapidamente os pontos de recolha mais próximos."
+
+msgid "Gamification"
+msgstr "Gamificação"
+
+msgid "Through our mini-game, we educate the public in a fun way, drawing attention to the importance of proper disposal."
+msgstr "Através do nosso mini-jogo, educamos o público de forma divertida, chamando a atenção para a importância do descarte correto."
+
+msgid "Marketplace"
+msgstr "Mercado"
+
+msgid "Our integrated marketplace promotes the circular economy, allowing users to interact with sustainable products and solutions."
+msgstr "O nosso mercado integrado promove a economia circular, permitindo aos utilizadores interagir com produtos e soluções sustentáveis."
+
+msgid "Ready to reboot the world?"
+msgstr "Pronto para reiniciar o mundo?"
+
+msgid "Join RebootVerde and be part of the change."
+msgstr "Junta-te à RebootVerde e faz parte da mudança."
+
+msgid "Get Started Now"
+msgstr "Começar Agora"
+
+msgid "Talk to Us"
+msgstr "Fala Connosco"
+
+msgid "Questions about recycling? Send us a message!"
+msgstr "Dúvidas sobre reciclagem? Envia-nos uma mensagem!"
+
+msgid "Full Name"
+msgstr "Nome Completo"
+
+msgid "Your name"
+msgstr "O teu nome"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Your email"
+msgstr "O teu email"
+
+msgid "Subject"
+msgstr "Assunto"
+
+msgid "Message"
+msgstr "Mensagem"
+
+msgid "How can we help?"
+msgstr "Como podemos ajudar?"
+
+msgid "Send Message"
+msgstr "Enviar Mensagem"
+
+msgid "All Set!"
+msgstr "Tudo Pronto!"
+
+msgid "Your action was processed successfully in our system."
+msgstr "A tua ação foi processada com sucesso no nosso sistema."
+
+msgid "Return to Home"
+msgstr "Voltar à Página Inicial"
+
+msgid "Play"
+msgstr "Jogar"
+
+msgid "Ecological Mission"
+msgstr "Missão Ecológica"
+
+msgid "Learn to recycle while playing!"
+msgstr "Aprende a reciclar enquanto jogas!"
+
+msgid "RebootVerde Engine v1.0"
+msgstr "Motor RebootVerde v1.0"
+
+msgid "Back to Home"
+msgstr "Voltar à Página Inicial"
+
+msgid "Home - Rebootverde: The future of e-waste"
+msgstr "Início - RebootVerde: O futuro do lixo eletrónico"
+
+msgid "E-WASTE REVOLUTION"
+msgstr "REVOLUÇÃO DO LIXO ELETRÓNICO"
+
+msgid "the future of the planet."
+msgstr "no futuro do planeta."
+
+msgid "A <strong class=\"text-dark\">RebootVerde</strong> transforme your electronic waste into opportunities. Recycle, trade, earn benefits and help build a circular technology economy."
+msgstr "A <strong class=\"text-dark\">RebootVerde</strong> transforma o teu lixo eletrónico em oportunidades. Recicla, troca, ganha benefícios e ajuda a construir uma economia tecnológica circular."
+
+msgid "Join us"
+msgstr "Junta-te a nós"
+
+msgid "Play & Learn"
+msgstr "Jogar & Aprender"
+
+msgid "certified solution for electronic waste disposal."
+msgstr "solução certificada para o descarte de lixo eletrónico."
+
+msgid "Old Smartphones"
+msgstr "Smartphones Antigos"
+
+msgid "Dispose"
+msgstr "Descartar"
+
+msgid "Turn into Benefits"
+msgstr "Transformar em Benefícios"
+
+msgid "Recycle"
+msgstr "Reciclar"
+
+msgid "Map"
+msgstr "Mapa"
+
+msgid "Search description:"
+msgstr "Descrição da pesquisa:"
+
+msgid "Search description..."
+msgstr "Pesquisar descrição..."
+
+msgid "Search"
+msgstr "Pesquisar"
+
+msgid "Clear Search"
+msgstr "Limpar Pesquisa"
+
+msgid "Show favorites only"
+msgstr "Mostrar apenas favoritos"
+
+msgid "Filter by establishment:"
+msgstr "Filtrar por estabelecimento:"
+
+msgid "Clear Selection"
+msgstr "Limpar Seleção"
+
+msgid "Filter by civil parish:"
+msgstr "Filtrar por freguesia:"
+
+msgid "Portuguese"
+msgstr "Português"
+
+msgid "English"
+msgstr "Inglês"
+
+msgid "Your Cart"
+msgstr "O teu Carrinho"
+
+msgid "Product"
+msgstr "Produto"
+
+msgid "Quantity"
+msgstr "Quantidade"
+
+msgid "Unit Price"
+msgstr "Preço Unitário"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Actions"
+msgstr "Ações"
+
+msgid "Remove"
+msgstr "Remover"
+
+msgid "Cart is empty."
+msgstr "O carrinho está vazio."
+
+msgid "Continue Shopping"
+msgstr "Continuar a Comprar"
+
+msgid "Checkout"
+msgstr "Finalizar Compra"
+
+msgid "Shipping Information"
+msgstr "Informação de Envio"
+
+msgid "Confirm Order"
+msgstr "Confirmar Encomenda"
+
+msgid "Summary"
+msgstr "Resumo"
+
+msgid "Total to pay"
+msgstr "Total a pagar"
+
+msgid "Return to cart"
+msgstr "Voltar ao carrinho"
+
+msgid "Thank you for your order!"
+msgstr "Obrigado pela tua encomenda!"
+
+msgid "Your order has been processed successfully."
+msgstr "A tua encomenda foi processada com sucesso."
+
+msgid "Your order number is:"
+msgstr "O número da tua encomenda é:"
+
+msgid "We have sent a confirmation email to"
+msgstr "Enviámos um email de confirmação para"
+
+msgid "with the details of your invoice."
+msgstr "com os detalhes da tua fatura."
+
+msgid "Home"
+msgstr "Início"
+
+msgid "About"
+msgstr "Sobre"
+
+msgid "Market"
+msgstr "Mercado"
+
+msgid "Talk"
+msgstr "Contacto"
+
+msgid "Enter Your Credentials"
+msgstr "Introduz as tuas credenciais"
+
+msgid "Login"
+msgstr "Iniciar Sessão"
+
+msgid "Dont have an account?"
+msgstr "Não tens uma conta?"
+
+msgid "Register here"
+msgstr "Regista-te aqui"
+
+msgid "Forget your password?"
+msgstr "Esqueceste-te da palavra-passe?"
+
+msgid "Click here"
+msgstr "Clica aqui"
+
+msgid "Create Account - RebootVerde"
+msgstr "Criar Conta - RebootVerde"
+
+msgid "Create your account to start recycling and earning points."
+msgstr "Cria a tua conta para começar a reciclar e ganhar pontos."
+
+msgid "Create your account"
+msgstr "Cria a tua conta"
+
+msgid "Already have an account?"
+msgstr "Já tens uma conta?"
+
+msgid "Sign in"
+msgstr "Iniciar sessão"
+
+msgid "Your data is protected by our privacy policy."
+msgstr "Os teus dados estão protegidos pela nossa política de privacidade."
+
+msgid "Change email"
+msgstr "Alterar email"
+
+msgid "Change Email Address"
+msgstr "Alterar Endereço de Email"
+
+msgid "Save New Email"
+msgstr "Guardar Novo Email"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Delete Account"
+msgstr "Eliminar Conta"
+
+msgid "Are you absolutely sure?"
+msgstr "Tens a certeza absoluta?"
+
+msgid "You are about to permanently delete your account"
+msgstr "Estás prestes a eliminar permanentemente a tua conta"
+
+msgid "This action cannot be undone and you will lose access to all your data."
+msgstr "Esta ação não pode ser desfeita e perderás acesso a todos os teus dados."
+
+msgid "Yes, delete my account"
+msgstr "Sim, eliminar a minha conta"
+
+msgid "Login - RebootVerde"
+msgstr "Login - RebootVerde"
+
+msgid "Welcome Back"
+msgstr "Bem-vindo de volta"
+
+msgid "Access your account to continue recycling."
+msgstr "Acede à tua conta para continuar a reciclar."
+
+msgid "User and/or password is incorrect."
+msgstr "Utilizador e/ou palavra-passe incorretos."
+
+msgid "Login into your account"
+msgstr "Inicia sessão na tua conta"
+
+msgid "Still don't have an account?"
+msgstr "Ainda não tens uma conta?"
+
+msgid "Create your account here"
+msgstr "Cria a tua conta aqui"
+
+msgid "Welcome Back!"
+msgstr "Bem-vindo de volta!"
+
+msgid "Access Authorized!"
+msgstr "Acesso autorizado!"
+
+msgid "Hi,"
+msgstr "Olá,"
+
+msgid "It's great to have you back on our mission for a more green planet."
+msgstr "É ótimo ter-te de volta à nossa missão por um planeta mais verde."
+
+msgid "Go to Dashboard"
+msgstr "Ir para o Painel"
+
+msgid "Redirecting you in a few seconds..."
+msgstr "A redirecionar-te em alguns segundos..."
+
+msgid "Session ended successfully!"
+msgstr "Sessão terminada com sucesso!"
+
+msgid "You have successfully logged out."
+msgstr "Terminaste a sessão com sucesso."
+
+msgid "Login to your account"
+msgstr "Inicia sessão na tua conta"
+
+msgid "Password Changed"
+msgstr "Palavra-passe alterada"
+
+msgid "Success!"
+msgstr "Sucesso!"
+
+msgid "Your password has been changed successfully."
+msgstr "A tua palavra-passe foi alterada com sucesso."
+
+msgid "Back to Profile"
+msgstr "Voltar ao Perfil"
+
+msgid "Change Password"
+msgstr "Alterar Palavra-passe"
+
+msgid "Update Password"
+msgstr "Atualizar Palavra-passe"
+
+msgid "Done!"
+msgstr "Concluído!"
+
+msgid "Your password has been changed successfully. You can now access your account again."
+msgstr "A tua palavra-passe foi alterada com sucesso. Já podes aceder novamente à tua conta."
+
+msgid "Go to Login"
+msgstr "Ir para o Login"
+
+msgid "We recommend not writing down your password in public places."
+msgstr "Recomendamos que não escrevas a tua palavra-passe em locais públicos."
+
+msgid "Recover Password"
+msgstr "Recuperar Palavra-passe"
+
+msgid "Forgot your password?"
+msgstr "Esqueceste-te da palavra-passe?"
+
+msgid "Enter your email below to receive recovery instructions."
+msgstr "Introduz o teu email abaixo para receber instruções de recuperação."
+
+msgid "Send Recovery Email"
+msgstr "Enviar Email de Recuperação"
+
+msgid "Remember your password?"
+msgstr "Lembras-te da tua palavra-passe?"
+
+msgid "Back to Login"
+msgstr "Voltar ao Login"
+
+msgid "Secure and encrypted recovery process."
+msgstr "Processo de recuperação seguro e encriptado."
+
+msgid "Set New Password"
+msgstr "Definir Nova Palavra-passe"
+
+msgid "Enter your new password below."
+msgstr "Introduz a tua nova palavra-passe abaixo."
+
+msgid "Validate Code"
+msgstr "Validar Código"
+
+msgid "Enter the code sent to your email."
+msgstr "Introduz o código enviado para o teu email."
+
+msgid "Verify Code"
+msgstr "Verificar Código"
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "Welcome"
+msgstr "Bem-vindo"
+
+msgid "Your Information"
+msgstr "A tua Informação"
+
+msgid "NIF"
+msgstr "NIF"
+
+msgid "Account Management"
+msgstr "Gestão de Conta"
+
+msgid "Update Email"
+msgstr "Atualizar Email"
+
+msgid "My Orders"
+msgstr "As Minhas Encomendas"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Status"
+msgstr "Estado"
+
+msgid "Paid"
+msgstr "Pago"
+
+msgid "Pending"
+msgstr "Pendente"
+
+msgid "View Invoice"
+msgstr "Ver Fatura"
+
+msgid "You have not placed any orders yet."
+msgstr "Ainda não efetuaste nenhuma encomenda."
+
+msgid "Register"
+msgstr "Registar"
+
+msgid "Registration Complete!"
+msgstr "Registo Concluído!"
+
+msgid "Congratulations! Your account on"
+msgstr "Parabéns! A tua conta em"
+
+msgid "has been created successfully."
+msgstr "foi criada com sucesso."
+
+msgid "Now you can use the store and favorite locate collection points on the map."
+msgstr "Agora podes usar a loja e marcar como favoritos os pontos de recolha no mapa."
+
+msgid "Login now"
+msgstr "Iniciar sessão agora"
+
+msgid "Return to home"
+msgstr "Voltar ao início"
+
+msgid "Verify Your Email"
+msgstr "Verifica o teu Email"
+
+msgid "We sent a 6-digit code to your inbox."
+msgstr "Enviámos um código de 6 dígitos para o teu email."
+
+msgid "Didn't receive it?"
+msgstr "Não recebeste?"
+
+msgid "Resend code"
+msgstr "Reenviar código"
+
+msgid "JOIN US"
+msgstr "JUNTE-SE"
+
+msgid "LOGIN"
+msgstr "ENTRAR"

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block title %}Home - Rebootverde: The future of e-waste{% endblock %}
+{% load i18n %} {% block title %}{% trans "Home - Rebootverde: The future of e-waste" %}{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -10,29 +9,31 @@
         <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="pe-lg-5">
                 <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 mb-3 fw-bold shadow-sm">
-                    <i class="bi bi-cpu me-2"></i>E-WASTE REVOLUTION
+                    <i class="bi bi-cpu me-2"></i>{% trans "E-WASTE REVOLUTION" %}
                 </span>
                 
                 <h1 class="display-3 fw-bold text-dark mb-4 lh-sm">
-                    <span class="text-success position-relative">Reboot<span class="position-absolute bottom-0 start-0 w-100 bg-success opacity-25" style="height: 10px; border-radius: 5px;"></span></span><br> the future of the planet.
+                    <span class="text-success position-relative">Reboot<span class="position-absolute bottom-0 start-0 w-100 bg-success opacity-25" style="height: 10px; border-radius: 5px;"></span></span><br> {% trans "the future of the planet." %}
                 </h1>
                 
                 <p class="lead text-muted mb-5 fs-5 shadow-sm p-3 bg-white rounded-3 border-start border-success border-3">
+                    {% blocktrans trimmed %}
                     A <strong class="text-dark">RebootVerde</strong> transforme your electronic waste into opportunities. Recycle, trade, earn benefits and help build a circular technology economy.
+                    {% endblocktrans %}
                 </p>
                 
                 <div class="d-grid gap-3 d-md-flex align-items-center">
                     <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow-lg hover-lift">
-                        <i class="bi bi-person-plus me-2"></i>Join us
+                        <i class="bi bi-person-plus me-2"></i>{% trans "Join us" %}
                     </a>
                     <a href="{% url 'game' %}" class="btn btn-outline-dark btn-lg px-5 rounded-pill hover-lift">
-                        <i class="bi bi-controller me-2"></i>Play & Learn
+                        <i class="bi bi-controller me-2"></i>{% trans "Play & Learn" %}
                     </a>
                 </div>
                 
                 <div class="mt-5 d-flex align-items-center gap-3 text-muted small">
                     <i class="bi bi-shield-check text-success h3 mb-0"></i>
-                    <span>certified solution for electronic waste disposal.</span>
+                    <span>{% trans "certified solution for electronic waste disposal." %}</span>
                 </div>
             </div>
         </div>
@@ -48,15 +49,15 @@
                 <div class="card shadow-lg border-0 p-3 position-absolute bg-white rounded-4 rotate-n15 hover-lift" 
                      style="top: 10%; left: -10%; width: 180px;">
                     <i class="bi bi-phone text-muted display-4"></i>
-                    <p class="small text-muted mb-0 mt-2 fw-bold">Old Smartphones</p>
-                    <span class="badge bg-danger rounded-pill">Dispose</span>
+                    <p class="small text-muted mb-0 mt-2 fw-bold">{% trans "Old Smartphones" %}</p>
+                    <span class="badge bg-danger rounded-pill">{% trans "Dispose" %}</span>
                 </div>
                 
                 <div class="card shadow-lg border-0 p-3 position-absolute bg-success rounded-4 rotate-15 hover-lift" 
                      style="bottom: 15%; right: -5%; width: 180px;">
                     <i class="bi bi-coin text-white display-4"></i>
-                    <p class="small text-white-50 mb-0 mt-2 fw-bold">Turn into Benefits</p>
-                    <span class="badge bg-white text-success rounded-pill">Recycle</span>
+                    <p class="small text-white-50 mb-0 mt-2 fw-bold">{% trans "Turn into Benefits" %}</p>
+                    <span class="badge bg-white text-success rounded-pill">{% trans "Recycle" %}</span>
                 </div>
 
                 <div class="bg-white shadow-lg rounded-circle d-inline-block p-4 position-relative border border-5 border-success border-opacity-25" 

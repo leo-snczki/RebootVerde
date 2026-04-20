@@ -1,7 +1,67 @@
 {% extends "base.html" %}
 
-{% block title %}Registro concluído{% endblock %}
+{% block title %}Bem-vindo de volta!{% endblock %}
 
 {% block content %}
-<h2>Login made with success!</h2>
+<div class="row justify-content-center py-5">
+    <div class="col-md-6 col-lg-5 text-center">
+        <div class="card border-0 shadow-lg p-5" style="border-radius: 30px; background: linear-gradient(145deg, #ffffff, #f0fdf4);">
+            
+            <div class="mb-4">
+                <div class="d-inline-block position-relative">
+                    <span class="position-absolute top-50 start-50 translate-middle w-100 h-100 bg-success opacity-10 rounded-circle animate-ping" style="animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
+                    <i class="bi bi-shield-check text-success display-1 position-relative"></i>
+                </div>
+            </div>
+            
+            <h2 class="fw-bold text-dark">Acesso Autorizado!</h2>
+            <p class="lead text-muted mb-4">
+                Olá, <strong>{{ user.username }}</strong>! É bom ter você de volta à nossa missão por um planeta mais verde.
+            </p>
+
+            <div class="row g-3 mb-5">
+                <div class="col-4">
+                    <div class="p-2 border rounded-3 bg-white shadow-sm">
+                        <i class="bi bi-controller text-success"></i>
+                        <div class="small fw-bold">Jogar</div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="p-2 border rounded-3 bg-white shadow-sm">
+                        <i class="bi bi-shop text-success"></i>
+                        <div class="small fw-bold">Market</div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="p-2 border rounded-3 bg-white shadow-sm">
+                        <i class="bi bi-map text-success"></i>
+                        <div class="small fw-bold">EcoMap</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <a href="{% url 'index' %}" class="btn btn-primary btn-lg rounded-pill fw-bold shadow">
+                    Ir para o Painel Inicial
+                </a>
+            </div>
+
+        </div>
+
+        <p class="mt-4 text-muted small">
+            Redirecionando você em alguns segundos... 
+            <i class="bi bi-hourglass-split ms-1"></i>
+        </p>
+    </div>
+</div>
+
+<style>
+    
+    @keyframes ping {
+        75%, 100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+</style>
 {% endblock %}

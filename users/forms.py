@@ -36,3 +36,37 @@ class EmailChangeForm(forms.ModelForm):
         if User.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
             raise ValidationError("An account with this email address already exists!")
         return email
+    
+
+from django.contrib.auth.forms import SetPasswordForm
+
+class PasswordResetCodeForm(forms.Form):
+    email = forms.EmailField(label="Email")
+    code = forms.CharField(max_length=6, label="Código de 6 dígitos")
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get("email")
+        code = cleaned_data.get("code")
+        
+        if email and code:
+            if not User.objects.filter(email=email, verification_code=code).exists():
+                raise ValidationError("Email ou código inválidos.")
+        return cleaned_data
+    
+
+
+class PasswordResetCodeForm(forms.Form):
+    email = forms.EmailField(label="Email")
+    code = forms.CharField(max_length=6, label="Código de 6 dígitos")
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get("email")
+        code = cleaned_data.get("code")
+        
+        if email and code:
+            
+            if not User.objects.filter(email=email, verification_code=code).exists():
+                raise ValidationError("Email ou código inválidos.")
+        return cleaned_data

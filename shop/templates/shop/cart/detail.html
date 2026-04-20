@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="fw-bold mb-4">O seu Carrinho</h1>
+<div class="card shadow-sm p-4">
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço Unitário</th>
+                <th>Total</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>€{{ item.price }}</td>
+                    <td>€{{ item.total_price }}</td>
+                    <td>
+                        <a href="{% url 'shop:cart_remove' product.id %}" class="btn btn-sm btn-outline-danger">Remover</a>
+                    </td>
+                </tr>
+                {% endwith %}
+            {% empty %}
+                <tr><td colspan="5" class="text-center">Carrinho vazio.</td></tr>
+            {% endfor %}
+            <tr class="fw-bold fs-5">
+                <td colspan="3">Total</td>
+                <td colspan="2">€{{ cart.get_total_price }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between mt-4">
+        <a href="{% url 'shop:product_list' %}" class="btn btn-outline-secondary rounded-pill">Continuar a Comprar</a>
+        {% if cart|length > 0 %}
+            <a href="{% url 'shop:order_create' %}" class="btn btn-success"> Finalizar Compra </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

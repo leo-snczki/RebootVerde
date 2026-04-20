@@ -1,47 +1,83 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="fw-bold text-dark">Our Products</h1>
-    <span class="badge bg-success">{{ products|length }} items found</span>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <h1 class="fw-bold text-dark">Our Products</h1>
+    </div>
+    
+    <div class="col-md-8">
+        <form method="get" action="{% url 'shop:product_list' %}" class="d-flex gap-2">
+            <input type="text" name="q" class="form-control rounded-pill" 
+                   placeholder="Search by name..." value="{{ query|default:'' }}">
+            <button type="submit" class="btn btn-success rounded-pill px-4">
+                <i class="bi bi-search"></i> Search
+            </button>
+            {% if query or category %}
+                <a href="{% url 'shop:product_list' %}" class="btn btn-outline-secondary rounded-pill">Clear</a>
+            {% endif %}
+        </form>
+    </div>
 </div>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for product in products %}
-    <div class="col">
-        <div class="card h-100 p-3 shadow-sm">
-            <div class="text-center bg-light rounded mb-3"
-                style="height: 200px; display: flex; align-items: center; justify-content: center;">
-                {% if product.image %}
-                <img src="{{ product.image.url }}" class="img-fluid rounded" style="max-height: 100%;"
-                    alt="{{ product.name }}">
-                {% else %}
-                <i class="bi bi-recycle text-success" style="font-size: 4rem;"></i>
-                {% endif %}
-            </div>
-            <div class="card-body p-0">
-                <small class="text-success fw-semibold text-uppercase">{{ product.category }}</small>
-                <h5 class="card-title fw-bold">{{ product.name }}</h5>
-                <p class="card-text text-muted small">{{ product.description|truncatechars:80 }}</p>
-
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                    <span class="h5 mb-0 fw-bold">€{{ product.price }}</span>
-
-                    {% if user.is_authenticated %}
-                    <form action="{% url 'shop:cart_add' product.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success btn-sm rounded-pill px-3">
-                            <i class="bi bi-cart-plus"></i> Add
-                        </button>
-                    </form>
-                    {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
-                        Login to buy
-                    </a>
-                    {% endif %}
-                </div>
-            </div>
+<div class="row">
+    <div class="col-md-3 mb-4">
+        <div class="list-group shadow-sm">
+            <a href="{% url 'shop:product_list' %}" 
+               class="list-group-item list-group-item-action {% if not category %}active{% endif %}">
+                All Categories
+            </a>
+            {% for c in categories %}
+            <a href="{% url 'shop:product_list_by_category' c.slug %}" 
+               class="list-group-item list-group-item-action {% if category.slug == c.slug %}active{% endif %}">
+                {{ c.name }}
+            </a>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
+
+    <div class="col-md-9">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge bg-success">{{ products|length }} items found</span>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for product in products %}
+            <div class="col">
+                <div class="card h-100 p-3 shadow-sm">
+                    <div class="text-center bg-light rounded mb-3" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" class="img-fluid rounded" style="max-height: 100%;" alt="{{ product.name }}">
+                        {% else %}
+                        <i class="bi bi-recycle text-success" style="font-size: 4rem;"></i>
+                        {% endif %}
+                    </div>
+                    <div class="card-body p-0">
+                        <small class="text-success fw-semibold text-uppercase">{{ product.category }}</small>
+                        <h5 class="card-title fw-bold">{{ product.name }}</h5>
+                        <p class="card-text text-muted small">{{ product.description|truncatechars:80 }}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="h5 mb-0 fw-bold">€{{ product.price }}</span>
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'shop:cart_add' product.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success btn-sm rounded-pill px-3">
+                                    <i class="bi bi-cart-plus"></i> Add
+                                </button>
+                            </form>
+                            {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">Login to buy</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p class="text-muted">No products found matching your criteria.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -19,17 +19,17 @@ def game_view(request):
 def contact_view(request):
     if request.method == 'POST':
         
-        nome = request.POST.get('nome')
-        email_usuario = request.POST.get('email')
-        assunto = request.POST.get('assunto')
+        name = request.POST.get('name')
+        user_email = request.POST.get('email')
+        subject = request.POST.get('subject')
         mensagem = request.POST.get('mensagem')
 
         # Montando o corpo do e-mail
-        corpo_email = f"Mensagem de: {nome} <{email_usuario}>\n\n{mensagem}"
+        corpo_email = f"Mensagem de: {name} <{user_email}>\n\n{mensagem}"
 
         # Enviando o e-mail
         send_mail(
-            f"Contato Site: {assunto}", 
+            f"Contato Site: {subject}", 
             corpo_email,                
             settings.EMAIL_HOST_USER,   
             [settings.EMAIL_HOST_USER], 

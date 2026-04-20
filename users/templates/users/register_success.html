@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Bem-vindo à RebootVerde{% endblock %}
+{% block title %}Welcome to RebootVerde{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center py-5">
@@ -12,22 +12,22 @@
             
             <h2 class="fw-bold text-dark">Registro Concluído!</h2>
             <p class="lead text-muted mt-3">
-                Parabéns! Sua conta na <strong>RebootVerde</strong> foi criada com sucesso.
+                Congratulations! Your account on <strong>RebootVerde</strong> has been created successfully.
             </p>
             
             <div class="bg-light p-3 rounded-3 my-4 text-start">
                 <p class="small mb-0 text-muted">
                     <i class="bi bi-info-circle me-2"></i> 
-                    Agora você pode acessar a loja, participar do nosso minijogo e localizar pontos de coleta no mapa.
+                    Now you can use the store and favorite locate collection points on the map.
                 </p>
             </div>
 
             <div class="d-grid gap-2">
                 <a href="{% url 'login' %}" class="btn btn-primary btn-lg rounded-pill fw-bold">
-                    Fazer Login Agora
+                    Login now
                 </a>
                 <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-sm border-0 mt-2">
-                    Voltar para a página inicial
+                    Return to home
                 </a>
             </div>
         </div>

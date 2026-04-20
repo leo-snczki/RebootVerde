@@ -5,7 +5,7 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-4">
         <div class="card shadow p-4">
-            <h3 class="text-center fw-bold mb-4">Entrar na Conta</h3>
+            <h3 class="text-center fw-bold mb-4">Enter Your Credentials</h3>
             <form method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
@@ -15,10 +15,10 @@
             </form>
             <hr class="my-4">
             <p class="text-center mb-0">
-                Não tem conta? <a href="{% url 'register' %}" class="text-success fw-bold">Registre-se aqui</a>               
+                Dont have an account? <a href="{% url 'register' %}" class="text-success fw-bold">Register here</a>               
             </p>
             <p class="text-center mb-0">
-                Resetar senha <a href="{% url 'password_reset' %}" class="text-success fw-bold" >Forgot your password?</a>           
+                Forget your password? <a href="{% url 'password_reset' %}" class="text-success fw-bold" >Click here</a>           
             </p>
         </div>
     </div>

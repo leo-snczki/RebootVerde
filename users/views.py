@@ -143,7 +143,7 @@ def password_reset_request(request):
                     <div style="font-size: 32px; font-weight: bold; color: #1b4332; border: 2px dashed #1b4332; padding: 10px;">{code}</div>
                 </div>
                 """
-                send_mail(mail_subject, f"Código: {code}", 'noreply@rebootverde.com', [email], html_message=html_message)
+                send_mail(mail_subject, f"Código: {code}", 'rebootverde123@gmail.com', [email], html_message=html_message)
                 request.session['reset_email'] = email
                 return redirect('password_reset_verify')
     else:

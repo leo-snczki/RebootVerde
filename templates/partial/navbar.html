@@ -73,9 +73,35 @@
       </ul>
 
       <div class="d-flex align-items-center gap-2 ms-auto">
-        <a class="btn btn-link text-decoration-none text-dark fw-bold small btn-nav-auth" href="{% url 'login' %}">LOGIN</a>
-        <a class="btn btn-primary rounded-pill px-4 btn-nav-auth shadow-sm" href="{% url 'register' %}">JOIN US</a>
-      </div>
+
+        {% if user.is_authenticated %}
+
+          <a class="btn btn-link text-dark fw-bold small btn-nav-auth"
+             href="{% url 'profile' %}">
+            PROFILE
+          </a>
+
+          <form method="post" action="{% url 'logout' %}" class="m-0">
+            {% csrf_token %}
+            <button type="submit"
+                    class="btn btn-danger rounded-pill px-3 btn-nav-auth shadow-sm">
+              LOGOUT
+            </button>
+          </form>
+
+        {% else %}
+
+          <a class="btn btn-link text-dark fw-bold small btn-nav-auth"
+             href="{% url 'login' %}">
+            LOGIN
+          </a>
+
+          <a class="btn btn-primary rounded-pill px-4 btn-nav-auth shadow-sm"
+             href="{% url 'register' %}">
+            JOIN US
+          </a>
+
+        {% endif %}
 
     </div>
   </div>

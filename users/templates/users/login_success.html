@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Bem-vindo de volta!{% endblock %}
+{% block title %}Welcome Back!{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center py-5">
@@ -14,16 +14,16 @@
                 </div>
             </div>
             
-            <h2 class="fw-bold text-dark">Acesso Autorizado!</h2>
+            <h2 class="fw-bold text-dark">Access Authorized!</h2>
             <p class="lead text-muted mb-4">
-                Olá, <strong>{{ user.username }}</strong>! É bom ter você de volta à nossa missão por um planeta mais verde.
+                Hi, <strong>{{ user.username }}</strong>! It's great to have you back on our mission for a more green planet.
             </p>
 
             <div class="row g-3 mb-5">
                 <div class="col-4">
                     <div class="p-2 border rounded-3 bg-white shadow-sm">
                         <i class="bi bi-controller text-success"></i>
-                        <div class="small fw-bold">Jogar</div>
+                        <div class="small fw-bold">Play</div>
                     </div>
                 </div>
                 <div class="col-4">
@@ -42,14 +42,14 @@
 
             <div class="d-grid gap-2">
                 <a href="{% url 'index' %}" class="btn btn-primary btn-lg rounded-pill fw-bold shadow">
-                    Ir para o Painel Inicial
+                    Go to Dashboard
                 </a>
             </div>
 
         </div>
 
         <p class="mt-4 text-muted small">
-            Redirecionando você em alguns segundos... 
+            Redirecting you in a few seconds... 
             <i class="bi bi-hourglass-split ms-1"></i>
         </p>
     </div>

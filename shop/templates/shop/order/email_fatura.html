@@ -13,17 +13,17 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Obrigado pela sua encomenda!</h1>
-            <p>Olá {{ order.first_name }}, confirmamos a receção do seu pedido <strong>#{{ order.id }}</strong>.</p>
+            <h1>thanks for your order!</h1>
+            <p>Hi {{ order.first_name }}, we have confirmed the receipt of your order <strong>#{{ order.id }}</strong>.</p>
         </div>
 
-        <h3>Resumo da Encomenda:</h3>
+        <h3>Order Summary:</h3>
         <table>
             <thead>
                 <tr>
-                    <th>Produto</th>
-                    <th>Qtd</th>
-                    <th>Preço Un.</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
                     <th>Total</th>
                 </tr>
             </thead>
@@ -40,12 +40,12 @@
         </table>
 
         <div class="total">
-            Total Pago: €{{ order.get_total_cost }}
+            Total Paid: €{{ order.get_total_cost }}
         </div>
 
         <div style="margin-top: 40px; font-size: 0.8em; color: #777;">
-            <p>Morada de Envio: {{ order.address }}, {{ order.postal_code }} {{ order.city }}</p>
-            <p>Equipa RebootVerde</p>
+            <p>Shipping Address: {{ order.address }}, {{ order.postal_code }} {{ order.city }}</p>
+            <p>RebootVerde Team</p>
         </div>
     </div>
 </body>

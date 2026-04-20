@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Encomenda Confirmada
+  order confirmed
 {% endblock %}
 
 {% block content %}
@@ -9,13 +9,13 @@
     <div class="row">
       <div class="col-md-8 offset-md-2 text-center">
         <div class="card shadow-sm p-5">
-          <h1 class="text-success mb-4">Obrigado pela sua encomenda!</h1>
-          <p class="lead">A sua encomenda foi processada com sucesso.</p>
+          <h1 class="text-success mb-4">Thank you for your order!</h1>
+          <p class="lead">Your order has been processed successfully.</p>
           <div class="alert alert-info">
-            O número da sua encomenda é: <strong>#{{ order.id }}</strong>
+            Your order number is: <strong>#{{ order.id }}</strong>
           </div>
-          <p>Enviámos um e-mail de confirmação para <strong>{{ order.email }}</strong> com os detalhes da fatura.</p>
-          <a href="{% url 'shop:product_list' %}" class="btn btn-primary mt-4">Continuar a Comprar</a>
+          <p>We have sent a confirmation email to <strong>{{ order.email }}</strong> with the details of your invoice.</p>
+          <a href="{% url 'shop:product_list' %}" class="btn btn-primary mt-4">Continue Shopping</a>
         </div>
       </div>
     </div>

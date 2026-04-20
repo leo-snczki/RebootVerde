@@ -1,8 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Perfil{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block content %}
+<div class="container mt-5">
+    <h2>Welcome, {{ user.username }}!</h2>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h4 class="card-title">Your Information</h4>
+            <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+            <p class="card-text"><strong>NIF:</strong> {{ user.nif }}</p>
+        </div>
+    </div>
 
-<p> Welcome, {{ user.username }}! </p>
+    <h3 class="mt-4">Account Management</h3>
+    <div class="list-group mt-3" style="max-width: 400px;">
+        <a href="{% url 'change_email' %}" class="list-group-item list-group-item-action">Update Email</a>
+        <a href="{% url 'password_change' %}" class="list-group-item list-group-item-action">Change Password</a>
+        <a href="{% url 'delete_account' %}" class="list-group-item list-group-item-action text-danger fw-bold">Delete Account</a>
+    </div>
+</div>
 {% endblock %}

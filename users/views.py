@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model, login
 from django.core.mail import send_mail
 from django.urls import reverse
 from django.contrib.auth.views import LoginView
-from .forms import RegistrationForm
+from .forms import RegistrationForm, EmailChangeForm
 from django.contrib.auth.decorators import login_required
 
 User = get_user_model()
@@ -76,3 +76,27 @@ def verify_code(request):
 @login_required
 def profile(request):
     return render(request, "users/profile.html")
+
+@login_required
+def change_email(request):
+    if request.method == 'POST':
+        form = EmailChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'O seu email foi atualizado com sucesso!')
+            return redirect('profile')
+    else:
+        form = EmailChangeForm(instance=request.user)
+    
+    return render(request, 'users/change_email.html', {'form': form})
+
+# NOVO: View para apagar a conta
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'A sua conta foi eliminada com sucesso.')
+        return redirect('index')  # Certifica-te que tens uma view/url com o nome 'index' (ou muda para 'login')
+    
+    return render(request, 'users/delete_account_confirm.html')

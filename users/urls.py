@@ -23,5 +23,16 @@ urlpatterns = [
     ), name="password_reset_complete"),
     path("accounts/logout/", auth_views.LogoutView.as_view(template_name="users/logout.html"), name="logout"),
     path("accounts/profile/", views.profile, name="profile"),
+    
+    path("accounts/change-email/", views.change_email, name="change_email"),
+    path("accounts/delete-account/", views.delete_account, name="delete_account"),
+    path("accounts/password_change/", auth_views.PasswordChangeView.as_view(
+        template_name="users/password_change_form.html",
+    ), name="password_change"),
+    
+    path("accounts/password_change/done/", auth_views.PasswordChangeDoneView.as_view(
+        template_name="users/password_change_done.html"
+    ), name="password_change_done"),
+    
     path("accounts/", include("django.contrib.auth.urls")),   
 ]

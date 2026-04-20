@@ -506,3 +506,18 @@ msgstr "JUNTE-SE"
 
 msgid "LOGIN"
 msgstr "ENTRAR"
+
+msgid "Our Products"
+msgstr "Nossos Produtos"
+
+msgid "All Categories"
+msgstr "Todas as categorias"
+
+msgid "items found"
+msgstr "Itens encontrados"
+
+msgid "Search by name..."
+msgstr "Procurar pelo nome..."
+
+msgid "No products found matching your criteria."
+msgstr "Nenhum produto encontrado que corresponda aos seus critérios."

@@ -1,523 +1,1438 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RebootVerde\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-20 22:08+0000\n"
-"PO-Revision-Date: 2026-04-20 22:08+0000\n"
-"Last-Translator: \n"
-"Language-Team: pt-PT\n"
-"Language: pt\n"
+"POT-Creation-Date: 2026-04-24 05:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Portuguese (Portugal) <pt@li.org>\n"
+"Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: core/templates/about.html:11
 msgid "Our Mission"
 msgstr "A Nossa Missão"
 
+#: core/templates/about.html:12
 msgid "Transforming technological waste into a sustainable future."
-msgstr "Transformar resíduos tecnológicos num futuro sustentável."
+msgstr "Transformar o lixo tecnológico num futuro sustentável."
 
+#: core/templates/about.html:21
 msgid "RebootVerde: The Cycle of Technology"
 msgstr "RebootVerde: O Ciclo da Tecnologia"
 
-msgid "We are an initiative focused on solving one of the biggest challenges of the digital age: <strong>electronic waste</strong>. We believe that proper disposal should not only be a responsibility, but also an opportunity to generate benefits for the planet and for those who contribute their part."
-msgstr "Somos uma iniciativa focada em resolver um dos maiores desafios da era digital: o <strong>lixo eletrónico</strong>. Acreditamos que o descarte adequado deve ser não só uma responsabilidade, mas também uma oportunidade para gerar benefícios para o planeta e para quem contribui."
+#: core/templates/about.html:23
+msgid ""
+"We are an initiative focused on solving one of the biggest challenges of the "
+"digital age: <strong>electronic waste</strong>. We believe that proper "
+"disposal should not only be a responsibility, but also an opportunity to "
+"generate benefits for the planet and for those who contribute their part."
+msgstr ""
+"Somos uma iniciativa focada em resolver um dos maiores desafios da "
+"era digital: o <strong>lixo eletrónico</strong>. Acreditamos que o descarte "
+"adequado não deve ser apenas uma responsabilidade, mas também uma oportunidade de "
+"gerar benefícios para o planeta e para quem faz a sua parte."
 
-msgid "Our platform was designed to connect conscious citizens with practical solutions, transforming recycling into an interactive and rewarding experience."
-msgstr "A nossa plataforma foi concebida para ligar cidadãos conscientes a soluções práticas, transformando a reciclagem numa experiência interativa e recompensadora."
+#: core/templates/about.html:26
+msgid ""
+"Our platform was designed to connect conscious citizens with practical "
+"solutions, transforming recycling into an interactive and rewarding "
+"experience."
+msgstr ""
+"A nossa plataforma foi concebida para ligar cidadãos conscientes a soluções "
+"práticas, transformando a reciclagem numa experiência interativa e "
+"recompensadora."
 
+#: core/templates/about.html:32
 msgid "Intelligent Reverse Logistics"
-msgstr "Logística Reversa Inteligente"
+msgstr "Logística Inversa Inteligente"
 
+#: core/templates/about.html:40
 msgid "How do we engage our community?"
 msgstr "Como envolvemos a nossa comunidade?"
 
+#: core/templates/about.html:45 core/templates/index.html:63
+#: templates/partial/navbar.html:67 users/templates/users/login_success.html:38
 msgid "EcoMap"
 msgstr "EcoMapa"
 
-msgid "We developed an interactive map so you can locate the nearest collection points quickly and efficiently."
-msgstr "Desenvolvemos um mapa interativo para que possas localizar rapidamente os pontos de recolha mais próximos."
+#: core/templates/about.html:46
+msgid ""
+"We developed an interactive map so you can locate the nearest collection "
+"points quickly and efficiently."
+msgstr ""
+"Desenvolvemos um mapa interativo para que possas localizar os pontos de "
+"recolha mais próximos de forma rápida e eficiente."
 
+#: core/templates/about.html:53
 msgid "Gamification"
 msgstr "Gamificação"
 
-msgid "Through our mini-game, we educate the public in a fun way, drawing attention to the importance of proper disposal."
-msgstr "Através do nosso mini-jogo, educamos o público de forma divertida, chamando a atenção para a importância do descarte correto."
+#: core/templates/about.html:54
+msgid ""
+"Through our mini-game, we educate the public in a fun way, drawing attention "
+"to the importance of proper disposal."
+msgstr ""
+"Através do nosso mini-jogo, educamos o público de forma divertida, chamando "
+"a atenção para a importância do descarte adequado."
 
+#: core/templates/about.html:61 core/templates/index.html:73
 msgid "Marketplace"
-msgstr "Mercado"
+msgstr "Marketplace"
 
-msgid "Our integrated marketplace promotes the circular economy, allowing users to interact with sustainable products and solutions."
-msgstr "O nosso mercado integrado promove a economia circular, permitindo aos utilizadores interagir com produtos e soluções sustentáveis."
+#: core/templates/about.html:62
+msgid ""
+"Our integrated marketplace promotes the circular economy, allowing users to "
+"interact with sustainable products and solutions."
+msgstr ""
+"O nosso marketplace integrado promove a economia circular, permitindo que os "
+"utilizadores interajam com produtos e soluções sustentáveis."
 
+#: core/templates/about.html:69
 msgid "Ready to reboot the world?"
 msgstr "Pronto para reiniciar o mundo?"
 
+#: core/templates/about.html:70
 msgid "Join RebootVerde and be part of the change."
-msgstr "Junta-te à RebootVerde e faz parte da mudança."
+msgstr "Junta-te ao RebootVerde e faz parte da mudança."
 
+#: core/templates/about.html:71
 msgid "Get Started Now"
 msgstr "Começar Agora"
 
+#: core/templates/contact.html:10
 msgid "Talk to Us"
 msgstr "Fala Connosco"
 
+#: core/templates/contact.html:11
 msgid "Questions about recycling? Send us a message!"
 msgstr "Dúvidas sobre reciclagem? Envia-nos uma mensagem!"
 
+#: core/templates/contact.html:17
 msgid "Full Name"
 msgstr "Nome Completo"
 
+#: core/templates/contact.html:18
 msgid "Your name"
 msgstr "O teu nome"
 
+#: core/templates/contact.html:21 users/templates/users/profile.html:12
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
+#: core/templates/contact.html:22
 msgid "Your email"
-msgstr "O teu email"
+msgstr "O teu e-mail"
 
+#: core/templates/contact.html:25
 msgid "Subject"
 msgstr "Assunto"
 
+#: core/templates/contact.html:29
 msgid "Message"
 msgstr "Mensagem"
 
+#: core/templates/contact.html:30
 msgid "How can we help?"
 msgstr "Como podemos ajudar?"
 
+#: core/templates/contact.html:32
 msgid "Send Message"
 msgstr "Enviar Mensagem"
 
+#: core/templates/contact_success.html:8
 msgid "All Set!"
 msgstr "Tudo Pronto!"
 
+#: core/templates/contact_success.html:9
 msgid "Your action was processed successfully in our system."
 msgstr "A tua ação foi processada com sucesso no nosso sistema."
 
+#: core/templates/contact_success.html:11 users/templates/users/login.html:53
 msgid "Return to Home"
-msgstr "Voltar à Página Inicial"
+msgstr "Voltar ao Início"
 
+#: core/templates/game.html:4 templates/partial/navbar.html:66
+#: users/templates/users/login_success.html:26
 msgid "Play"
 msgstr "Jogar"
 
+#: core/templates/game.html:9
 msgid "Ecological Mission"
 msgstr "Missão Ecológica"
 
+#: core/templates/game.html:10
 msgid "Learn to recycle while playing!"
 msgstr "Aprende a reciclar enquanto jogas!"
 
+#: core/templates/game.html:20
 msgid "RebootVerde Engine v1.0"
 msgstr "Motor RebootVerde v1.0"
 
+#: core/templates/game.html:34 users/templates/users/logout.html:18
+#: users/templates/users/password_reset_complete.html:37
 msgid "Back to Home"
-msgstr "Voltar à Página Inicial"
+msgstr "Voltar ao Início"
 
-msgid "Home - Rebootverde: The future of e-waste"
-msgstr "Início - RebootVerde: O futuro do lixo eletrónico"
+#: core/templates/index.html:5
+msgid "Home - RebootVerde: Tech for a Greener Future"
+msgstr "Início - RebootVerde: Tecnologia para um Futuro Mais Verde"
 
-msgid "E-WASTE REVOLUTION"
-msgstr "REVOLUÇÃO DO LIXO ELETRÓNICO"
+#: core/templates/index.html:13
+msgid "LEADER IN E-WASTE SOLUTIONS"
+msgstr "LÍDER EM SOLUÇÕES DE LIXO ELETRÓNICO"
 
-msgid "the future of the planet."
-msgstr "no futuro do planeta."
+#: core/templates/index.html:17
+msgid "the planet's digital cycle."
+msgstr "o ciclo digital do planeta."
 
-msgid "A <strong class=\"text-dark\">RebootVerde</strong> transforme your electronic waste into opportunities. Recycle, trade, earn benefits and help build a circular technology economy."
-msgstr "A <strong class=\"text-dark\">RebootVerde</strong> transforma o teu lixo eletrónico em oportunidades. Recicla, troca, ganha benefícios e ajuda a construir uma economia tecnológica circular."
+#: core/templates/index.html:21
+msgid ""
+"At <strong>RebootVerde</strong>, we bridge the gap between technology and "
+"sustainability. Locate recycling points, earn rewards, and join the circular "
+"economy today."
+msgstr ""
+"No <strong>RebootVerde</strong>, fazemos a ponte entre a tecnologia e a "
+"sustentabilidade. Localiza pontos de reciclagem, ganha recompensas e "
+"junta-te hoje à economia circular."
 
-msgid "Join us"
-msgstr "Junta-te a nós"
+#: core/templates/index.html:29
+msgid "Start Recycling"
+msgstr "Começar a Reciclar"
 
-msgid "Play & Learn"
-msgstr "Jogar & Aprender"
+#: core/templates/index.html:32
+msgid "Learn More"
+msgstr "Saber Mais"
 
-msgid "certified solution for electronic waste disposal."
-msgstr "solução certificada para o descarte de lixo eletrónico."
+#: core/templates/index.html:43
+msgid "Laptop"
+msgstr "Portátil"
 
-msgid "Old Smartphones"
-msgstr "Smartphones Antigos"
+#: core/templates/index.html:44
+msgid "+50 Points"
+msgstr "+50 Pontos"
 
-msgid "Dispose"
-msgstr "Descartar"
+#: core/templates/index.html:64
+msgid ""
+"Discover our collection centers across Portugal using our interactive map."
+msgstr ""
+"Descobre os nossos centros de recolha por todo Portugal através do nosso mapa interativo."
 
-msgid "Turn into Benefits"
-msgstr "Transformar em Benefícios"
+#: core/templates/index.html:65
+msgid "Open Map"
+msgstr "Abrir Mapa"
 
-msgid "Recycle"
-msgstr "Reciclar"
+#: core/templates/index.html:74
+msgid "Trade your recycling points for products."
+msgstr "Troca os teus pontos de reciclagem por produtos."
 
+#: core/templates/index.html:75
+msgid "Visit Shop"
+msgstr "Visitar Loja"
+
+#: core/templates/index.html:83
+msgid "EcoGame"
+msgstr "EcoJogo"
+
+#: core/templates/index.html:84
+msgid "Learn while playing! Our game teaches you how to sort waste correctly."
+msgstr "Aprende a brincar! O nosso jogo ensina-te a separar os resíduos corretamente."
+
+#: core/templates/index.html:85
+msgid "Play Now"
+msgstr "Jogar Agora"
+
+#: core/templates/index.html:102
+msgid "More than just recycling"
+msgstr "Mais do que apenas reciclagem"
+
+#: core/templates/index.html:105
+msgid "A digital bridge to a cleaner world."
+msgstr "Uma ponte digital para um mundo mais limpo."
+
+#: core/templates/index.html:108
+msgid ""
+"RebootVerde was born from a simple question: What if your old tech could "
+"power a better future? We've built a platform that rewards environmental "
+"responsibility, turning electronic waste into opportunities for the circular "
+"economy."
+msgstr ""
+"O RebootVerde nasceu de uma pergunta simples: E se a tua tecnologia antiga "
+"pudesse alimentar um futuro melhor? Construímos uma plataforma que recompensa a "
+"responsabilidade ambiental, transformando o lixo eletrónico em oportunidades "
+"para a economia circular."
+
+#: core/templates/index.html:116
+msgid "Certified"
+msgstr "Certificado"
+
+#: core/templates/index.html:117
+msgid "Safe handling"
+msgstr "Manuseamento seguro"
+
+#: core/templates/index.html:125
+msgid "Community"
+msgstr "Comunidade"
+
+#: core/templates/index.html:126
+msgid "Join the movement"
+msgstr "Junta-te ao movimento"
+
+#: core/templates/index.html:133
+msgid "Learn more"
+msgstr "Saber mais"
+
+#: core/templates/index.html:141
+msgid "Common Questions"
+msgstr "Perguntas Frequentes"
+
+#: core/templates/index.html:142
+msgid ""
+"Everything you need to know about starting your sustainable journey with "
+"RebootVerde."
+msgstr ""
+"Tudo o que precisas de saber para começares a tua jornada sustentável com o "
+"RebootVerde."
+
+#: core/templates/index.html:151
+msgid "Did you know?"
+msgstr "Sabias que?"
+
+#: core/templates/index.html:155
+msgid ""
+"For every million cell phones we recycle, we recover a treasure of raw "
+"materials:"
+msgstr ""
+"Por cada milhão de telemóveis que reciclamos, recuperamos um tesouro em "
+"matérias-primas:"
+
+#: core/templates/index.html:162
+msgid "Gold"
+msgstr "Ouro"
+
+#: core/templates/index.html:168
+msgid "Silver"
+msgstr "Prata"
+
+#: core/templates/index.html:174
+msgid "Copper"
+msgstr "Cobre"
+
+#: core/templates/index.html:181
+msgid "Palladium"
+msgstr "Paládio"
+
+#: core/templates/index.html:186
+msgid "Learn from EPA"
+msgstr "Aprender com a EPA"
+
+#: core/templates/index.html:197
+msgid "What happens to my data on recycled devices?"
+msgstr "O que acontece aos meus dados nos dispositivos reciclados?"
+
+#: core/templates/index.html:202
+msgid ""
+"Our partners follow international data destruction standards. We always "
+"recommend a factory reset before dropping off your device for peace of mind."
+msgstr ""
+"Os nossos parceiros seguem as normas internacionais de destruição de dados. "
+"Recomendamos sempre uma reposição de fábrica antes de entregares o teu "
+"dispositivo para maior tranquilidade."
+
+#: core/templates/index.html:210
+msgid "How do I earn and spend points?"
+msgstr "Como ganho e gasto pontos?"
+
+#: core/templates/index.html:215
+msgid ""
+"When you recycle at a verified point, you receive a code to register your "
+"impact. These points can be used in our Marketplace for discounts on eco-"
+"friendly products."
+msgstr ""
+"Quando reciclas num ponto verificado, recebes um código para registar o "
+"teu impacto. Estes pontos podem ser usados no nosso Marketplace para descontos "
+"em produtos ecológicos."
+
+#: core/templates/index.html:223
+msgid "Can I join?"
+msgstr "Posso juntar-me?"
+
+#: core/templates/index.html:228
+msgid ""
+"Yes, you can join! As a singular person, simply create a free account with "
+"NIF on our website and start tracking your recycling impact."
+msgstr ""
+"Sim, podes juntar-te! Sendo um particular, basta criares uma conta gratuita "
+"com o teu NIF no nosso website e começar a monitorizar o teu impacto de reciclagem."
+
+#: core/templates/index.html:236
+msgid "Is my data secure?"
+msgstr "Os meus dados estão seguros?"
+
+#: core/templates/index.html:241
+msgid "Yes! We take data security seriously and follow GDPR."
+msgstr "Sim! Levamos a segurança dos dados a sério e cumprimos o RGPD."
+
+#: core/templates/index.html:248
+msgid "How do I find recycling points?"
+msgstr "Como encontro pontos de reciclagem?"
+
+#: core/templates/index.html:253
+msgid ""
+"Use our EcoMap to locate nearby recycling centers. You can filter by device "
+"type and see real-time availability."
+msgstr ""
+"Usa o nosso EcoMapa para localizar centros de reciclagem próximos. Podes "
+"filtrar por tipo de dispositivo e ver a disponibilidade em tempo real."
+
+#: core/templates/index.html:260
+msgid "Is there any tax involved?"
+msgstr "Há algum imposto envolvido?"
+
+#: core/templates/index.html:265
+msgid "No, there is no tax involved!."
+msgstr "Não, não há nenhum imposto envolvido!"
+
+#: core/templates/index.html:272
+msgid "What is the catch?"
+msgstr "Qual é a rasteira?"
+
+#: core/templates/index.html:277
+msgid ""
+"There is no catch! It's a simple and effective way to recycle your old "
+"devices."
+msgstr ""
+"Não há rasteiras! É uma forma simples e eficaz de reciclar os teus dispositivos "
+"antigos."
+
+#: core/templates/index.html:288
+msgid "Ready to make an impact?"
+msgstr "Pronto para causar impacto?"
+
+#: core/templates/index.html:289
+msgid "Join 1,200+ users transforming tech waste into green energy."
+msgstr "Junta-te a mais de 1.200 utilizadores que estão a transformar o lixo tecnológico em energia verde."
+
+#: core/templates/index.html:291
+msgid "Create Free Account"
+msgstr "Criar Conta Gratuita"
+
+#: core/templates/learn.html:5
+msgid "Learn - E-Waste Knowledge Hub"
+msgstr "Aprender - Centro de Conhecimento de Lixo Eletrónico"
+
+#: core/templates/learn.html:10
+msgid "Understanding E-Waste"
+msgstr "Compreender o Lixo Eletrónico"
+
+#: core/templates/learn.html:12
+msgid ""
+"Electronic waste (e-waste) is any discarded electrical or electronic device. "
+"In a world driven by technology, knowing how to manage these items is vital "
+"for our planet."
+msgstr ""
+"Lixo eletrónico (e-waste) é qualquer dispositivo elétrico ou eletrónico "
+"descartado. Num mundo movido a tecnologia, saber como gerir estes itens é "
+"vital para o nosso planeta."
+
+#: core/templates/learn.html:24
+msgid "The Problem"
+msgstr "O Problema"
+
+#: core/templates/learn.html:27
+msgid ""
+"\n"
+"                Electronic devices contain toxic substances like "
+"<strong>lead, mercury, and cadmium</strong>. When disposed of in regular "
+"landfills, these chemicals leak into the soil and water, affecting "
+"ecosystems and human health.\n"
+"                "
+msgstr ""
+"\n"
+"                Os dispositivos eletrónicos contêm substâncias tóxicas como "
+"<strong>chumbo, mercúrio e cádmio</strong>. Quando descartados em aterros "
+"comuns, estes produtos químicos libertam-se no solo e na água, afetando os "
+"ecossistemas e a saúde humana.\n"
+"                "
+
+#: core/templates/learn.html:32
+msgid ""
+"\n"
+"                Retaking that obsolete equipment to recover materials to "
+"evolving technologies sustainably.\n"
+"                "
+msgstr ""
+"\n"
+"                A retoma desse equipamento obsoleto para recuperar materiais "
+"de forma a evoluir tecnologias sustentavelmente.\n"
+"                "
+
+#: core/templates/learn.html:45
+msgid "The Solution"
+msgstr "A Solução"
+
+#: core/templates/learn.html:48
+msgid ""
+"Recycling e-waste helps conserve natural resources and reduces the "
+"environmental impact of electronic manufacturing."
+msgstr ""
+"Reciclar lixo eletrónico ajuda a conservar os recursos naturais e reduz o "
+"impacto ambiental do fabrico de aparelhos eletrónicos."
+
+#: core/templates/learn.html:51
+msgid "Resource Conservation"
+msgstr "Conservação de Recursos"
+
+#: core/templates/learn.html:52
+msgid "Reduction of CO2 emissions"
+msgstr "Redução de emissões de CO2"
+
+#: core/templates/learn.html:60
+msgid "Waste Categories & Disposal"
+msgstr "Categorias de Resíduos e Descarte"
+
+#: core/templates/learn.html:61
+msgid "Click on a category to see how to properly dispose of your items."
+msgstr "Clica numa categoria para veres como descartar corretamente os teus itens."
+
+#: core/templates/learn.html:67
+msgid "Small"
+msgstr "Pequenos"
+
+#: core/templates/learn.html:72
+msgid "Large"
+msgstr "Grandes"
+
+#: core/templates/learn.html:77
+msgid "IT & Telecom"
+msgstr "TI e Telecomunicações"
+
+#: core/templates/learn.html:82
+msgid "Batteries"
+msgstr "Baterias"
+
+#: core/templates/learn.html:91
+msgid "Small Household Appliances"
+msgstr "Pequenos Eletrodomésticos"
+
+#: core/templates/learn.html:92
+msgid ""
+"Includes vacuum cleaners, toasters, coffee machines, and electric "
+"toothbrushes."
+msgstr ""
+"Inclui aspiradores, torradeiras, máquinas de café e escovas de dentes "
+"elétricas."
+
+#: core/templates/learn.html:94 core/templates/learn.html:110
+#: core/templates/learn.html:141 core/templates/learn.html:183
+msgid "How to discard:"
+msgstr "Como descartar:"
+
+#: core/templates/learn.html:95
+msgid ""
+"Take these to specialized e-waste bins at supermarkets or municipal "
+"recycling centers."
+msgstr ""
+"Leva-os para contentores especializados em lixo eletrónico em "
+"supermercados ou centros de reciclagem municipais."
+
+#: core/templates/learn.html:107
+msgid "Large Household Appliances"
+msgstr "Grandes Eletrodomésticos"
+
+#: core/templates/learn.html:108
+msgid "Includes washing machines, fridges, air conditioners, and microwaves."
+msgstr "Inclui máquinas de lavar, frigoríficos, ares condicionados e micro-ondas."
+
+#: core/templates/learn.html:111
+msgid ""
+"Request a pick-up from your local municipality or use the 'one-for-one' rule "
+"when buying a new one."
+msgstr ""
+"Pede a recolha à tua autarquia local ou utiliza a regra 'um por um' na "
+"compra de um equipamento novo."
+
+#: core/templates/learn.html:123
+msgid "IT and Telecommunications"
+msgstr "TI e Telecomunicações"
+
+#: core/templates/learn.html:124
+msgid ""
+"Includes computers, laptops, tablets, smartphones, printers, and network "
+"routers."
+msgstr ""
+"Inclui computadores, portáteis, tablets, smartphones, impressoras e "
+"routers de rede."
+
+#: core/templates/learn.html:129
+msgid "Data Privacy First!"
+msgstr "Privacidade de Dados em Primeiro Lugar!"
+
+#: core/templates/learn.html:130
+msgid ""
+"Before recycling, ensure you perform a factory reset. For computers, use a "
+"secure erase tool to delete all data."
+msgstr ""
+"Antes de reciclar, garante que fazes uma reposição de fábrica. Para "
+"computadores, usa uma ferramenta de limpeza segura para apagar todos os dados."
+
+#: core/templates/learn.html:133
+msgid "Learn How"
+msgstr "Sabe Como"
+
+#: core/templates/learn.html:144
+msgid ""
+"Small items like phones andtablets can go into specialized e-waste bins at "
+"retail stores."
+msgstr ""
+"Itens pequenos como telemóveis e tablets podem ir para os contentores de "
+"lixo eletrónico em lojas de retalho."
+
+#: core/templates/learn.html:145
+msgid ""
+"For medium items like desktops or printers, use our EcoMap to find "
+"industrial recycling centers."
+msgstr ""
+"Para itens médios como computadores de secretária ou impressoras, usa o "
+"nosso EcoMapa para encontrares centros de reciclagem industriais."
+
+#: core/templates/learn.html:174
+msgid "Batteries and Accumulators"
+msgstr "Pilhas e Baterias"
+
+#: core/templates/learn.html:175
+msgid ""
+"Includes alkaline batteries, Li-ion phone batteries, Powerbanks and car "
+"batteries."
+msgstr ""
+"Inclui pilhas alcalinas, baterias de telemóvel de iões de lítio, powerbanks "
+"e baterias de automóvel."
+
+#: core/templates/learn.html:177
+msgid "Critical:"
+msgstr "Crítico:"
+
+#: core/templates/learn.html:178
+msgid ""
+"Never throw batteries in the general trash. They are highly flammable and "
+"corrosive."
+msgstr ""
+"Nunca deites as baterias no lixo indiferenciado. Elas são altamente "
+"inflamáveis e corrosivas."
+
+#: core/templates/learn.html:186
+msgid "Use 'Pilhão' containers found in most supermarkets and pharmacies."
+msgstr "Usa os contentores 'Pilhão' que se encontram na maioria dos supermercados e farmácias."
+
+#: core/templates/learn.html:187
+msgid ""
+"For swollen or damaged batteries, place them in a bag with sand or "
+"vermiculite before disposal."
+msgstr ""
+"Para baterias inchadas ou danificadas, coloca-as num saco com areia ou "
+"vermiculite antes de as descartares."
+
+#: core/templates/learn.html:188
+msgid ""
+"Car batteries must be returned to automotive service centers or specialized "
+"scrapyards."
+msgstr ""
+"As baterias de carro devem ser entregues em centros de serviço automóvel "
+"ou sucatas especializadas."
+
+#: core/templates/learn.html:202
+msgid "Find Nearest Collection Point"
+msgstr "Encontrar o Ponto de Recolha Mais Próximo"
+
+#: core/templates/statistics.html:9
+msgid "WEEE Recycling & Collection Statistics"
+msgstr "Estatísticas de Recolha e Reciclagem de REEE"
+
+#: core/templates/statistics.html:10
+msgid ""
+"An overview of Waste Electrical and Electronic Equipment (WEEE) across "
+"Europe, highlighting critical areas for improvement."
+msgstr ""
+"Uma visão geral dos Resíduos de Equipamentos Elétricos e Eletrónicos (REEE) "
+"na Europa, destacando as áreas críticas que precisam de melhoria."
+
+#: core/templates/statistics.html:17
+msgid "Critical Alert: Portugal's Recycling Performance"
+msgstr "Alerta Crítico: Desempenho de Reciclagem de Portugal"
+
+#: core/templates/statistics.html:18
+msgid ""
+"Portugal is currently facing a severe deficit in electronic waste management "
+"compared to the rest of the European Union. Urgent action is required to "
+"meet environmental targets."
+msgstr ""
+"Portugal enfrenta atualmente um grave défice na gestão do lixo eletrónico em "
+"comparação com o resto da União Europeia. É necessária uma ação urgente para "
+"atingir as metas ambientais."
+
+#: core/templates/statistics.html:27
+msgid "Collection Rate"
+msgstr "Taxa de Recolha"
+
+#: core/templates/statistics.html:29
+msgid "Share of WEEE collected"
+msgstr "Percentagem de REEE recolhidos"
+
+#: core/templates/statistics.html:31
+#, python-format
+msgid "Target: 65%%"
+msgstr "Meta: 65%%"
+
+#: core/templates/statistics.html:32
+#, python-format
+msgid ""
+"Portugal falls massively short of the EU 65%% target, well below the EU "
+"average of 37.5%%."
+msgstr ""
+"Portugal fica muito aquém da meta de 65%% da UE, bem abaixo da média "
+"europeia de 37,5%%."
+
+#: core/templates/statistics.html:41
+msgid "Collected Per Inhabitant"
+msgstr "Recolha por Habitante"
+
+#: core/templates/statistics.html:43
+msgid "WEEE collected per capita"
+msgstr "REEE recolhidos per capita"
+
+#: core/templates/statistics.html:45
+msgid "EU Average: 11.6 kg"
+msgstr "Média da UE: 11,6 kg"
+
+#: core/templates/statistics.html:46
+msgid "Portugal collects exactly half of the European average per inhabitant."
+msgstr "Portugal recolhe exatamente metade da média europeia por habitante."
+
+#: core/templates/statistics.html:55
+msgid "European Ranking"
+msgstr "Ranking Europeu"
+
+#: core/templates/statistics.html:57
+msgid "Worst in the EU"
+msgstr "Pior da UE"
+
+#: core/templates/statistics.html:59
+msgid ""
+"Portugal ranks near the absolute bottom for WEEE collection, only performing "
+"better than Malta (5.7 kg) and Cyprus (3.8 kg)."
+msgstr ""
+"Portugal encontra-se no fundo da tabela na recolha de REEE, apenas com "
+"melhor desempenho que Malta (5,7 kg) e Chipre (3,8 kg)."
+
+#: core/templates/statistics.html:70
+msgid "European Overview & Trends (2012 - 2023)"
+msgstr "Visão Geral e Tendências Europeias (2012 - 2023)"
+
+#: core/templates/statistics.html:78
+msgid "WEEE Development in the EU (1000 Tonnes)"
+msgstr "Evolução dos REEE na UE (1000 Toneladas)"
+
+#: core/templates/statistics.html:79
+msgid ""
+"Gap between equipment put on the market and what is actually collected and "
+"treated."
+msgstr ""
+"Diferença entre os equipamentos colocados no mercado e o que é "
+"efetivamente recolhido e tratado."
+
+#: core/templates/statistics.html:90
+msgid "Growth (2012 - 2023)"
+msgstr "Crescimento (2012 - 2023)"
+
+#: core/templates/statistics.html:93 core/templates/statistics.html:164
+msgid "Total put on the market"
+msgstr "Total colocado no mercado"
+
+#: core/templates/statistics.html:98
+msgid "From 7,627 to 14,447 tonnes"
+msgstr "De 7.627 para 14.447 toneladas"
+
+#: core/templates/statistics.html:102
+msgid "Total Collected"
+msgstr "Total Recolhido"
+
+#: core/templates/statistics.html:107
+msgid "From 2,971 to 5,206 tonnes"
+msgstr "De 2.971 para 5.206 toneladas"
+
+#: core/templates/statistics.html:111
+msgid "Total Reused & Recycled"
+msgstr "Total Reutilizado e Reciclado"
+
+#: core/templates/statistics.html:116
+msgid "From 2,417 to 4,281 tonnes"
+msgstr "De 2.417 para 4.281 toneladas"
+
+#: core/templates/statistics.html:120
+#, python-format
+msgid ""
+"While recycling grew by 77%%, production grew by 89%%, meaning the total "
+"amount of uncollected waste is increasing."
+msgstr ""
+"Embora a reciclagem tenha crescido 77%%, a produção cresceu 89%%, o que "
+"significa que a quantidade total de resíduos não recolhidos está a aumentar."
+
+#: core/templates/statistics.html:131
+msgid "WEEE Collected per Inhabitant (kg) - Country Comparison"
+msgstr "REEE Recolhidos por Habitante (kg) - Comparação por País"
+
+#: core/templates/statistics.html:132
+msgid ""
+"Notice the stark contrast between top performers like Bulgaria/Czechia and "
+"struggling nations like Portugal."
+msgstr ""
+"Nota o forte contraste entre os países com melhor desempenho, como a "
+"Bulgária/Chéquia, e os países com dificuldades, como Portugal."
+
+#: core/templates/statistics.html:173
+msgid "Total collected"
+msgstr "Total recolhido"
+
+#: core/templates/statistics.html:180
+msgid "Total reused and recycled"
+msgstr "Total reutilizado e reciclado"
+
+#: core/templates/statistics.html:225
+msgid "WEEE Collected (kg per inhabitant)"
+msgstr "REEE Recolhidos (kg por habitante)"
+
+#: maps/templates/maps/recycle_map.html:4
 msgid "Map"
 msgstr "Mapa"
 
+#: maps/templates/maps/recycle_map.html:27
 msgid "Search by name:"
-msgstr "Pesquisa por nome:"
+msgstr "Pesquisar por nome:"
 
+#: maps/templates/maps/recycle_map.html:29
 msgid "Search name..."
 msgstr "Pesquisar nome..."
 
+#: maps/templates/maps/recycle_map.html:30
+#: shop/templates/shop/product/list.html:15
 msgid "Search"
 msgstr "Pesquisar"
 
+#: maps/templates/maps/recycle_map.html:33
 msgid "Clear Search"
 msgstr "Limpar Pesquisa"
 
+#: maps/templates/maps/recycle_map.html:40
 msgid "Show favorites only"
 msgstr "Mostrar apenas favoritos"
 
+#: maps/templates/maps/recycle_map.html:47
 msgid "Filter by establishment:"
 msgstr "Filtrar por estabelecimento:"
 
+#: maps/templates/maps/recycle_map.html:62
+#: maps/templates/maps/recycle_map.html:79
+#: maps/templates/maps/recycle_map.html:96
+#: maps/templates/maps/recycle_map.html:113
 msgid "Clear Selection"
 msgstr "Limpar Seleção"
 
+#: maps/templates/maps/recycle_map.html:65
 msgid "Filter by civil parish:"
 msgstr "Filtrar por freguesia:"
 
+#: maps/templates/maps/recycle_map.html:82
+msgid "Filter by E-waste type:"
+msgstr "Filtrar por tipo de Lixo Eletrónico:"
+
+#: maps/templates/maps/recycle_map.html:99
+msgid "Filter by Establishment Type:"
+msgstr "Filtrar por Tipo de Estabelecimento:"
+
+#: maps/templates/maps/recycle_map.html:152
+msgid "Description:"
+msgstr "Descrição:"
+
+#: maps/templates/maps/recycle_map.html:153
+msgid "Address:"
+msgstr "Morada:"
+
+#: maps/templates/maps/recycle_map.html:154
+msgid "Postal Code:"
+msgstr "Código Postal:"
+
+#: maps/templates/maps/recycle_map.html:157
+msgid "Opening Hours:"
+msgstr "Horário de Funcionamento:"
+
+#: maps/templates/maps/recycle_map.html:161
+msgid "Day"
+msgstr "Dia"
+
+#: maps/templates/maps/recycle_map.html:162
+msgid "Open"
+msgstr "Abertura"
+
+#: maps/templates/maps/recycle_map.html:163
+msgid "Close"
+msgstr "Fecho"
+
+#: maps/templates/maps/recycle_map.html:171
+msgid "E-waste Accepted:"
+msgstr "Lixo Eletrónico Aceite:"
+
+#: maps/templates/maps/recycle_map.html:175
+msgid "Official Website"
+msgstr "Site Oficial"
+
+#: maps/templates/maps/recycle_map.html:181
+msgid "Open on Google Maps"
+msgstr "Abrir no Google Maps"
+
+#: maps/templates/maps/recycle_map.html:262
+msgid "Show Details"
+msgstr "Mostrar Detalhes"
+
+#: rebootverde/django/base.py:208
 msgid "Portuguese"
 msgstr "Português"
 
+#: rebootverde/django/base.py:209
 msgid "English"
 msgstr "Inglês"
 
+#: shop/templates/shop/cart/detail.html:4
 msgid "Your Cart"
 msgstr "O teu Carrinho"
 
+#: shop/templates/shop/cart/detail.html:9
 msgid "Product"
 msgstr "Produto"
 
+#: shop/templates/shop/cart/detail.html:10
 msgid "Quantity"
 msgstr "Quantidade"
 
+#: shop/templates/shop/cart/detail.html:11
 msgid "Unit Price"
 msgstr "Preço Unitário"
 
+#: shop/templates/shop/cart/detail.html:12
+#: shop/templates/shop/cart/detail.html:33
+#: users/templates/users/profile.html:71
 msgid "Total"
 msgstr "Total"
 
+#: shop/templates/shop/cart/detail.html:13
+#: users/templates/users/profile.html:73
 msgid "Actions"
 msgstr "Ações"
 
+#: shop/templates/shop/cart/detail.html:25
 msgid "Remove"
 msgstr "Remover"
 
+#: shop/templates/shop/cart/detail.html:30
 msgid "Cart is empty."
 msgstr "O carrinho está vazio."
 
+#: shop/templates/shop/cart/detail.html:39
+#: shop/templates/shop/order/created.html:18
 msgid "Continue Shopping"
 msgstr "Continuar a Comprar"
 
+#: shop/templates/shop/cart/detail.html:41
+#: shop/templates/shop/order/create.html:4
+#: shop/templates/shop/order/create.html:8
 msgid "Checkout"
 msgstr "Finalizar Compra"
 
+#: shop/templates/shop/order/create.html:13
 msgid "Shipping Information"
-msgstr "Informação de Envio"
+msgstr "Informações de Envio"
 
+#: shop/templates/shop/order/create.html:18
 msgid "Confirm Order"
 msgstr "Confirmar Encomenda"
 
+#: shop/templates/shop/order/create.html:26
 msgid "Summary"
 msgstr "Resumo"
 
+#: shop/templates/shop/order/create.html:37
 msgid "Total to pay"
 msgstr "Total a pagar"
 
+#: shop/templates/shop/order/create.html:42
 msgid "Return to cart"
 msgstr "Voltar ao carrinho"
 
+#: shop/templates/shop/order/created.html:12
 msgid "Thank you for your order!"
 msgstr "Obrigado pela tua encomenda!"
 
+#: shop/templates/shop/order/created.html:13
 msgid "Your order has been processed successfully."
 msgstr "A tua encomenda foi processada com sucesso."
 
+#: shop/templates/shop/order/created.html:15
 msgid "Your order number is:"
 msgstr "O número da tua encomenda é:"
 
+#: shop/templates/shop/order/created.html:17
 msgid "We have sent a confirmation email to"
-msgstr "Enviámos um email de confirmação para"
+msgstr "Enviámos um e-mail de confirmação para"
 
+#: shop/templates/shop/order/created.html:17
 msgid "with the details of your invoice."
 msgstr "com os detalhes da tua fatura."
 
+#: shop/templates/shop/product/list.html:7
+msgid "Our Products"
+msgstr "Os Nossos Produtos"
+
+#: shop/templates/shop/product/list.html:13
+msgid "Search by name..."
+msgstr "Pesquisar por nome..."
+
+#: shop/templates/shop/product/list.html:18
+msgid "Clear"
+msgstr "Limpar"
+
+#: shop/templates/shop/product/list.html:29
+msgid "All Categories"
+msgstr "Todas as Categorias"
+
+#: shop/templates/shop/product/list.html:42
+msgid "items found"
+msgstr "itens encontrados"
+
+#: shop/templates/shop/product/list.html:66
+msgid "Add"
+msgstr "Adicionar"
+
+#: shop/templates/shop/product/list.html:70
+msgid "Login to buy"
+msgstr "Inicia sessão para comprar"
+
+#: shop/templates/shop/product/list.html:78
+msgid "No products found matching your criteria."
+msgstr "Nenhum produto encontrado com esses critérios."
+
+#: templates/partial/navbar.html:63
 msgid "Home"
 msgstr "Início"
 
+#: templates/partial/navbar.html:64
 msgid "About"
 msgstr "Sobre"
 
+#: templates/partial/navbar.html:65 users/templates/users/login_success.html:32
 msgid "Market"
-msgstr "Mercado"
+msgstr "Marketplace"
 
+#: templates/partial/navbar.html:68
 msgid "Talk"
 msgstr "Contacto"
 
-msgid "Enter Your Credentials"
-msgstr "Introduz as tuas credenciais"
-
-msgid "Login"
-msgstr "Iniciar Sessão"
-
-msgid "Dont have an account?"
-msgstr "Não tens uma conta?"
-
-msgid "Register here"
-msgstr "Regista-te aqui"
-
-msgid "Forget your password?"
-msgstr "Esqueceste-te da palavra-passe?"
-
-msgid "Click here"
-msgstr "Clica aqui"
-
-msgid "Create Account - RebootVerde"
-msgstr "Criar Conta - RebootVerde"
-
-msgid "Create your account to start recycling and earning points."
-msgstr "Cria a tua conta para começar a reciclar e ganhar pontos."
-
-msgid "Create your account"
-msgstr "Cria a tua conta"
-
-msgid "Already have an account?"
-msgstr "Já tens uma conta?"
-
-msgid "Sign in"
-msgstr "Iniciar sessão"
-
-msgid "Your data is protected by our privacy policy."
-msgstr "Os teus dados estão protegidos pela nossa política de privacidade."
-
-msgid "Change email"
-msgstr "Alterar email"
-
-msgid "Change Email Address"
-msgstr "Alterar Endereço de Email"
-
-msgid "Save New Email"
-msgstr "Guardar Novo Email"
-
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgid "Delete Account"
-msgstr "Eliminar Conta"
-
-msgid "Are you absolutely sure?"
-msgstr "Tens a certeza absoluta?"
-
-msgid "You are about to permanently delete your account"
-msgstr "Estás prestes a eliminar permanentemente a tua conta"
-
-msgid "This action cannot be undone and you will lose access to all your data."
-msgstr "Esta ação não pode ser desfeita e perderás acesso a todos os teus dados."
-
-msgid "Yes, delete my account"
-msgstr "Sim, eliminar a minha conta"
-
-msgid "Login - RebootVerde"
-msgstr "Login - RebootVerde"
-
-msgid "Welcome Back"
-msgstr "Bem-vindo de volta"
-
-msgid "Access your account to continue recycling."
-msgstr "Acede à tua conta para continuar a reciclar."
-
-msgid "User and/or password is incorrect."
-msgstr "Utilizador e/ou palavra-passe incorretos."
-
-msgid "Login into your account"
-msgstr "Inicia sessão na tua conta"
-
-msgid "Still don't have an account?"
-msgstr "Ainda não tens uma conta?"
-
-msgid "Create your account here"
-msgstr "Cria a tua conta aqui"
-
-msgid "Welcome Back!"
-msgstr "Bem-vindo de volta!"
-
-msgid "Access Authorized!"
-msgstr "Acesso autorizado!"
-
-msgid "Hi,"
-msgstr "Olá,"
-
-msgid "It's great to have you back on our mission for a more green planet."
-msgstr "É ótimo ter-te de volta à nossa missão por um planeta mais verde."
-
-msgid "Go to Dashboard"
-msgstr "Ir para o Painel"
-
-msgid "Redirecting you in a few seconds..."
-msgstr "A redirecionar-te em alguns segundos..."
-
-msgid "Session ended successfully!"
-msgstr "Sessão terminada com sucesso!"
-
-msgid "You have successfully logged out."
-msgstr "Terminaste a sessão com sucesso."
-
-msgid "Login to your account"
-msgstr "Inicia sessão na tua conta"
-
-msgid "Password Changed"
-msgstr "Palavra-passe alterada"
-
-msgid "Success!"
-msgstr "Sucesso!"
-
-msgid "Your password has been changed successfully."
-msgstr "A tua palavra-passe foi alterada com sucesso."
-
-msgid "Back to Profile"
-msgstr "Voltar ao Perfil"
-
-msgid "Change Password"
-msgstr "Alterar Palavra-passe"
-
-msgid "Update Password"
-msgstr "Atualizar Palavra-passe"
-
-msgid "Done!"
-msgstr "Concluído!"
-
-msgid "Your password has been changed successfully. You can now access your account again."
-msgstr "A tua palavra-passe foi alterada com sucesso. Já podes aceder novamente à tua conta."
-
-msgid "Go to Login"
-msgstr "Ir para o Login"
-
-msgid "We recommend not writing down your password in public places."
-msgstr "Recomendamos que não escrevas a tua palavra-passe em locais públicos."
-
-msgid "Recover Password"
-msgstr "Recuperar Palavra-passe"
-
-msgid "Forgot your password?"
-msgstr "Esqueceste-te da palavra-passe?"
-
-msgid "Enter your email below to receive recovery instructions."
-msgstr "Introduz o teu email abaixo para receber instruções de recuperação."
-
-msgid "Send Recovery Email"
-msgstr "Enviar Email de Recuperação"
-
-msgid "Remember your password?"
-msgstr "Lembras-te da tua palavra-passe?"
-
-msgid "Back to Login"
-msgstr "Voltar ao Login"
-
-msgid "Secure and encrypted recovery process."
-msgstr "Processo de recuperação seguro e encriptado."
-
-msgid "Set New Password"
-msgstr "Definir Nova Palavra-passe"
-
-msgid "Enter your new password below."
-msgstr "Introduz a tua nova palavra-passe abaixo."
-
-msgid "Validate Code"
-msgstr "Validar Código"
-
-msgid "Enter the code sent to your email."
-msgstr "Introduz o código enviado para o teu email."
-
-msgid "Verify Code"
-msgstr "Verificar Código"
-
-msgid "Profile"
-msgstr "Perfil"
-
-msgid "Welcome"
-msgstr "Bem-vindo"
-
-msgid "Your Information"
-msgstr "A tua Informação"
-
-msgid "NIF"
-msgstr "NIF"
-
-msgid "Account Management"
-msgstr "Gestão de Conta"
-
-msgid "Update Email"
-msgstr "Atualizar Email"
-
-msgid "My Orders"
-msgstr "As Minhas Encomendas"
-
-msgid "Date"
-msgstr "Data"
-
-msgid "Status"
-msgstr "Estado"
-
-msgid "Paid"
-msgstr "Pago"
-
-msgid "Pending"
-msgstr "Pendente"
-
-msgid "View Invoice"
-msgstr "Ver Fatura"
-
-msgid "You have not placed any orders yet."
-msgstr "Ainda não efetuaste nenhuma encomenda."
-
-msgid "Register"
-msgstr "Registar"
-
-msgid "Registration Complete!"
-msgstr "Registo Concluído!"
-
-msgid "Congratulations! Your account on"
-msgstr "Parabéns! A tua conta em"
-
-msgid "has been created successfully."
-msgstr "foi criada com sucesso."
-
-msgid "Now you can use the store and favorite locate collection points on the map."
-msgstr "Agora podes usar a loja e marcar como favoritos os pontos de recolha no mapa."
-
-msgid "Login now"
-msgstr "Iniciar sessão agora"
-
-msgid "Return to home"
-msgstr "Voltar ao início"
-
-msgid "Verify Your Email"
-msgstr "Verifica o teu Email"
-
-msgid "We sent a 6-digit code to your inbox."
-msgstr "Enviámos um código de 6 dígitos para o teu email."
-
-msgid "Didn't receive it?"
-msgstr "Não recebeste?"
-
-msgid "Resend code"
-msgstr "Reenviar código"
-
-msgid "JOIN US"
-msgstr "JUNTE-SE"
-
+#: templates/partial/navbar.html:69
+msgid "Learn"
+msgstr "Aprender"
+
+#: templates/partial/navbar.html:70
+msgid "Stats"
+msgstr "Estatísticas"
+
+#: templates/partial/navbar.html:98
 msgid "LOGIN"
 msgstr "ENTRAR"
 
-msgid "Our Products"
-msgstr "Nossos Produtos"
+#: templates/partial/navbar.html:103
+msgid "JOIN US"
+msgstr "JUNTA-TE A NÓS"
 
-msgid "All Categories"
-msgstr "Todas as categorias"
+#: users/templates/registration/login.html:8
+msgid "Enter Your Credentials"
+msgstr "Introduz as tuas Credenciais"
 
-msgid "items found"
-msgstr "Itens encontrados"
+#: users/templates/registration/login.html:13
+msgid "Login"
+msgstr "Entrar"
 
-msgid "Search by name..."
-msgstr "Procurar pelo nome..."
+#: users/templates/registration/login.html:18
+msgid "Dont have an account?"
+msgstr "Não tens uma conta?"
 
-msgid "No products found matching your criteria."
-msgstr "Nenhum produto encontrado que corresponda aos seus critérios."
+#: users/templates/registration/login.html:18
+msgid "Register here"
+msgstr "Regista-te aqui"
+
+#: users/templates/registration/login.html:21
+msgid "Forget your password?"
+msgstr "Esqueceste-te da tua palavra-passe?"
+
+#: users/templates/registration/login.html:21
+msgid "Click here"
+msgstr "Clica aqui"
+
+#: users/templates/registration/register.html:4
+msgid "Create Account - RebootVerde"
+msgstr "Criar Conta - RebootVerde"
+
+#: users/templates/registration/register.html:15
+msgid "Join us"
+msgstr "Junta-te a nós"
+
+#: users/templates/registration/register.html:16
+msgid "Create your account to start recycling and earning points."
+msgstr "Cria a tua conta para começares a reciclar e a ganhar pontos."
+
+#: users/templates/registration/register.html:26
+msgid "Create your account"
+msgstr "Cria a tua conta"
+
+#: users/templates/registration/register.html:33
+msgid "Already have an account?"
+msgstr "Já tens uma conta?"
+
+#: users/templates/registration/register.html:34
+msgid "Sign in"
+msgstr "Entrar"
+
+#: users/templates/registration/register.html:41
+msgid "Your data is protected by our privacy policy."
+msgstr "Os teus dados estão protegidos pela nossa política de privacidade."
+
+#: users/templates/users/change_email.html:3
+msgid "Change email"
+msgstr "Alterar e-mail"
+
+#: users/templates/users/change_email.html:7
+msgid "Change Email Address"
+msgstr "Alterar Endereço de E-mail"
+
+#: users/templates/users/change_email.html:11
+msgid "Save New Email"
+msgstr "Guardar Novo E-mail"
+
+#: users/templates/users/change_email.html:12
+#: users/templates/users/delete_account_confirm.html:14
+#: users/templates/users/password_change_form.html:12
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: users/templates/users/delete_account_confirm.html:3
+#: users/templates/users/profile.html:60
+msgid "Delete Account"
+msgstr "Apagar Conta"
+
+#: users/templates/users/delete_account_confirm.html:8
+msgid "Are you absolutely sure?"
+msgstr "Tens a certeza absoluta?"
+
+#: users/templates/users/delete_account_confirm.html:9
+msgid "You are about to permanently delete your account"
+msgstr "Estás prestes a apagar a tua conta permanentemente"
+
+#: users/templates/users/delete_account_confirm.html:9
+msgid "This action cannot be undone and you will lose access to all your data."
+msgstr "Esta ação não pode ser anulada e irás perder o acesso a todos os teus dados."
+
+#: users/templates/users/delete_account_confirm.html:13
+msgid "Yes, delete my account"
+msgstr "Sim, apagar a minha conta"
+
+#: users/templates/users/login.html:4
+msgid "Login - RebootVerde"
+msgstr "Entrar - RebootVerde"
+
+#: users/templates/users/login.html:16
+msgid "Welcome Back"
+msgstr "Bem-vindo de Volta"
+
+#: users/templates/users/login.html:17
+msgid "Access your account to continue recycling."
+msgstr "Acede à tua conta para continuares a reciclar."
+
+#: users/templates/users/login.html:22
+msgid "User and/or password is incorrect."
+msgstr "Utilizador e/ou palavra-passe incorretos."
+
+#: users/templates/users/login.html:35
+msgid "Login into your account"
+msgstr "Inicia sessão na tua conta"
+
+#: users/templates/users/login.html:42
+msgid "Still don't have an account?"
+msgstr "Ainda não tens uma conta?"
+
+#: users/templates/users/login.html:44
+msgid "Create your account here"
+msgstr "Cria a tua conta aqui"
+
+#: users/templates/users/login_success.html:3
+msgid "Welcome Back!"
+msgstr "Bem-vindo de Volta!"
+
+#: users/templates/users/login_success.html:17
+msgid "Access Authorized!"
+msgstr "Acesso Autorizado!"
+
+#: users/templates/users/login_success.html:19
+msgid "Hi,"
+msgstr "Olá,"
+
+#: users/templates/users/login_success.html:19
+msgid "It's great to have you back on our mission for a more green planet."
+msgstr "É ótimo ter-te de volta na nossa missão por um planeta mais verde."
+
+#: users/templates/users/login_success.html:45
+msgid "Go to Dashboard"
+msgstr "Ir para o Painel"
+
+#: users/templates/users/login_success.html:52
+msgid "Redirecting you in a few seconds..."
+msgstr "A redirecionar em alguns segundos..."
+
+#: users/templates/users/logout.html:10
+msgid "Session ended successfully!"
+msgstr "Sessão terminada com sucesso!"
+
+#: users/templates/users/logout.html:14
+msgid "You have successfully logged out."
+msgstr "Terminaste a sessão com sucesso."
+
+#: users/templates/users/logout.html:22
+msgid "Login to your account"
+msgstr "Inicia sessão na tua conta"
+
+#: users/templates/users/password_change_done.html:3
+#: users/templates/users/password_reset_complete.html:3
+msgid "Password Changed"
+msgstr "Palavra-passe Alterada"
+
+#: users/templates/users/password_change_done.html:8
+msgid "Success!"
+msgstr "Sucesso!"
+
+#: users/templates/users/password_change_done.html:9
+msgid "Your password has been changed successfully."
+msgstr "A tua palavra-passe foi alterada com sucesso."
+
+#: users/templates/users/password_change_done.html:12
+msgid "Back to Profile"
+msgstr "Voltar ao Perfil"
+
+#: users/templates/users/password_change_form.html:3
+#: users/templates/users/password_change_form.html:7
+#: users/templates/users/profile.html:59
+msgid "Change Password"
+msgstr "Alterar Palavra-passe"
+
+#: users/templates/users/password_change_form.html:11
+msgid "Update Password"
+msgstr "Atualizar Palavra-passe"
+
+#: users/templates/users/password_reset_complete.html:16
+msgid "Done!"
+msgstr "Concluído!"
+
+#: users/templates/users/password_reset_complete.html:18
+msgid ""
+"Your password has been changed successfully. You can now access your account "
+"again."
+msgstr ""
+"A tua palavra-passe foi alterada com sucesso. Já podes aceder novamente à tua conta."
+
+#: users/templates/users/password_reset_complete.html:23
+msgid "Go to Login"
+msgstr "Ir para Entrar"
+
+#: users/templates/users/password_reset_complete.html:31
+msgid "We recommend not writing down your password in public places."
+msgstr "Recomendamos que não anotes a tua palavra-passe em locais públicos."
+
+#: users/templates/users/password_reset_form.html:4
+msgid "Recover Password"
+msgstr "Recuperar Palavra-passe"
+
+#: users/templates/users/password_reset_form.html:16
+msgid "Forgot your password?"
+msgstr "Esqueceste-te da palavra-passe?"
+
+#: users/templates/users/password_reset_form.html:17
+msgid "Enter your email below to receive recovery instructions."
+msgstr "Introduz o teu e-mail abaixo para receberes as instruções de recuperação."
+
+#: users/templates/users/password_reset_form.html:29
+msgid "Send Recovery Email"
+msgstr "Enviar E-mail de Recuperação"
+
+#: users/templates/users/password_reset_form.html:36
+msgid "Remember your password?"
+msgstr "Lembras-te da palavra-passe?"
+
+#: users/templates/users/password_reset_form.html:37
+msgid "Back to Login"
+msgstr "Voltar a Entrar"
+
+#: users/templates/users/password_reset_form.html:45
+msgid "Secure and encrypted recovery process."
+msgstr "Processo de recuperação seguro e encriptado."
+
+#: users/templates/users/password_reset_new_password.html:7
+#: users/templates/users/password_reset_new_password.html:13
+msgid "Set New Password"
+msgstr "Definir Nova Palavra-passe"
+
+#: users/templates/users/password_reset_new_password.html:8
+msgid "Enter your new password below."
+msgstr "Introduz a tua nova palavra-passe abaixo."
+
+#: users/templates/users/password_reset_verify.html:8
+msgid "Validate Code"
+msgstr "Validar Código"
+
+#: users/templates/users/password_reset_verify.html:9
+msgid "Enter the code sent to your email."
+msgstr "Introduz o código enviado para o teu e-mail."
+
+#: users/templates/users/password_reset_verify.html:13
+#: users/templates/users/verify_code.html:21
+msgid "Verify Code"
+msgstr "Verificar Código"
+
+#: users/templates/users/profile.html:3
+msgid "Profile"
+msgstr "Perfil"
+
+#: users/templates/users/profile.html:7
+msgid "Welcome"
+msgstr "Bem-vindo"
+
+#: users/templates/users/profile.html:10
+msgid "Your Information"
+msgstr "As tuas Informações"
+
+#: users/templates/users/profile.html:13
+msgid "NIF"
+msgstr "NIF"
+
+#: users/templates/users/profile.html:17
+msgid "Account Management"
+msgstr "Gestão de Conta"
+
+#: users/templates/users/profile.html:20
+msgid "Redeem Code"
+msgstr "Resgatar Código"
+
+#: users/templates/users/profile.html:54
+msgid "Unsubscribe from Newsletter"
+msgstr "Cancelar subscrição da Newsletter"
+
+#: users/templates/users/profile.html:56
+msgid "Subscribe to Newsletter"
+msgstr "Subscrever a Newsletter"
+
+#: users/templates/users/profile.html:58
+msgid "Update Email"
+msgstr "Atualizar E-mail"
+
+#: users/templates/users/profile.html:64
+msgid "My Orders"
+msgstr "As Minhas Encomendas"
+
+#: users/templates/users/profile.html:70
+msgid "Date"
+msgstr "Data"
+
+#: users/templates/users/profile.html:84
+msgid "View Invoice"
+msgstr "Ver Fatura"
+
+#: users/templates/users/profile.html:89
+msgid "You have not placed any orders yet."
+msgstr "Ainda não fizeste nenhuma encomenda."
+
+#: users/templates/users/redeem_code.html:5
+msgid "Redeem Code - RebootVerde"
+msgstr "Resgatar Código - RebootVerde"
+
+#: users/templates/users/redeem_code.html:17
+msgid "Redeem Your Code"
+msgstr "Resgatar o teu Código"
+
+#: users/templates/users/redeem_code.html:18
+msgid "Enter your promotional or recycling code to claim your rewards."
+msgstr "Introduz o teu código promocional ou de reciclagem para resgatares as tuas recompensas."
+
+#: users/templates/users/redeem_code.html:38
+msgid "Validate & Redeem"
+msgstr "Validar e Resgatar"
+
+#: users/templates/users/redeem_code.html:45
+msgid "Questions about how it works?"
+msgstr "Dúvidas sobre como funciona?"
+
+#: users/templates/users/redeem_code.html:47
+msgid "View FAQ"
+msgstr "Ver FAQ"
+
+#: users/templates/users/redeem_code.html:56
+msgid "Return to Profile"
+msgstr "Voltar ao Perfil"
+
+#: users/templates/users/register.html:3 users/templates/users/register.html:6
+#: users/templates/users/register.html:10
+msgid "Register"
+msgstr "Registar"
+
+#: users/templates/users/register_success.html:13
+msgid "Registration Complete!"
+msgstr "Registo Concluído!"
+
+#: users/templates/users/register_success.html:15
+msgid "Congratulations! Your account on"
+msgstr "Parabéns! A tua conta em"
+
+#: users/templates/users/register_success.html:15
+msgid "has been created successfully."
+msgstr "foi criada com sucesso."
+
+#: users/templates/users/register_success.html:21
+msgid ""
+"Now you can use the store and favorite locate collection points on the map."
+msgstr "Agora podes usar a loja e guardar nos favoritos os pontos de recolha no mapa."
+
+#: users/templates/users/register_success.html:27
+msgid "Login now"
+msgstr "Entrar agora"
+
+#: users/templates/users/register_success.html:30
+msgid "Return to home"
+msgstr "Voltar ao início"
+
+#: users/templates/users/verify_code.html:10
+msgid "Verify Your Email"
+msgstr "Verificar o teu E-mail"
+
+#: users/templates/users/verify_code.html:11
+msgid "We sent a 6-digit code to your inbox."
+msgstr "Enviámos um código de 6 dígitos para a tua caixa de correio."
+
+#: users/templates/users/verify_code.html:26
+msgid "Didn't receive it?"
+msgstr "Não recebeste?"
+
+#: users/templates/users/verify_code.html:26
+msgid "Resend code"
+msgstr "Reenviar código"

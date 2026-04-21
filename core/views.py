@@ -41,3 +41,6 @@ def contact_view(request):
 
 def learn(request):
     return render(request, 'learn.html')
+
+def statistics_view(request):
+    return render(request, 'statistics.html')

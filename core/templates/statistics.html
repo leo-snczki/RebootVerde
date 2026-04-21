@@ -1,0 +1,255 @@
+{% extends 'base.html' %} 
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    
+    <div class="row mb-5 text-center">
+        <div class="col-12">
+            <h1 class="display-4 fw-bold text-dark mb-3">{% trans "WEEE Recycling & Collection Statistics" %}</h1>
+            <p class="lead text-muted">{% trans "An overview of Waste Electrical and Electronic Equipment (WEEE) across Europe, highlighting critical areas for improvement." %}</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="alert alert-danger border-0 shadow-sm" role="alert">
+                <h4 class="alert-heading fw-bold"><i class="bi bi-exclamation-triangle-fill"></i> {% trans "Critical Alert: Portugal's Recycling Performance" %}</h4>
+                <p class="mb-0">{% trans "Portugal is currently facing a severe deficit in electronic waste management compared to the rest of the European Union. Urgent action is required to meet environmental targets." %}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border-danger shadow hover-effect">
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <h6 class="text-uppercase text-danger fw-bold mb-3">{% trans "Collection Rate" %}</h6>
+                    <h1 class="display-3 fw-bold text-dark">28.3%</h1>
+                    <p class="text-muted mb-3">{% trans "Share of WEEE collected" %}</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-danger fs-6 mb-2">{% trans "Target: 65%" %}</span>
+                        <p class="small text-muted mb-0">{% trans "Portugal falls massively short of the EU 65% target, well below the EU average of 37.5%." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border-danger shadow hover-effect">
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <h6 class="text-uppercase text-danger fw-bold mb-3">{% trans "Collected Per Inhabitant" %}</h6>
+                    <h1 class="display-3 fw-bold text-dark">5.8 <span class="fs-4">kg</span></h1>
+                    <p class="text-muted mb-3">{% trans "WEEE collected per capita" %}</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning text-dark fs-6 mb-2">{% trans "EU Average: 11.6 kg" %}</span>
+                        <p class="small text-muted mb-0">{% trans "Portugal collects exactly half of the European average per inhabitant." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+            <div class="card h-100 border-danger bg-danger text-white shadow hover-effect">
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <h6 class="text-uppercase fw-bold mb-3 text-white-50">{% trans "European Ranking" %}</h6>
+                    <h1 class="display-3 fw-bold">3rd</h1>
+                    <p class="mb-3 fs-5">{% trans "Worst in the EU" %}</p>
+                    <div class="mt-auto">
+                        <p class="small mb-0 text-white-50">{% trans "Portugal ranks near the absolute bottom for WEEE collection, only performing better than Malta (5.7 kg) and Cyprus (3.8 kg)." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold mb-4">{% trans "European Overview & Trends (2012 - 2023)" %}</h2>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-xl-8 col-lg-12">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{% trans "WEEE Development in the EU (1000 Tonnes)" %}</h5>
+                    <p class="text-muted small mb-4">{% trans "Gap between equipment put on the market and what is actually collected and treated." %}</p>
+                    <div class="chart-container" style="position: relative; height:400px; width:100%">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-lg-12">
+            <div class="card border-0 shadow-sm h-100 bg-light">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-4">{% trans "Growth (2012 - 2023)" %}</h5>
+                    
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-1">{% trans "Total put on the market" %}</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0 me-2">+89%</h3>
+                            <span class="text-success"><i class="bi bi-arrow-up-right"></i></span>
+                        </div>
+                        <small class="text-muted">{% trans "From 7,627 to 14,447 tonnes" %}</small>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-1">{% trans "Total Collected" %}</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0 me-2">+75%</h3>
+                            <span class="text-success"><i class="bi bi-arrow-up-right"></i></span>
+                        </div>
+                        <small class="text-muted">{% trans "From 2,971 to 5,206 tonnes" %}</small>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-1">{% trans "Total Reused & Recycled" %}</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0 me-2">+77%</h3>
+                            <span class="text-success"><i class="bi bi-arrow-up-right"></i></span>
+                        </div>
+                        <small class="text-muted">{% trans "From 2,417 to 4,281 tonnes" %}</small>
+                    </div>
+
+                    <div class="alert alert-info mt-auto mb-0 small">
+                        {% trans "While recycling grew by 77%, production grew by 89%, meaning the total amount of uncollected waste is increasing." %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{% trans "WEEE Collected per Inhabitant (kg) - Country Comparison" %}</h5>
+                    <p class="text-muted small mb-4">{% trans "Notice the stark contrast between top performers like Bulgaria/Czechia and struggling nations like Portugal." %}</p>
+                    <div class="chart-container" style="position: relative; height:450px; width:100%">
+                        <canvas id="countriesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    .hover-effect {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-effect:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const ctxTrend = document.getElementById('trendChart').getContext('2d');
+        const trendChart = new Chart(ctxTrend, {
+            type: 'line',
+            data: {
+                labels: ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+                datasets: [
+                    {
+                        label: '{% trans "Total put on the market" %}',
+                        data: [7627, 7283, 7549, 8038, 8512, 9075, 10288, 11214, 12403, 13736, 14436, 14447],
+                        borderColor: '#0d6efd',
+                        backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: '{% trans "Total collected" %}',
+                        data: [2971, 3032, 2963, 3225, 3578, 3759, 3994, 4516, 4719, 5058, 4988, 5206],
+                        borderColor: '#ffc107',
+                        borderWidth: 3,
+                        tension: 0.3
+                    },
+                    {
+                        label: '{% trans "Total reused and recycled" %}',
+                        data: [2417, 2508, 2426, 2606, 3012, 3158, 3262, 3673, 3925, 4130, 4026, 4281],
+                        borderColor: '#198754',
+                        borderWidth: 3,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        const ctxCountries = document.getElementById('countriesChart').getContext('2d');
+        
+        const countriesData = [
+            { country: 'BG', value: 17.9 }, { country: 'CZ', value: 16.8 }, { country: 'AT', value: 15.9 },
+            { country: 'FR', value: 15.2 }, { country: 'PL', value: 15.2 }, { country: 'DK', value: 15.0 },
+            { country: 'BE', value: 14.4 }, { country: 'FI', value: 13.2 }, { country: 'NL', value: 12.3 },
+            { country: 'IE', value: 12.0 }, { country: 'EU Avg', value: 11.6, isEU: true }, { country: 'SK', value: 10.9 },
+            { country: 'DE', value: 10.9 }, { country: 'LV', value: 10.4 }, { country: 'ES', value: 9.3 },
+            { country: 'LT', value: 9.2 }, { country: 'EE', value: 9.1 }, { country: 'LU', value: 8.8 },
+            { country: 'IT', value: 8.6 }, { country: 'HR', value: 8.3 }, { country: 'HU', value: 8.2 },
+            { country: 'EL', value: 8.1 }, { country: 'SI', value: 7.8 }, { country: 'PT', value: 5.8, isPT: true },
+            { country: 'MT', value: 5.7 }, { country: 'CY', value: 3.8 }
+        ];
+
+        const backgroundColors = countriesData.map(d => {
+            if (d.isPT) return '#dc3545'; 
+            if (d.isEU) return '#ffc107';
+            return '#0d6efd';
+        });
+
+        const countriesChart = new Chart(ctxCountries, {
+            type: 'bar',
+            data: {
+                labels: countriesData.map(d => d.country),
+                datasets: [{
+                    label: '{% trans "WEEE Collected (kg per inhabitant)" %}',
+                    data: countriesData.map(d => d.value),
+                    backgroundColor: backgroundColors,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) { label += ': '; }
+                                if (context.parsed.y !== null) { label += context.parsed.y + ' kg'; }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'kg / inhabitant' } },
+                    x: { ticks: { autoSkip: false } }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

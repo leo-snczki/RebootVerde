@@ -32,11 +32,6 @@
             display: flex !important;
             justify-content: space-between;
         }
-        .navbar-nav.mx-auto {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
     }
 
     /* Botões da Direita */
@@ -72,11 +67,16 @@
         <li class="nav-item"><a class="nav-link px-3" href="{% url 'maps' %}">{% trans "EcoMap" %}</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="{% url 'contact' %}">{% trans "Talk" %}</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="{% url 'learn' %}">{% trans "Learn" %}</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="{% url 'statistics' %}">{% trans "Stats" %}</a></li>
       </ul>
 
       <div class="d-flex align-items-center gap-2 ms-auto">
 
         {% if user.is_authenticated %}
+
+          <a href="{% url 'shop:cart_detail' %}" class="nav-link text-dark position-relative me-2">
+              <i class="bi bi-cart3" style="font-size: 1.2rem;"></i>
+          </a>
 
           <a class="btn btn-link text-dark fw-bold small btn-nav-auth"
              href="{% url 'profile' %}">

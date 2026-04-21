@@ -19,8 +19,8 @@
                 <tr>
                     <td>{{ product.name }}</td>
                     <td>{{ item.quantity }}</td>
-                    <td>€{{ item.price }}</td>
-                    <td>€{{ item.total_price }}</td>
+                    <td>PRV{{ item.price }}</td>
+                    <td>PRV{{ item.total_price }}</td>
                     <td>
                         <a href="{% url 'shop:cart_remove' product.id %}" class="btn btn-sm btn-outline-danger">{% trans "Remove" %}</a>
                     </td>
@@ -31,7 +31,7 @@
             {% endfor %}
             <tr class="fw-bold fs-5">
                 <td colspan="3">{% trans "Total" %}</td>
-                <td colspan="2">€{{ cart.get_total_price }}</td>
+                <td colspan="2">PRV{{ cart.get_total_price }}</td>
             </tr>
         </tbody>
     </table>

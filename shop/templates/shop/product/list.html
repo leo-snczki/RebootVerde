@@ -58,7 +58,7 @@
                         <h5 class="card-title fw-bold">{{ product.name }}</h5>
                         <p class="card-text text-muted small">{{ product.description|truncatechars:80 }}</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="h5 mb-0 fw-bold">€{{ product.price }}</span>
+                            <span class="h5 mb-0 fw-bold">PRV{{ product.price }}</span>
                             {% if user.is_authenticated %}
                             <form action="{% url 'shop:cart_add' product.id %}" method="post">
                                 {% csrf_token %}

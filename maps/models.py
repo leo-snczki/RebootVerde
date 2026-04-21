@@ -1,6 +1,8 @@
 from django.contrib.gis.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
+import uuid
+from django.conf import settings
 
 class EwastePin(models.Model):
     name = models.CharField(max_length=100)
@@ -11,6 +13,7 @@ class EwastePin(models.Model):
     locality = models.ForeignKey('Locality', on_delete=models.CASCADE)
     types_of_establishment = models.ForeignKey('Establishment', on_delete=models.SET_NULL, null=True)
     official_link = models.URLField(max_length=255, null=True, blank=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name="ewaste_pins")
     
     geom = models.PointField(srid=4326)
 
@@ -19,6 +22,7 @@ class EwastePin(models.Model):
     
 class AcceptedEwaste(models.Model):
     type = models.CharField(max_length=255)
+    points = models.PositiveIntegerField(default=0)
     
     def __str__(self):
         return self.type or "E-waste type"
@@ -101,3 +105,48 @@ class FavoritePoint(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.ewaste_pin}"
+
+User = settings.AUTH_USER_MODEL
+
+class RecyclingCode(models.Model):
+    code = models.CharField(max_length=12, unique=True, editable=False)
+
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    ewaste_pin = models.ForeignKey("EwastePin", on_delete=models.CASCADE)
+
+    waste_type = models.ForeignKey(AcceptedEwaste, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    points = models.PositiveIntegerField()
+
+    is_used = models.BooleanField(default=False)
+    used_by = models.ForeignKey(
+        User,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="used_codes"
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    used_at = models.DateTimeField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.code:
+            self.code = uuid.uuid4().hex[:10].upper()
+
+        if self.waste_type:
+            self.points = self.waste_type.points * self.quantity
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.code
+
+
+class RedemptionLog(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    code = models.OneToOneField(RecyclingCode, on_delete=models.CASCADE)
+
+    points_earned = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)    

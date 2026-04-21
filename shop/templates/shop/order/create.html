@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
-
+{% load i18n %}
 {% block title %}{% trans "Checkout" %}{% endblock %}
 
 {% block content %}
@@ -29,13 +29,13 @@
                     {% for item in cart %}
                         <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
                             {{ item.quantity }}x {{ item.product.name }}
-                            <span>€{{ item.total_price }}</span>
+                            <span>PRV{{ item.total_price }}</span>
                         </li>
                     {% endfor %}
                 </ul>
                 <div class="d-flex justify-content-between fw-bold fs-5 p-2">
                     <span>{% trans "Total to pay" %}:</span>
-                    <span>€{{ cart.get_total_price }}</span>
+                    <span>PRV{{ cart.get_total_price }}</span>
                 </div>
             </div>
             <a href="{% url 'shop:cart_detail' %}" class="btn btn-link mt-3 text-secondary text-decoration-none">

@@ -8,6 +8,10 @@ from .models import OrderItem
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
+from users.models import UserPoints
+from decimal import Decimal
+from django.contrib import messages
+from django.db import transaction
 
 
 
@@ -62,39 +66,59 @@ def cart_detail(request):
 @login_required
 def order_create(request):
     cart = Cart(request)
+    
+    if len(cart) == 0:
+        return redirect('shop:product_list')
+
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
-            order = form.save(commit=False)
-            if request.user.is_authenticated:
-                order.user = request.user
-            order.save()
+            total_price = cart.get_total_price()
+            points_to_use = int(total_price)
             
-            for item in cart:
-                OrderItem.objects.create(
-                    order=order,
-                    product=item['product'],
-                    price=item['price'],
-                    quantity=item['quantity']
-                )
+            wallet, _ = UserPoints.objects.get_or_create(user=request.user)
             
-            
-            cart.clear()
+            if wallet.points < points_to_use:
+                messages.error(request, "Não tens pontos suficientes para esta compra.")
+                return redirect('shop:cart_detail')
 
-            
-            subject = f'Fatura da sua encomenda #{order.id} - Reboot Verde'
-            message = f'Olá {order.first_name}, obrigado pela sua compra!'
-            html_message = render_to_string('shop/order/email_fatura.html', {'order': order})
-            
-            send_mail(
-                subject,
-                message,
-                'rebootverde123@gmail.com',
-                [order.email],
-                html_message=html_message
-            )
+            try:
+                with transaction.atomic():
+                    order = form.save(commit=False)
+                    order.user = request.user
+                    order.save()
 
-            return render(request, 'shop/order/created.html', {'order': order})
+                    for item in cart:
+                        OrderItem.objects.create(
+                            order=order,
+                            product=item['product'],
+                            price=item['price'],
+                            quantity=item['quantity']
+                        )
+                    
+                    wallet.subtract_points(points_to_use)
+                    
+                    cart.clear()
+
+                try:
+                    subject = f'Fatura da sua encomenda #{order.id} - Reboot Verde'
+                    html_message = render_to_string('shop/order/email_fatura.html', {'order': order})
+                    send_mail(
+                        subject,
+                        f'Olá {order.first_name}, obrigado pela sua compra!',
+                        'rebootverde123@gmail.com',
+                        [order.email],
+                        html_message=html_message,
+                        fail_silently=True
+                    )
+                except Exception:
+                    pass
+
+                return render(request, 'shop/order/created.html', {'order': order})
+
+            except Exception as e:
+                messages.error(request, "Ocorreu um erro ao processar a sua encomenda. Tente novamente.")
     else:
         form = OrderCreateForm()
+    
     return render(request, 'shop/order/create.html', {'cart': cart, 'form': form})

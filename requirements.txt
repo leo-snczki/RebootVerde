@@ -4,3 +4,8 @@ django-environ
 django-leaflet
 psycopg[binary]
 Pillow==10.2.0
+django-otp
+django-two-factor-auth
+qrcode
+reportlab==4.1.0
+

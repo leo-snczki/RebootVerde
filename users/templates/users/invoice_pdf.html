@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        @page {
+            size: a4 portrait;
+            margin: 2cm;
+        }
+        body {
+            font-family: Helvetica, sans-serif;
+            color: #333;
+            line-height: 1.4;
+        }
+        .header-table {
+            width: 100%;
+            border-bottom: 2px solid #1b4332;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .invoice-title {
+            color: #1b4332;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .info-section {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .info-box {
+            vertical-align: top;
+            width: 50%;
+        }
+        .label {
+            font-weight: bold;
+            color: #1b4332;
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .items-table th {
+            background-color: #1b4332;
+            color: white;
+            padding: 8px;
+            text-align: left;
+            font-size: 12px;
+        }
+        .items-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #eee;
+            font-size: 11px;
+        }
+        .total-section {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .total-amount {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1b4332;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 9px;
+            color: #777;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <table class="header-table">
+        <tr>
+            <td>
+                <div class="invoice-title">REBOOTVERDE</div>
+                <span>Fatura Eletrónica #{{ order.id }}</span>
+            </td>
+            <td style="text-align: right;">
+                <p>Data: {{ order.created|date:"d/m/Y" }}<br>
+                Estado: {% if order.paid %}Pago{% else %}Pendente{% endif %}</p>
+            </td>
+        </tr>
+    </table>
+
+    <table class="info-section">
+        <tr>
+            <td class="info-box">
+                <div class="label">Faturado a:</div>
+                <strong>{{ order.first_name }} {{ order.last_name }}</strong><br>
+                Email: {{ order.email }}<br>
+                NIF: {{ order.nif|default:"Consumidor Final" }}
+            </td>
+            <td class="info-box">
+                <div class="label">Morada de Envio:</div>
+                {{ order.address }}<br>
+                {{ order.postal_code }}, {{ order.city }}
+            </td>
+        </tr>
+    </table>
+
+    <table class="items-table">
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Produto</th>
+                <th style="text-align: center;">Qtd</th>
+                <th style="text-align: right;">Preço Unit.</th>
+                <th style="text-align: right;">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.items.all %}
+            <tr>
+                <td>{{ item.product.category.name }}</td>
+                <td>
+                    <strong>{{ item.product.name }}</strong><br>
+                    <small style="color: #666;">{{ item.product.description|truncatechars:50 }}</small>
+                </td>
+                <td style="text-align: center;">{{ item.quantity }}</td>
+                <td style="text-align: right;">{{ item.price }}€</td>
+                <td style="text-align: right;">{{ item.get_cost }}€</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="total-section">
+        <table style="width: 30%; margin-left: 70%;">
+            <tr>
+                <td style="text-align: left;">Subtotal:</td>
+                <td style="text-align: right;">{{ order.get_total_cost }}€</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;" class="total-amount">TOTAL:</td>
+                <td style="text-align: right;" class="total-amount">{{ order.get_total_cost }}€</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        RebootVerde Lda - Obrigado pela sua preferência!<br>
+        Documento processado por computador.
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0" style="border-radius: 20px;">
+                <div class="card-body p-5 text-center">
+                    
+                    {% if is_new_device %}
+                        <h2 class="fw-bold text-success mb-3">Segurança Máxima</h2>
+                        <p class="text-muted">Escaneie o código abaixo com o <strong>Google Authenticator</strong> ou <strong>Authy</strong> no seu telemóvel.</p>
+                        
+                        <div class="bg-light p-3 d-inline-block rounded shadow-sm my-4">
+                            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code 2FA" class="img-fluid" style="width: 200px; height: 200px;">
+                        </div>
+                        
+                        <p class="small text-secondary mb-4">Após escanear, digite o código de 6 dígitos que aparece na aplicação para confirmar.</p>
+                    
+                    {% else %}
+                        <div class="mb-4">
+                            <i class="bi bi-shield-check text-primary" style="font-size: 4rem;"></i>
+                        </div>
+                        <h2 class="fw-bold mb-3">Verificação de Acesso</h2>
+                        <p class="text-muted">Abra a sua app de autenticação e insira o código de segurança atual.</p>
+                    {% endif %}
+
+                    <form method="post" autocomplete="off">
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            <input type="text" 
+                                   name="token" 
+                                   class="form-control form-control-lg text-center fw-bold letter-spacing-5" 
+                                   maxlength="6" 
+                                   placeholder="000000" 
+                                   pattern="\d{6}" 
+                                   inputmode="numeric"
+                                   required 
+                                   autofocus>
+                        </div>
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-danger border-0 py-2 mb-4">
+                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill py-3 fw-bold shadow-sm">
+                            {% if is_new_device %}Ativar e Entrar{% else %}Confirmar e Entrar{% endif %}
+                        </button>
+                    </form>
+
+                    <div class="mt-4">
+                        <a href="{% url 'login' %}" class="text-decoration-none small text-muted">
+                            <i class="bi bi-arrow-left me-1"></i> Voltar ao início
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .letter-spacing-5 {
+        letter-spacing: 10px;
+        font-size: 1.8rem;
+    }
+    .letter-spacing-5::placeholder {
+        letter-spacing: normal;
+        font-size: 1.2rem;
+    }
+</style>
+{% endblock %}

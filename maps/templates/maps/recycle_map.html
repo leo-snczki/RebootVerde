@@ -141,6 +141,51 @@
         </div>
     </div>
 
+<div class="modal fade" id="pinDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-pin-name"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>{% trans "Description:" %}</strong> <span id="modal-pin-desc"></span></p>
+                <p><strong>{% trans "Address:" %}</strong> <span id="modal-pin-address"></span></p>
+                <p><strong>{% trans "Postal Code:" %}</strong> <span id="modal-pin-cp"></span></p>
+                
+                <hr>
+                <h6>{% trans "Opening Hours:" %}</h6>
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Day" %}</th>
+                            <th>{% trans "Open" %}</th>
+                            <th>{% trans "Close" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-pin-hours-body">
+                        </tbody>
+                </table>
+
+                <hr>
+                <h6>{% trans "E-waste Accepted:" %}</h6>
+                <ul id="modal-pin-categories"></ul>
+                
+                <div id="modal-pin-link-container" style="display: none;">
+                    <a id="modal-pin-link" href="#" target="_blank" class="btn btn-sm btn-link p-0">{% trans "Official Website" %}</a>
+                </div>
+
+                <hr>
+                <div class="d-grid gap-2" id="modal-actions-container">
+                    <a id="modal-google-maps-link" href="#" target="_blank" class="btn btn-sm btn-outline-primary">
+                        <i class="bi bi-geo-alt"></i> {% trans "Open on Google Maps" %}
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 {% leaflet_map "map" callback="window.initMap" %}
@@ -213,6 +258,9 @@
                                 ${props.address ?? "Morada não especificada"}<br>
                             <small>${props.postal_code ?? "Código postal não especificado"}</small><br>
                             <div class="mt-2 d-flex flex-column gap-2"> 
+                                <button class="btn btn-sm btn-info text-white mt-2 w-100" onclick="showPinDetail(${feature.id})">
+                                    {% trans "Show Details" %}
+                                </button>
                                 <button
                                 onclick="toggleFavorite(${pointId}, this)"
                                 class="btn btn-sm ${btnClass}"
@@ -366,6 +414,56 @@
             }
         })
         .catch(error => console.error('Erro:', error));
+    }
+
+function showPinDetail(pinId) {
+    document.getElementById('modal-pin-hours-body').innerHTML = '<tr><td colspan="3" class="text-center">A carregar...</td></tr>';
+    
+    let url = "{% url 'pin-details-api' pin_id=0 %}".replace('0', pinId);
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            
+            const googleUrl = `https://www.google.com/maps/search/?api=1&query=${data.latitude},${data.longitude}`;
+
+            document.getElementById('modal-pin-name').innerText = data.name;
+            document.getElementById('modal-pin-desc').innerText = data.description || "Sem descrição";
+            document.getElementById('modal-pin-address').innerText = data.address;
+            document.getElementById('modal-pin-cp').innerText = data.postal_code;
+            document.getElementById('modal-google-maps-link').href = googleUrl;
+
+            const linkDiv = document.getElementById('modal-pin-link-container');
+            if (data.official_link) {
+                document.getElementById('modal-pin-link').href = data.official_link;
+                linkDiv.style.display = 'block';
+            } else {
+                linkDiv.style.display = 'none';
+            }
+
+            const catList = document.getElementById('modal-pin-categories');
+            catList.innerHTML = data.accepted_ewaste.map(c => `<li>${c}</li>`).join('') || '<li>N/A</li>';
+
+            const hoursBody = document.getElementById('modal-pin-hours-body');
+            if (data.opening_hours.length > 0) {
+                hoursBody.innerHTML = data.opening_hours.map(h => `
+                    <tr>
+                        <td>${h.day}</td>
+                        <td>${h.open}</td>
+                        <td>${h.close}</td>
+                    </tr>
+                `).join('');
+            } else {
+                hoursBody.innerHTML = '<tr><td colspan="3" class="text-center">Horário indisponível</td></tr>';
+            }
+
+            var myModal = new bootstrap.Modal(document.getElementById('pinDetailModal'));
+            myModal.show();
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Erro ao carregar detalhes.");
+        });
     }
 
 </script>

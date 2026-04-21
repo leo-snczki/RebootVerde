@@ -133,3 +133,30 @@ def toggle_favorite(request, point_id):
         return JsonResponse({'status': 'unfavorited'})
 
     return JsonResponse({'status': 'favorited'})
+
+def api_pin_details(request, pin_id):
+    pin = get_object_or_404(EwastePin, id=pin_id)
+    
+    # Buscar horários
+    horarios = pin.opening_hours.all()
+    horarios_data = [
+        {
+            'day': h.get_weekday_display(),
+            'open': h.open_time.strftime('%H:%M'),
+            'close': h.close_time.strftime('%H:%M')
+        } for h in horarios
+    ]
+    
+    # Buscar categorias (nomes)
+    categorias = [cat.type for cat in pin.accepted_ewaste.all()]
+
+    return JsonResponse({
+        'name': pin.name,
+        'description': pin.description,
+        'address': pin.address,
+        'postal_code': pin.postal_code,
+        'official_link': pin.official_link,
+        'accepted_ewaste': categorias,
+        'opening_hours': horarios_data,
+        'establishment': pin.types_of_establishment.type if pin.types_of_establishment else ""
+    })

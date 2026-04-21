@@ -1,85 +1,319 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load i18n %} {% block title %}{% trans "Home - Rebootverde: The future of e-waste" %}{% endblock %}
+{% load i18n %} 
+
+{% block title %}{% trans "Home - RebootVerde: Tech for a Greener Future" %}{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row align-items-center py-5 my-md-5">
-        
+<div class="container-fluid position-relative overflow-hidden mb-5">
+    <div class="row align-items-center min-vh-75 py-5">
         <div class="col-lg-6 mb-5 mb-lg-0">
-            <div class="pe-lg-5">
-                <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 mb-3 fw-bold shadow-sm">
-                    <i class="bi bi-cpu me-2"></i>{% trans "E-WASTE REVOLUTION" %}
+            <div class="pe-lg-5 animate-fade-in">
+                <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 mb-3 fw-bold shadow-sm border border-success border-opacity-25">
+                    <i class="bi bi-cpu me-2"></i>{% trans "LEADER IN E-WASTE SOLUTIONS" %}
                 </span>
                 
                 <h1 class="display-3 fw-bold text-dark mb-4 lh-sm">
-                    <span class="text-success position-relative">Reboot<span class="position-absolute bottom-0 start-0 w-100 bg-success opacity-25" style="height: 10px; border-radius: 5px;"></span></span><br> {% trans "the future of the planet." %}
+                    <span class="text-success">Reboot</span> {% trans "the planet's digital cycle." %}
                 </h1>
                 
-                <p class="lead text-muted mb-5 fs-5 shadow-sm p-3 bg-white rounded-3 border-start border-success border-3">
+                <p class="lead text-muted mb-5 fs-5 border-start border-success border-4 ps-4">
                     {% blocktrans trimmed %}
-                    A <strong class="text-dark">RebootVerde</strong> transforme your electronic waste into opportunities. Recycle, trade, earn benefits and help build a circular technology economy.
+                    At <strong>RebootVerde</strong>, we bridge the gap between technology and sustainability. 
+                    Locate recycling points, earn rewards, and join the circular economy today.
                     {% endblocktrans %}
                 </p>
                 
                 <div class="d-grid gap-3 d-md-flex align-items-center">
-                    <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow-lg hover-lift">
-                        <i class="bi bi-person-plus me-2"></i>{% trans "Join us" %}
+                    <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow-lg hover-up">
+                        {% trans "Start Recycling" %}
                     </a>
-                    <a href="{% url 'game' %}" class="btn btn-outline-dark btn-lg px-5 rounded-pill hover-lift">
-                        <i class="bi bi-controller me-2"></i>{% trans "Play & Learn" %}
+                    <a href="{% url 'learn' %}" class="btn btn-outline-dark btn-lg px-5 rounded-pill hover-up">
+                        {% trans "Learn More" %}
                     </a>
-                </div>
-                
-                <div class="mt-5 d-flex align-items-center gap-3 text-muted small">
-                    <i class="bi bi-shield-check text-success h3 mb-0"></i>
-                    <span>{% trans "certified solution for electronic waste disposal." %}</span>
                 </div>
             </div>
         </div>
         
         <div class="col-lg-6 text-center position-relative">
-            
-            <div class="position-absolute top-50 start-50 translate-middle" style="z-index: 1; opacity: 0.2;">
-                <i class="bi bi-recycle text-success" style="font-size: 25rem;"></i>
-            </div>
-            
-            <div class="position-relative p-5" style="z-index: 2;">
-                
-                <div class="card shadow-lg border-0 p-3 position-absolute bg-white rounded-4 rotate-n15 hover-lift" 
-                     style="top: 10%; left: -10%; width: 180px;">
-                    <i class="bi bi-phone text-muted display-4"></i>
-                    <p class="small text-muted mb-0 mt-2 fw-bold">{% trans "Old Smartphones" %}</p>
-                    <span class="badge bg-danger rounded-pill">{% trans "Dispose" %}</span>
+            <div class="position-relative p-5">
+                <div class="card shadow-lg border-0 p-3 position-absolute bg-white rounded-4 rotate-n15 hover-up d-none d-md-block" 
+                     style="top: 0%; left: 0%; width: 160px; z-index: 3;">
+                    <i class="bi bi-laptop text-success h1"></i>
+                    <p class="small text-muted mb-0 fw-bold">{% trans "Laptop" %}</p>
+                    <span class="badge bg-success rounded-pill">{% trans "+50 Points" %}</span>
                 </div>
                 
-                <div class="card shadow-lg border-0 p-3 position-absolute bg-success rounded-4 rotate-15 hover-lift" 
-                     style="bottom: 15%; right: -5%; width: 180px;">
-                    <i class="bi bi-coin text-white display-4"></i>
-                    <p class="small text-white-50 mb-0 mt-2 fw-bold">{% trans "Turn into Benefits" %}</p>
-                    <span class="badge bg-white text-success rounded-pill">{% trans "Recycle" %}</span>
+                <div class="hero-circle shadow-lg rounded-circle d-inline-block p-4 border border-5 border-success border-opacity-10">
+                    <div class="bg-success bg-opacity-10 rounded-circle w-100 h-100 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-recycle text-success display-1 animate-spin-slow"></i>
+                    </div>
                 </div>
-
-                <div class="bg-white shadow-lg rounded-circle d-inline-block p-4 position-relative border border-5 border-success border-opacity-25" 
-                     style="width: 320px; height: 320px;">
-                    <div class="bg-success bg-opacity-10 rounded-circle w-100 h-100 d-flex align-items-center justify-content-center overflow-hidden">
-                        <i class="bi bi-tree-fill text-success" style="font-size: 10rem;"></i>
-                        </div>
-                    
-                    <div class="position-absolute top-0 start-50 translate-middle-x bg-success rounded-circle shadow" style="width: 20px; height: 20px; margin-top: -10px;"></div>
-                    <div class="position-absolute bottom-0 start-0 bg-success rounded-circle shadow" style="width: 15px; height: 15px; margin-left: 20px; margin-bottom: 20px;"></div>
-                </div>
-
             </div>
         </div>
-        
+    </div>
+</div>
+
+<div class="row g-4 py-5">
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm p-4 text-center hover-up bg-white">
+            <div class="bg-secondary bg-opacity-10 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                <i class="bi bi-geo-alt text-primary fs-3"></i>
+            </div>
+            <h4 class="fw-bold">{% trans "EcoMap" %}</h4>
+            <p class="text-muted small">{% trans "Discover our collection centers across Portugal using our interactive map." %}</p>
+            <a href="{% url 'maps' %}" class="btn btn-sm btn-outline-primary rounded-pill mt-auto">{% trans "Open Map" %}</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm p-4 text-center hover-up bg-white border-top border-success border-4">
+            <div class="bg-success bg-opacity-10 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                <i class="bi bi-bag-check text-success fs-3"></i>
+            </div>
+            <h4 class="fw-bold">{% trans "Marketplace" %}</h4>
+            <p class="text-muted small">{% trans "Trade your recycling points for products." %}</p>
+            <a href="{% url 'shop:product_list' %}" class="btn btn-sm btn-outline-success rounded-pill mt-auto">{% trans "Visit Shop" %}</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm p-4 text-center hover-up bg-white">
+            <div class="bg-warning bg-opacity-10 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                <i class="bi bi-controller text-warning fs-3"></i>
+            </div>
+            <h4 class="fw-bold">{% trans "EcoGame" %}</h4>
+            <p class="text-muted small">{% trans "Learn while playing! Our game teaches you how to sort waste correctly." %}</p>
+            <a href="{% url 'game' %}" class="btn btn-sm btn-outline-warning rounded-pill mt-auto">{% trans "Play Now" %}</a>
+        </div>
+    </div>
+</div>
+
+<div class="row g-0 my-5 rounded-5 overflow-hidden shadow-sm bg-white border">
+    <div class="col-lg-6 px-0 d-none d-lg-block position-relative">
+    <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="z-index: 2; pointer-events: none;"></div>
+    
+    <img src="https://www.globalts.com/images/easyblog_shared/September_2023/09-27-23/recyclingElectronics_53901632_400.jpg" 
+         class="w-100 h-100" 
+         style="object-fit: cover; min-height: 450px; display: block;" 
+         alt="Reboot Verde Mission">
+    </div>
+    <div class="col-lg-6 p-5 d-flex flex-column justify-content-center">
+        <div class="ps-lg-4">
+            <h6 class="text-success fw-bold text-uppercase tracking-wider mb-3">
+                {% trans "More than just recycling" %}
+            </h6>
+            <h2 class="display-5 fw-bold text-dark mb-4">
+                {% trans "A digital bridge to a cleaner world." %}
+            </h2>
+            <p class="text-muted fs-5 mb-4">
+                {% trans "RebootVerde was born from a simple question: What if your old tech could power a better future? We've built a platform that rewards environmental responsibility, turning electronic waste into opportunities for the circular economy." %}
+            </p>
+            
+            <div class="row g-4 mb-5">
+                <div class="col-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check text-success fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-0">{% trans "Certified" %}</h6>
+                            <small class="text-muted">{% trans "Safe handling" %}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-people-fill text-success fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-0">{% trans "Community" %}</h6>
+                            <small class="text-muted">{% trans "Join the movement" %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="{% url 'about' %}" class="btn btn-dark btn-lg px-4 rounded-pill shadow-sm hover-up">
+                {% trans "Learn more" %} <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row g-5 py-5 mx-0">
+    <div class="col-lg-5">
+        <h2 class="fw-bold mb-4">{% trans "Common Questions" %}</h2>
+        <p class="text-muted">{% trans "Everything you need to know about starting your sustainable journey with RebootVerde." %}</p>
+        <div class="card border-0 shadow-sm overflow-hidden rounded-4 position-relative" style="background: linear-gradient(145deg, #ffffff, #f1f8f5);">
+            <div class="position-absolute top-0 start-0 h-100 bg-success" style="width: 6px;"></div>
+            
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3">
+                        <i class="bi bi-lightbulb-fill text-success fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-0">{% trans "Did you know?" %}</h5>
+                </div>
+
+                <p class="text-muted small mb-4">
+                    {% trans "For every million cell phones we recycle, we recover a treasure of raw materials:" %}
+                </p>
+
+                <div class="row g-2">
+                    <div class="col-6">
+                        <div class="p-2 border rounded-3 bg-white d-flex align-items-center">
+                            <span class="badge bg-warning text-dark me-2">Au</span>
+                            <small class="fw-bold">34 kgs {% trans "Gold" %}</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-2 border rounded-3 bg-white d-flex align-items-center">
+                            <span class="badge bg-secondary text-white me-2">Ag</span>
+                            <small class="fw-bold">350 kgs {% trans "Silver" %}</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-2 border rounded-3 bg-white d-flex align-items-center">
+                            <span class="badge bg-danger bg-opacity-75 text-white me-2">Cu</span>
+                            <small class="fw-bold">15,8t {% trans "Copper" %}</small>
+                        </div>
+                        <!-- comment eu sla se isso ta certo eu converti do site da epa -->
+                    </div>
+                    <div class="col-6">
+                        <div class="p-2 border rounded-3 bg-white d-flex align-items-center">
+                            <span class="badge bg-info text-dark me-2">Pd</span>
+                            <small class="fw-bold">14,96 kgs {% trans "Palladium" %}</small>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://www.epa.gov/recycle/electronics-donation-and-recycling" class="btn btn-outline-primary btn-sm mt-3">
+                    {% trans "Learn from EPA" %}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="accordion accordion-flush" id="faqAccordion">
+
+            <div class="accordion-item border-bottom">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                        {% trans "What happens to my data on recycled devices?" %}
+                    </button>
+                </h2>
+                <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted small">
+                        {% trans "Our partners follow international data destruction standards. We always recommend a factory reset before dropping off your device for peace of mind." %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item border-bottom">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                        {% trans "How do I earn and spend points?" %}
+                    </button>
+                </h2>
+                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted small">
+                        {% trans "When you recycle at a verified point, you receive a code to register your impact. These points can be used in our Marketplace for discounts on eco-friendly products." %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item border-bottom">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+                        {% trans "Can I join?" %}
+                    </button>
+                </h2>
+                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted small">
+                        {% trans "Yes, you can join! As a singular person, simply create a free account with NIF on our website and start tracking your recycling impact." %}
+                    </div>
+                </div>
+
+            </div>
+            <div class="accordion-item border-bottom">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#q4">
+                        {% trans "Is my data secure?" %}
+                    </button>
+                </h2>
+                <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted small">
+                        {% trans "Yes! We take data security seriously and follow GDPR." %}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item border-bottom">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#q5">
+                        {% trans "How do I find recycling points?" %}
+                    </button>
+                </h2>
+                <div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted small">   
+                        {% trans "Use our EcoMap to locate nearby recycling centers. You can filter by device type and see real-time availability." %}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item border-bottom">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#q6">
+                        {% trans "Is there any tax involved?" %}
+                    </button>
+                </h2>
+                <div id="q6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted small">   
+                        {% trans "No, there is no tax involved!." %}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item border-bottom">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#q7">
+                        {% trans "What is the catch?" %}
+                    </button>
+                </h2>
+                <div id="q7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted small">   
+                        {% trans "There is no catch! It's a simple and effective way to recycle your old devices." %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center py-5 my-5 bg-primary text-white rounded-5 shadow-lg position-relative overflow-hidden">
+    <i class="bi bi-recycle position-absolute opacity-10" style="font-size: 20rem; right: -50px; bottom: -100px;"></i>
+    <div class="position-relative" style="z-index: 2;">
+        <h2 class="display-5 fw-bold mb-3">{% trans "Ready to make an impact?" %}</h2>
+        <p class="lead mb-4 opacity-75">{% trans "Join 1,200+ users transforming tech waste into green energy." %}</p>
+        <a href="{% url 'register' %}" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-primary hover-up">
+            {% trans "Create Free Account" %}
+        </a>
     </div>
 </div>
 
 <style>
-    .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important; }
+    /* Hero Visuals */
+    .hero-circle { width: 380px; height: 380px; transition: transform 0.5s ease; }
+    .hero-circle:hover { transform: scale(1.02); }
+    
+    /* Animations & Hover */
+    .hover-up { transition: all 0.3s ease; }
+    .hover-up:hover { transform: translateY(-8px); box-shadow: 0 1rem 3rem rgba(0,0,0,0.1) !important; }
+    
     .rotate-n15 { transform: rotate(-15deg); }
-    .rotate-15 { transform: rotate(15deg); }
+    .animate-spin-slow { animation: spin 12s linear infinite; }
+    
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    
+    .accordion-button:not(.collapsed) {
+        background-color: transparent;
+        color: #2d6a4f;
+        box-shadow: none;
+    }
 </style>
 {% endblock %}

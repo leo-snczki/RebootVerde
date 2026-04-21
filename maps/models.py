@@ -2,20 +2,20 @@ from django.contrib.gis.db import models
 from django.conf import settings
 
 class EwastePin(models.Model):
-    name = models.CharField(max_length=100, null=True, blank=True)
+    name = models.CharField(max_length=100)
     description = models.CharField(max_length=255, null=True, blank=True)
     working_hours = models.CharField(max_length=255, null=True, blank=True)
     accepted_ewaste = models.ManyToManyField('AcceptedEwaste', blank=True)
-    address = models.CharField(max_length=255, null=True, blank=True)
-    postal_code = models.CharField(max_length=20, null=True, blank=True)
-    locality = models.ForeignKey('Locality', on_delete=models.CASCADE, null=True, blank=True)
-    types_of_establishment = models.ForeignKey('Establishment', on_delete=models.SET_NULL, null=True, blank=True)
+    address = models.CharField(max_length=255)
+    postal_code = models.CharField(max_length=20)
+    locality = models.ForeignKey('Locality', on_delete=models.CASCADE)
+    types_of_establishment = models.ForeignKey('Establishment', on_delete=models.SET_NULL, null=True)
     official_link = models.URLField(max_length=255, null=True, blank=True)
     
     geom = models.PointField(srid=4326)
 
     def __str__(self):
-        return self.description or "Ponto de Recolha"
+        return self.name
     
 class AcceptedEwaste(models.Model):
     type = models.CharField(max_length=255)

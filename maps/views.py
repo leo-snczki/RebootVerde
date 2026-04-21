@@ -33,7 +33,8 @@ def recycle_map_view(request):
     return render(request, 'maps/recycle_map.html', {
         'brands': BRANDS_REEE,
         'parishes': CIVIL_PARISHES,
-        'categories': AcceptedEwaste.objects.all()
+        'categories': AcceptedEwaste.objects.all(),
+        'establishments': Establishment.objects.all()
     })
 
 
@@ -42,6 +43,7 @@ def api_pins_geojson(request):
     search = request.GET.get('search')
     selected_parishes = request.GET.getlist('parish')
     selected_categories = request.GET.getlist('category')
+    selected_establishments = request.GET.getlist('establishment')
     favorites_only = request.GET.get('favorites') == 'true'
 
     pins = EwastePin.objects.filter(locality__name__iexact="lisboa")
@@ -54,6 +56,9 @@ def api_pins_geojson(request):
 
     if selected_categories:
         pins = pins.filter(accepted_ewaste__type__in=selected_categories).distinct()
+        
+    if selected_establishments:
+        pins = pins.filter(types_of_establishment__type__in=selected_establishments)
 
     if search:
         pins = pins.filter(name__icontains=search)

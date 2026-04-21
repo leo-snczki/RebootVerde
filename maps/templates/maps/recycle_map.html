@@ -75,7 +75,7 @@
         </div>
         {% endfor %}
     </div>
-    <div class="mb-3"></div>
+    <div class="mb-3">
         <button id="clear-parish" class="btn btn-sm btn-outline-secondary mt-2">{% trans "Clear Selection" %}</button>
     </div>
 
@@ -92,7 +92,26 @@
         </div>
         {% endfor %}
     </div>
-    <button id="clear-categories" class="btn btn-sm btn-outline-secondary mb-3">{% trans "Clear Selection" %}</button>
+    <div class="mb-3">
+        <button id="clear-categories" class="btn btn-sm btn-outline-secondary mb-3">{% trans "Clear Selection" %}</button>
+    </div>
+
+    <label class="form-label"><b>{% trans "Filter by Establishment Type:" %}</b></label>
+    <div class="row mb-2" id="establishment-checkboxes">
+        {% for est in establishments %}
+        <div class="col-md-3 col-sm-6">
+            <div class="form-check">
+                <input class="form-check-input establishment-checkbox" type="checkbox" value="{{ est.type }}" id="est-{{ est.id }}">
+                <label class="form-check-label" for="est-{{ est.id }}">
+                    {{ est.type }}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <button id="clear-establishments" class="btn btn-sm btn-outline-secondary mb-3">{% trans "Clear Selection" %}</button>
+    </div>
 </div>
 
 {% leaflet_map "map" callback="window.initMap" %}
@@ -118,6 +137,8 @@
 
         const categories = Array.from(document.querySelectorAll('.category-checkbox:checked')).map(cb => cb.value);
         categories.forEach(c => params.append('category', c));
+
+        document.querySelectorAll('.establishment-checkbox:checked').forEach(cb => params.append('establishment', cb.value));
 
         const search = document.getElementById('search-desc').value;
 
@@ -231,6 +252,15 @@
 
         document.getElementById('clear-categories').addEventListener('click', function() {
             document.querySelectorAll('.category-checkbox').forEach(cb => cb.checked = false);
+            load_data();
+        });
+
+        document.querySelectorAll('.establishment-checkbox').forEach(cb => {
+        cb.addEventListener('change', load_data);
+        });
+
+        document.getElementById('clear-establishments').addEventListener('click', function() {
+            document.querySelectorAll('.establishment-checkbox').forEach(cb => cb.checked = false);
             load_data();
         });
     }

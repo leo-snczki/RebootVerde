@@ -123,7 +123,7 @@
                     onEachFeature: function (feature, layer) {
                         var props = feature.properties;
                         var isAuthenticated = JSON.parse("{{ user.is_authenticated|yesno:'true,false' }}");
-                        var searchString = `${props.descricao || ''},${props.morada || ''}, ${props.codigo_pos || ''}, ${props.localidade || ''}`.trim();
+                        var searchString = `${props.name || ''},${props.address || ''}, ${props.postal_code || ''}, ${props.locality || ''}`.trim();
                         var searchAddress = encodeURIComponent(searchString);                   
                         var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchAddress}`;                            
                         var isFav = props.is_favorited;
@@ -131,10 +131,10 @@
                         var btnText = isFav ? "Remove from Favorites" : "Add to Favorites";
                         var pointId = feature.id;
                         var popup = `
-                            <b>${props.descricao ?? "Ponto de Recolha"}</b><br>
-                                ${props.morada ?? "Morada não especificada"}<br>
-                            <small>${props.localidade ?? ""}</small> <br>
-                            <small>${props.codigo_pos ?? "Código postal não especificado"}</small><br>
+                            <b>${props.name ?? "Ponto de Recolha"}</b><br>
+                                ${props.address ?? "Morada não especificada"}<br>
+                            <small>${props.locality ?? ""}</small> <br>
+                            <small>${props.postal_code ?? "Código postal não especificado"}</small><br>
                             <div class="mt-2 d-flex flex-column gap-2"> 
                                 <button
                                 onclick="toggleFavorite(${pointId}, this)"

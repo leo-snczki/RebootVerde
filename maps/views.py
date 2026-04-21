@@ -2,7 +2,7 @@ from urllib import request
 
 from django.shortcuts import render, get_object_or_404
 from django.core.serializers import serialize
-from .models import PontoRecolha, Freguesia, FavoritePoint
+from .models import EwastePin, Establishment, AcceptedEwaste, Freguesia, FavoritePoint
 import json
 from django.http import JsonResponse
 from django.db.models import Q
@@ -12,7 +12,7 @@ from django.contrib import messages
 
 BRANDS_REEE = [
     "Minipreço", "Continente", "ALDI", "Minisom", "Fnac", "Primark", "Pingo Doce", "Canon", "Konica", "Nintendo", "Cepsa", "Worten",
-    "Staples", "El Corte Inglês", "Decathlon", "Leroy Merlin", "Auchan", "Junta de Freguesia", "Hotel", "Lidl", "ALE-HOP"
+    "Staples", "El Corte Inglês", "Decathlon", "Leroy Merlin", "Auchan", "Lidl", "ALE-HOP"
 ]
 
 CIVIL_PARISHES = [
@@ -42,21 +42,21 @@ def api_pins_geojson(request):
     selected_parishes = request.GET.getlist('parish')
     favorites_only = request.GET.get('favorites') == 'true'
 
-    pins = PontoRecolha.objects.filter(localidade__iexact="lisboa")
+    pins = EwastePin.objects.filter(locality__iexact="lisboa")
 
     if favorites_only and request.user.is_authenticated:
-        fav_ids = FavoritePoint.objects.filter(user=request.user).values_list('ponto_recolha_id', flat=True)
+        fav_ids = FavoritePoint.objects.filter(user=request.user).values_list('ewaste_pin_id', flat=True)
         pins = pins.filter(id__in=fav_ids)
     elif favorites_only and not request.user.is_authenticated:
         pins = pins.none()
 
     if search:
-        pins = pins.filter(descricao__icontains=search)
+        pins = pins.filter(name__icontains=search)
 
     if selected_brands:
         brand_filter = Q()
         for brand in selected_brands:
-            brand_filter |= Q(descricao__icontains=brand)
+            brand_filter |= Q(name__icontains=brand)
 
         pins = pins.filter(brand_filter)
 
@@ -79,13 +79,13 @@ def api_pins_geojson(request):
         'geojson',
         pins[:1200],
         geometry_field='geom',
-        fields=('descricao', 'morada', 'localidade', 'codigo_pos')
+        fields=('name', 'description', 'working_hours', 'accepted_ewaste', 'address', 'postal_code', 'locality', 'types_of_establishment', 'official_link')
     )
 
     data = json.loads(geojson_data)
 
     if request.user.is_authenticated:
-        fav_ids = set(FavoritePoint.objects.filter(user=request.user).values_list('ponto_recolha_id', flat=True))
+        fav_ids = set(FavoritePoint.objects.filter(user=request.user).values_list('ewaste_pin_id', flat=True))
     else:
         fav_ids = set()
 
@@ -100,9 +100,9 @@ def toggle_favorite(request, point_id):
         messages.error(request, "Precisas de iniciar sessão para adicionar favoritos.")
         return JsonResponse({'error': 'auth'}, status=401)
 
-    ponto = get_object_or_404(PontoRecolha, id=point_id)
+    ponto = get_object_or_404(EwastePin, id=point_id)
     
-    favorite, created = FavoritePoint.objects.get_or_create(user=request.user, ponto_recolha=ponto)
+    favorite, created = FavoritePoint.objects.get_or_create(user=request.user, ewaste_pin=ponto)
 
     if not created:
         favorite.delete()

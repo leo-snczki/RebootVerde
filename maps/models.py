@@ -1,17 +1,44 @@
 from django.contrib.gis.db import models
 from django.conf import settings
 
-class PontoRecolha(models.Model):
-    codigo_apa = models.CharField(max_length=50, null=True, blank=True)
-    descricao = models.CharField(max_length=255, null=True, blank=True)
-    morada = models.CharField(max_length=255, null=True, blank=True)
-    localidade = models.CharField(max_length=255, null=True, blank=True)
-    codigo_pos = models.CharField(max_length=20, null=True, blank=True)
+class EwastePin(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    working_hours = models.CharField(max_length=255, null=True, blank=True)
+    accepted_ewaste = models.ManyToManyField('AcceptedEwaste', blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
+    postal_code = models.CharField(max_length=20, null=True, blank=True)
+    locality = models.ForeignKey('Locality', on_delete=models.CASCADE, null=True, blank=True)
+    types_of_establishment = models.ForeignKey('Establishment', on_delete=models.SET_NULL, null=True, blank=True)
+    official_link = models.URLField(max_length=255, null=True, blank=True)
     
     geom = models.PointField(srid=4326)
 
     def __str__(self):
-        return self.descricao or "Ponto de Recolha"
+        return self.description or "Ponto de Recolha"
+    
+class AcceptedEwaste(models.Model):
+    type = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.type or "E-waste type"
+    
+class Establishment(models.Model):
+    type = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.type or "Establishment type"
+    
+# bonzão para futuros upgrades sem ser em lisboa
+class Locality(models.Model):
+    name = models.CharField(max_length=30)
+    
+    class Meta:
+        verbose_name = "Locality"
+        verbose_name_plural = "Localities"
+    
+    def __str__(self):
+        return self.name
 
 class Freguesia(models.Model):
     nome = models.CharField(max_length=100)
@@ -28,17 +55,17 @@ class FavoritePoint(models.Model):
         on_delete=models.CASCADE,
         related_name='favorite_points'
     )
-    ponto_recolha = models.ForeignKey(
-        PontoRecolha,
+    ewaste_pin = models.ForeignKey(
+        EwastePin,
         on_delete=models.CASCADE,
         related_name='favorited_by'
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'ponto_recolha')
+        unique_together = ('user', 'ewaste_pin')
         verbose_name = 'Favorite Point'
         verbose_name_plural = 'Favorite Points'
 
     def __str__(self):
-        return f"{self.user} - {self.ponto_recolha}"
+        return f"{self.user} - {self.ewaste_pin}"

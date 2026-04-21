@@ -89,7 +89,7 @@ def api_pins_geojson(request):
         'geojson',
         pins[:1200],
         geometry_field='geom',
-        fields=('name', 'description', 'working_hours', 'accepted_ewaste', 'address', 'postal_code', 'locality', 'types_of_establishment', 'official_link')
+        fields=('name', 'description', 'working_hours', 'accepted_ewaste', 'address', 'postal_code', 'types_of_establishment', 'official_link')
     )
 
     data = json.loads(geojson_data)

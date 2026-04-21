@@ -34,6 +34,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     is_verified = models.BooleanField(default=False)
     verification_code = models.CharField(max_length=6, blank=True, null=True)
+    receive_newsletter = models.BooleanField(default=False)
 
     REQUIRED_FIELDS = ['email', 'nif']
 

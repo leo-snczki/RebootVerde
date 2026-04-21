@@ -15,6 +15,11 @@
 
     <h3 class="mt-4">{% trans "Account Management" %}</h3>
     <div class="list-group mt-3" style="max-width: 400px;">
+        {% if user.receive_newsletter %}
+            <a href="{% url 'unsubscribe_newsletter' %}" class="list-group-item list-group-item-action text-warning fw-bold">{% trans "Unsubscribe from Newsletter" %}</a>
+        {% else %}
+            <a href="{% url 'subscribe_newsletter' %}" class="list-group-item list-group-item-action text-success fw-bold">{% trans "Subscribe to Newsletter" %}</a>
+        {% endif %}
         <a href="{% url 'change_email' %}" class="list-group-item list-group-item-action">{% trans "Update Email" %}</a>
         <a href="{% url 'password_change' %}" class="list-group-item list-group-item-action">{% trans "Change Password" %}</a>
         <a href="{% url 'delete_account' %}" class="list-group-item list-group-item-action text-danger fw-bold">{% trans "Delete Account" %}</a>

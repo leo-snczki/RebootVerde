@@ -11,7 +11,10 @@ User = get_user_model()
 @receiver(post_save, sender=EwastePin)
 def notify_users_new_pin(sender, instance, created, **kwargs):
     if created:
-        users_emails = list(User.objects.filter(is_active=True).values_list('email', flat=True))
+        users_emails = list(User.objects.filter(
+            is_active=True, 
+            receive_newsletter=True
+        ).values_list('email', flat=True))
         
         if users_emails:
             subject = '🌍 Novo Ponto de Coleta: ' + (instance.name or "Disponível no Mapa")

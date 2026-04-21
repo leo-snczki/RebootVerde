@@ -23,6 +23,8 @@ urlpatterns = [
     path("accounts/change-email/", views.change_email, name="change_email"),
     path("accounts/delete-account/", views.delete_account, name="delete_account"),
     
+    path("accounts/unsubscribe/", views.unsubscribe_newsletter, name="unsubscribe_newsletter"),
+    path("accounts/subscribe/", views.subscribe_newsletter, name="subscribe_newsletter"),
     
     path("accounts/password_change/", auth_views.PasswordChangeView.as_view(
         template_name="users/password_change_form.html",

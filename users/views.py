@@ -150,11 +150,6 @@ def password_reset_request(request):
         form = PasswordResetForm()
     return render(request, "users/password_reset_form.html", {"form": form})
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import SetPasswordForm
-from django.contrib import messages
-
 User = get_user_model()
 
 def password_reset_verify(request):
@@ -215,3 +210,17 @@ def profile(request):
     return render(request, 'users/profile.html', {
         'orders': orders
     })
+
+@login_required
+def unsubscribe_newsletter(request):
+    request.user.receive_newsletter = False
+    request.user.save()
+    messages.success(request, "Subscrição cancelada com sucesso.")
+    return redirect('profile')
+
+@login_required
+def subscribe_newsletter(request):
+    request.user.receive_newsletter = True
+    request.user.save()
+    messages.success(request, "Subscrição ativada com sucesso.")
+    return redirect('profile')

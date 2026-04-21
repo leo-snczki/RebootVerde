@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Learn - E-Waste Knowledge Hub" %}{% endblock %}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-4 fw-bold text-success mb-3">{% trans "Understanding E-Waste" %}</h1>
+        <p class="lead text-muted">
+            {% trans "Electronic waste (e-waste) is any discarded electrical or electronic device. In a world driven by technology, knowing how to manage these items is vital for our planet." %}
+        </p>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm p-4 bg-white">
+            <div class="d-flex align-items-center mb-3">
+                <div class="bg-danger bg-opacity-10 p-3 rounded-3 me-3">
+                    <i class="bi bi-exclamation-triangle-fill text-danger fs-3"></i>
+                </div>
+                <h3 class="h4 mb-0 fw-bold">{% trans "The Problem" %}</h3>
+            </div>
+            <p class="text-muted">
+                {% blocktrans %}
+                Electronic devices contain toxic substances like <strong>lead, mercury, and cadmium</strong>. When disposed of in regular landfills, these chemicals leak into the soil and water, affecting ecosystems and human health.
+                {% endblocktrans %}
+            </p>
+            <p class="text-muted">
+                {% blocktrans %}
+                Retaking that obsolete equipment to recover materials to evolving technologies sustainably.
+                {% endblocktrans %}
+            </p>
+            
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm p-4 bg-success text-white">
+            <div class="d-flex align-items-center mb-3">
+                <div class="bg-white bg-opacity-20 p-3 rounded-3 me-3">
+                    <i class="bi bi-recycle text-success fs-2"></i>
+                </div>
+                <h3 class="h4 mb-0 fw-bold">{% trans "The Solution" %}</h3>
+            </div>
+            <p class="opacity-90">
+                {% trans "Recycling e-waste helps conserve natural resources and reduces the environmental impact of electronic manufacturing." %}
+            </p>
+            <ul class="list-unstyled mt-3">
+                <li><i class="bi bi-check2-circle me-2"></i> {% trans "Resource Conservation" %}</li>
+                <li><i class="bi bi-check2-circle me-2"></i> {% trans "Reduction of CO2 emissions" %}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white rounded-4 shadow-sm p-4 p-md-5 mb-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">{% trans "Waste Categories & Disposal" %}</h2>
+        <p class="text-muted">{% trans "Click on a category to see how to properly dispose of your items." %}</p>
+    </div>
+
+    <ul class="nav nav-pills nav-fill mb-4 p-2 bg-light rounded-pill" id="ewasteTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active rounded-pill" id="small-tab" data-bs-toggle="tab" data-bs-target="#small-appliances" type="button" role="tab">
+                <i class="bi bi-watch me-2"></i>{% trans "Small" %}
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-pill" id="large-tab" data-bs-toggle="tab" data-bs-target="#large-appliances" type="button" role="tab">
+                <i class="bi bi-boxes me-2"></i>{% trans "Large" %}
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-pill" id="it-tab" data-bs-toggle="tab" data-bs-target="#it-equipment" type="button" role="tab">
+                <i class="bi bi-laptop me-2"></i>{% trans "IT & Telecom" %}
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-pill" id="battery-tab" data-bs-toggle="tab" data-bs-target="#batteries" type="button" role="tab">
+                <i class="bi bi-battery-charging me-2"></i>{% trans "Batteries" %}
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content p-3" id="ewasteTabContent">
+        <div class="tab-pane fade show active" id="small-appliances" role="tabpanel">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h4 class="fw-bold text-success">{% trans "Small Household Appliances" %}</h4>
+                    <p>{% trans "Includes vacuum cleaners, toasters, coffee machines, and electric toothbrushes." %}</p>
+                    <div class="alert alert-info border-0 shadow-sm">
+                        <strong><i class="bi bi-info-circle-fill me-2"></i>{% trans "How to discard:" %}</strong>
+                        {% trans "Take these to specialized e-waste bins at supermarkets or municipal recycling centers." %}
+                    </div>
+                </div>
+                <div class="col-md-5 text-center">
+                    <i class="bi bi-smartwatch text-muted display-1"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="large-appliances" role="tabpanel">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h4 class="fw-bold text-success">{% trans "Large Household Appliances" %}</h4>
+                    <p>{% trans "Includes washing machines, fridges, air conditioners, and microwaves." %}</p>
+                    <div class="alert alert-info border-0 shadow-sm">
+                        <strong><i class="bi bi-info-circle-fill me-2"></i>{% trans "How to discard:" %}</strong>
+                        {% trans "Request a pick-up from your local municipality or use the 'one-for-one' rule when buying a new one." %}
+                    </div>
+                </div>
+                <div class="col-md-5 text-center">
+                    <i class="bi bi-ev-front text-muted display-1"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="it-equipment" role="tabpanel">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h4 class="fw-bold text-success">{% trans "IT and Telecommunications" %}</h4>
+                    <p class="text-muted">{% trans "Includes computers, laptops, tablets, smartphones, printers, and network routers." %}</p>
+
+                    <div class="alert alert-warning border-0 shadow-sm d-flex align-items-start mt-3">
+                        <i class="bi bi-shield-lock-fill fs-4 me-3"></i>
+                        <div>
+                            <strong>{% trans "Data Privacy First!" %}</strong><br>
+                            <small>{% trans "Before recycling, ensure you perform a factory reset. For computers, use a secure erase tool to delete all data." %}</small>
+                            <br>
+                            <a href="https://ico.org.uk/for-the-public/online/deleting-your-data-from-computers-laptops-and-other-devices/" target="_blank" class="btn btn-sm btn-outline-secondary mt-2">
+                                {% trans "Learn How" %}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info border-0 shadow-sm mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                            <strong class="mb-0">{% trans "How to discard:" %}</strong>
+                        </div>
+                        <ul class="mb-0 small">
+                            <li>{% trans "Small items like phones andtablets can go into specialized e-waste bins at retail stores." %}</li>
+                            <li>{% trans "For medium items like desktops or printers, use our EcoMap to find industrial recycling centers." %}</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-5 text-center mt-4 mt-md-0">
+                    <div class="position-relative d-inline-block p-5">
+                        <div class="position-absolute top-50 start-50 translate-middle bg-success bg-opacity-10 rounded-circle" style="width: 200px; height: 200px; z-index: 1;"></div>
+                        
+                        <div class="position-relative" style="z-index: 3;">
+                            <i class="bi bi-laptop text-dark display-1"></i>
+                        </div>
+                        
+                        <div class="position-absolute bg-white shadow-sm rounded-3 p-2 d-flex align-items-center justify-content-center" 
+                            style="z-index: 4; bottom: 20%; right: 10%; width: 50px; height: 70px; border: 2px solid #2d6a4f;">
+                            <i class="bi bi-phone-vibrate text-success fs-2"></i>
+                        </div>
+                        
+                        <div class="position-absolute top-0 end-0 mt-3 me-3 text-success opacity-50 animate-pulse">
+                            <i class="bi bi-cpu fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="batteries" role="tabpanel">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h4 class="fw-bold text-success">{% trans "Batteries and Accumulators" %}</h4>
+                    <p>{% trans "Includes alkaline batteries, Li-ion phone batteries, Powerbanks and car batteries." %}</p>
+                    <div class="alert alert-danger border-0 shadow-sm">
+                        <strong><i class="bi bi-exclamation-octagon-fill me-2"></i>{% trans "Critical:" %}</strong>
+                        {% trans "Never throw batteries in the general trash. They are highly flammable and corrosive." %}
+                    </div>
+                    <div class="alert alert-info border-0 shadow-sm mb-3">
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                    <strong class="mb-0">{% trans "How to discard:" %}</strong>
+                </div>
+                <ul class="mb-0 small">
+                    <li>{% trans "Use 'Pilhão' containers found in most supermarkets and pharmacies." %}</li>
+                    <li>{% trans "For swollen or damaged batteries, place them in a bag with sand or vermiculite before disposal." %}</li>
+                    <li>{% trans "Car batteries must be returned to automotive service centers or specialized scrapyards." %}</li>
+                </ul>
+            </div>
+                </div>
+                <div class="col-md-5 text-center">
+                    <i class="bi bi-battery-full text-danger display-1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center py-4">
+    <a href="{% url 'maps' %}" class="btn btn-primary btn-lg rounded-pill px-5">
+        <i class="bi bi-geo-alt me-2"></i>{% trans "Find Nearest Collection Point" %}
+    </a>
+</div>
+
+<style>
+    /* Pequenos ajustes de animação para as tabs */
+    .nav-pills .nav-link.active {
+        background-color: #2d6a4f !important;
+        box-shadow: 0 4px 10px rgba(45, 106, 79, 0.3);
+    }
+    .nav-pills .nav-link {
+        color: #2d6a4f;
+        transition: all 0.3s ease;
+    }
+    .tab-pane {
+        animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+{% endblock %}

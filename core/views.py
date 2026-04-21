@@ -38,3 +38,6 @@ def contact_view(request):
 
         return render(request, 'contact_success.html') 
     return render(request, 'contact.html')
+
+def learn(request):
+    return render(request, 'learn.html')

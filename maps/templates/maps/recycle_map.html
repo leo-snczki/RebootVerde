@@ -164,9 +164,9 @@
                     onEachFeature: function (feature, layer) {
                         var props = feature.properties;
                         var isAuthenticated = JSON.parse("{{ user.is_authenticated|yesno:'true,false' }}");
-                        var searchString = `${props.name || ''},${props.address || ''}, ${props.postal_code || ''}, ${props.locality || ''}`.trim();
-                        var searchAddress = encodeURIComponent(searchString);                   
-                        var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchAddress}`;                            
+                        var lat = feature.geometry.coordinates[1];
+                        var lng = feature.geometry.coordinates[0];      
+                        var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
                         var isFav = props.is_favorited;
                         var btnClass = isFav ? "btn-danger" : "btn-outline-success";
                         var btnText = isFav ? "Remove from Favorites" : "Add to Favorites";

@@ -45,6 +45,9 @@ def api_pins_geojson(request):
     selected_categories = request.GET.getlist('category')
     selected_establishments = request.GET.getlist('establishment')
     favorites_only = request.GET.get('favorites') == 'true'
+    weekday = request.GET.get('weekday')
+    open_from = request.GET.get('open_from')
+    open_to = request.GET.get('open_to')
 
     pins = EwastePin.objects.filter(locality__name__iexact="lisboa")
 
@@ -59,6 +62,17 @@ def api_pins_geojson(request):
         
     if selected_establishments:
         pins = pins.filter(types_of_establishment__type__in=selected_establishments)
+
+    if weekday or open_from or open_to:
+        hours_filter = Q()
+        if weekday:
+            hours_filter &= Q(opening_hours__weekday=weekday)
+        if open_from:
+            hours_filter &= Q(opening_hours__open_time__lte=open_from)
+        if open_to:
+            hours_filter &= Q(opening_hours__close_time__gte=open_to)
+        
+        pins = pins.filter(hours_filter).distinct()
 
     if search:
         pins = pins.filter(name__icontains=search)

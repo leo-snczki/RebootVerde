@@ -1,6 +1,6 @@
 from django.contrib import admin
 from leaflet.admin import LeafletGeoAdmin
-from .models import EwastePin, AcceptedEwaste, Establishment, Freguesia, FavoritePoint, Locality
+from .models import EwastePin, AcceptedEwaste, Establishment, Freguesia, FavoritePoint, Locality, EwastePinOpeningHours
 
 @admin.register(AcceptedEwaste)
 class AcceptedEwasteAdmin(admin.ModelAdmin):
@@ -12,6 +12,11 @@ class EstablishmentAdmin(admin.ModelAdmin):
     list_display = ('id', 'type')
     search_fields = ('type',)
 
+class EwastePinOpeningHoursInline(admin.TabularInline):
+    model = EwastePinOpeningHours
+    extra = 1
+    min_num = 0
+
 @admin.register(EwastePin)
 class EwastePinAdmin(LeafletGeoAdmin):
     list_display = ('name', 'description','locality', 'types_of_establishment')
@@ -19,6 +24,8 @@ class EwastePinAdmin(LeafletGeoAdmin):
     search_fields = ('name', 'description', 'address', 'postal_code')
     
     filter_horizontal = ('accepted_ewaste',)
+    
+    inlines = [EwastePinOpeningHoursInline]
 
 @admin.register(Freguesia)
 class FreguesiaAdmin(LeafletGeoAdmin):

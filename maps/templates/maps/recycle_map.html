@@ -112,6 +112,35 @@
     <div class="mb-3">
         <button id="clear-establishments" class="btn btn-sm btn-outline-secondary mb-3">{% trans "Clear Selection" %}</button>
     </div>
+
+    <label class="form-label"><b>Filter by opening hours:</b></label>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Weekday</label>
+            <select id="weekday-filter" class="form-select">
+                <option value="">Any day</option>
+                <option value="0">Monday</option>
+                <option value="1">Tuesday</option>
+                <option value="2">Wednesday</option>
+                <option value="3">Thursday</option>
+                <option value="4">Friday</option>
+                <option value="5">Saturday</option>
+                <option value="6">Sunday</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">From</label>
+            <input type="time" id="open-from" class="form-control">
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">To</label>
+            <input type="time" id="open-to" class="form-control">
+        </div>
+    </div>
+
 </div>
 
 {% leaflet_map "map" callback="window.initMap" %}
@@ -134,6 +163,14 @@
         if (favoritesOnly) {
             params.append('favorites', 'true');
         }
+
+        const weekday = document.getElementById('weekday-filter').value;
+        const openFrom = document.getElementById('open-from').value;
+        const openTo = document.getElementById('open-to').value;
+
+        if (weekday) params.append('weekday', weekday);
+        if (openFrom) params.append('open_from', openFrom);
+        if (openTo) params.append('open_to', openTo);
 
         const categories = Array.from(document.querySelectorAll('.category-checkbox:checked')).map(cb => cb.value);
         categories.forEach(c => params.append('category', c));
@@ -248,6 +285,10 @@
         document.querySelectorAll('.category-checkbox').forEach(cb => {
             cb.addEventListener('change', load_data);
         });
+
+        document.getElementById('weekday-filter').addEventListener('change', load_data);
+        document.getElementById('open-from').addEventListener('change', load_data);
+        document.getElementById('open-to').addEventListener('change', load_data);
 
         document.getElementById('clear-categories').addEventListener('click', function() {
             document.querySelectorAll('.category-checkbox').forEach(cb => cb.checked = false);

@@ -1,10 +1,10 @@
 from django.contrib.gis.db import models
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
 class EwastePin(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=255, null=True, blank=True)
-    working_hours = models.CharField(max_length=255, null=True, blank=True)
     accepted_ewaste = models.ManyToManyField('AcceptedEwaste', blank=True)
     address = models.CharField(max_length=255)
     postal_code = models.CharField(max_length=20)
@@ -39,6 +39,38 @@ class Locality(models.Model):
     
     def __str__(self):
         return self.name
+
+class EwastePinOpeningHours(models.Model):
+    WEEKDAYS = [
+        (0, "Monday"),
+        (1, "Tuesday"),
+        (2, "Wednesday"),
+        (3, "Thursday"),
+        (4, "Friday"),
+        (5, "Saturday"),
+        (6, "Sunday"),
+    ]
+
+    ewaste_pin = models.ForeignKey(
+        "EwastePin",
+        on_delete=models.CASCADE,
+        related_name="opening_hours"
+    )
+
+    weekday = models.IntegerField(choices=WEEKDAYS)
+    open_time = models.TimeField()
+    close_time = models.TimeField()
+
+    class Meta:
+        ordering = ["weekday", "open_time"]
+        unique_together = ('ewaste_pin', 'weekday')
+        
+    def clean(self):
+        if self.open_time and self.close_time:
+            if self.close_time <= self.open_time:
+                raise ValidationError({
+                    'close_time': "The closing time must be after the opening time."
+                })
 
 class Freguesia(models.Model):
     nome = models.CharField(max_length=100)

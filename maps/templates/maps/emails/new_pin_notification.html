@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f4f4f4; padding: 20px;">
+        <tr>
+            <td align="center">
+                <table width="600" border="0" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <tr>
+                        <td style="background-color: #1b4332; padding: 20px; text-align: center; color: #ffffff;">
+                            <h1 style="margin: 0; font-size: 24px; letter-spacing: 2px;">REBOOTVERDE</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 30px; color: #333333;">
+                            <h2 style="color: #1b4332; margin-top: 0;">🌍 Novo ponto de reciclagem adicionado!</h2>
+                            <p style="font-size: 16px; line-height: 1.5;">
+                                Olá! Acabámos de adicionar um novo local de recolha de resíduos eletrónicos à nossa rede.
+                            </p>
+                            <div style="background-color: #f0fdf4; border-left: 4px solid #52b788; padding: 15px; margin: 20px 0;">
+                                <p style="margin: 5px 0;"><strong>Nome:</strong> {{ pin.name|default:"Ponto de Recolha" }}</p>
+                                <p style="margin: 5px 0;"><strong>Morada:</strong> {{ pin.address }}</p>
+                                <p style="margin: 5px 0;"><strong>Estabelecimento:</strong> {{ pin.types_of_establishment.type }}</p>
+                            </div>
+                            <div style="text-align: center; margin-top: 30px;">
+                                <a href="http://{{ domain }}/maps/recycle-map/" style="background-color: #52b788; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">Ver no Mapa</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #999999;">
+                            © 2026 RebootVerde
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

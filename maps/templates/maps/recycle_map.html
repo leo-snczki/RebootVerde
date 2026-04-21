@@ -75,7 +75,24 @@
         </div>
         {% endfor %}
     </div>
-    <button id="clear-parish" class="btn btn-sm btn-outline-secondary mt-2">{% trans "Clear Selection" %}</button>
+    <div class="mb-3"></div>
+        <button id="clear-parish" class="btn btn-sm btn-outline-secondary mt-2">{% trans "Clear Selection" %}</button>
+    </div>
+
+    <label class="form-label"><b>{% trans "Filter by E-waste type:" %}</b></label>
+    <div class="row mb-3" id="category-checkboxes">
+        {% for cat in categories %}
+        <div class="col-md-3 col-sm-6">
+            <div class="form-check">
+                <input class="form-check-input category-checkbox" type="checkbox" value="{{ cat.type }}" id="cat-{{ cat.id }}">
+                <label class="form-check-label" for="cat-{{ cat.id }}">
+                    {{ cat.type }}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <button id="clear-categories" class="btn btn-sm btn-outline-secondary mb-3">{% trans "Clear Selection" %}</button>
 </div>
 
 {% leaflet_map "map" callback="window.initMap" %}
@@ -98,6 +115,9 @@
         if (favoritesOnly) {
             params.append('favorites', 'true');
         }
+
+        const categories = Array.from(document.querySelectorAll('.category-checkbox:checked')).map(cb => cb.value);
+        categories.forEach(c => params.append('category', c));
 
         const search = document.getElementById('search-desc').value;
 
@@ -203,6 +223,15 @@
 
         document.querySelectorAll('.parish-checkbox').forEach(cb => {
             cb.addEventListener('change', load_data);
+        });
+
+        document.querySelectorAll('.category-checkbox').forEach(cb => {
+            cb.addEventListener('change', load_data);
+        });
+
+        document.getElementById('clear-categories').addEventListener('click', function() {
+            document.querySelectorAll('.category-checkbox').forEach(cb => cb.checked = false);
+            load_data();
         });
     }
     function getIconForBrand(brand) {

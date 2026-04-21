@@ -32,7 +32,8 @@ CIVIL_PARISHES = [
 def recycle_map_view(request):
     return render(request, 'maps/recycle_map.html', {
         'brands': BRANDS_REEE,
-        'parishes': CIVIL_PARISHES
+        'parishes': CIVIL_PARISHES,
+        'categories': AcceptedEwaste.objects.all()
     })
 
 
@@ -40,15 +41,19 @@ def api_pins_geojson(request):
     selected_brands = request.GET.getlist('brand')
     search = request.GET.get('search')
     selected_parishes = request.GET.getlist('parish')
+    selected_categories = request.GET.getlist('category')
     favorites_only = request.GET.get('favorites') == 'true'
 
-    pins = EwastePin.objects.filter(locality__iexact="lisboa")
+    pins = EwastePin.objects.filter(locality__name__iexact="lisboa")
 
     if favorites_only and request.user.is_authenticated:
         fav_ids = FavoritePoint.objects.filter(user=request.user).values_list('ewaste_pin_id', flat=True)
         pins = pins.filter(id__in=fav_ids)
     elif favorites_only and not request.user.is_authenticated:
         pins = pins.none()
+
+    if selected_categories:
+        pins = pins.filter(accepted_ewaste__type__in=selected_categories).distinct()
 
     if search:
         pins = pins.filter(name__icontains=search)

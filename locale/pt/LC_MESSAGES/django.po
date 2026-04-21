@@ -150,11 +150,11 @@ msgstr "Reciclar"
 msgid "Map"
 msgstr "Mapa"
 
-msgid "Search description:"
-msgstr "Descrição da pesquisa:"
+msgid "Search by name:"
+msgstr "Pesquisa por nome:"
 
-msgid "Search description..."
-msgstr "Pesquisar descrição..."
+msgid "Search name..."
+msgstr "Pesquisar nome..."
 
 msgid "Search"
 msgstr "Pesquisar"

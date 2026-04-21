@@ -1,3 +1,5 @@
+from urllib import request
+
 from django.shortcuts import render, get_object_or_404
 from django.core.serializers import serialize
 from .models import PontoRecolha, Freguesia, FavoritePoint
@@ -6,6 +8,7 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.contrib import messages
 
 BRANDS_REEE = [
     "Minipreço", "Continente", "ALDI", "Minisom", "Fnac", "Primark", "Pingo Doce", "Canon", "Konica", "Nintendo", "Cepsa", "Worten",
@@ -91,9 +94,12 @@ def api_pins_geojson(request):
 
     return JsonResponse(data)
 
-@login_required
 @require_POST
 def toggle_favorite(request, point_id):
+    if not request.user.is_authenticated:
+        messages.error(request, "Precisas de iniciar sessão para adicionar favoritos.")
+        return JsonResponse({'error': 'auth'}, status=401)
+
     ponto = get_object_or_404(PontoRecolha, id=point_id)
     
     favorite, created = FavoritePoint.objects.get_or_create(user=request.user, ponto_recolha=ponto)
